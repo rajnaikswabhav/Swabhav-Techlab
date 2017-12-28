@@ -6,13 +6,11 @@ public class TestWelcome {
 
 		System.out.println("This is Test class....");
 		System.out.println(names.length);
-		if (names.length>0) {
+		if (names.length > 0) {
 			for (String name : names) {
 				System.out.println("Hello Mr. " + name);
 			}
-		}
-		else
-		{
+		} else {
 			System.out.println("Hello Mr. Akash");
 		}
 
