@@ -1,6 +1,6 @@
 package com.techlabs.array;
 
-public class Operation3 {
+public class MultipleURL {
 
 	public static void main(String[] url) {
 		String domainName, argumentName;

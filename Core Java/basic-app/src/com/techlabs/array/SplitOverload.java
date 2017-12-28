@@ -1,6 +1,6 @@
 package com.techlabs.array;
 
-public class Operation1 {
+public class SplitOverload {
 
 	public static void main(String[] args) {
 		String name = "https://www.swabhavtechlabs.com?name=akash";

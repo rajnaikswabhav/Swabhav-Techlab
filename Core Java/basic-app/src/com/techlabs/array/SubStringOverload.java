@@ -1,6 +1,6 @@
 package com.techlabs.array;
 
-public class Operation {
+public class SubStringOverload {
 
 	public static void main(String[] args) {
 
