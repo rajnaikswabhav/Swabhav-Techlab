@@ -9,11 +9,9 @@ public class StudentConsole {
 	public static int RETRIVE_CHOICE = 2;
 	int choice = 0;
 	public static Scanner scanner;
-	public static ArrayList<Student> listOfStudents;
 	public void Start() {
 		StudentService studentService= new StudentService();
 		scanner = new Scanner(System.in);
-		listOfStudents = new ArrayList<Student>();
 		System.out.println("For Add Student Details Press 1:");
 		System.out.println("For Display All Students Details Press 2:");
 		System.out.println("Any Other Number for Exit:");

@@ -15,7 +15,6 @@ public class ListDemo {
 		list.add("Abram");
 		Collections.sort(list);
 
-		list.remove("I am also fine....");
 		//list.add(2, "HIiiiiii...");
 		
 		Iterator<String> itr=list.iterator();

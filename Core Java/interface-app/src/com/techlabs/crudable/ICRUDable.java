@@ -1,6 +1,6 @@
 package com.techlabs.crudable;
 
-public interface CRUDable {
+public interface ICRUDable {
 
 	public void Create();
 

@@ -1,6 +1,6 @@
 package com.techlabs.database.test;
 
-import com.techlabs.crudable.CRUDable;
+import com.techlabs.crudable.ICRUDable;
 import com.techlabs.database.CustomerDatabase;
 import com.techlabs.database.InvoiceDatabase;
 import com.techlabs.database.ShipmentDatabase;
@@ -14,7 +14,7 @@ public class TestDatabase {
 		DoDBOperation(new ShipmentDatabase());
 	}
 
-	public static void DoDBOperation(CRUDable c) {
+	public static void DoDBOperation(ICRUDable c) {
 		c.Create();
 		c.Select();
 		c.Update();

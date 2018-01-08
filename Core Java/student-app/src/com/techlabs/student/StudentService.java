@@ -7,12 +7,11 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class StudentService {
-	public static ArrayList<Student> listStudent;
+	public ArrayList<Student> listStudent=new ArrayList<Student>();
 
 	public void addStudent(Student student) {
-		ArrayList<Student> listofStudent = new ArrayList<Student>();
-		listofStudent.add(student);
-		save(listofStudent);
+		listStudent.add(student);
+		save();
 
 		/*
 		 * try { FileOutputStream fileOutputStream = new FileOutputStream(
@@ -24,37 +23,51 @@ public class StudentService {
 		 */
 	}
 
-	public void save(ArrayList<Student> listStudents) {
+	public void save() {
 		try {
 			FileOutputStream fileOutputStream = new FileOutputStream(
-					"Data/StudentDetails.ser",true);
+					"Data/StudentDetails.ser", true);
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(
 					fileOutputStream);
-			objectOutputStream.writeObject(listStudents);
+			objectOutputStream.writeObject(listStudent);
 			objectOutputStream.close();
 		} catch (Exception e) {
 			System.out.println("" + e.toString());
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	public void get() {
-		listStudent = new ArrayList<Student>();
+	public ArrayList<Student> get() {
 		try {
 			FileInputStream fileInputStream = new FileInputStream(
 					"Data/StudentDetails.ser");
 			ObjectInputStream objectInputStream = new ObjectInputStream(
 					fileInputStream);
-			listStudent = (ArrayList<Student>) objectInputStream.readObject();
-
-			for (Student s : listStudent) {
-				String result="Student Name: " +s.getFirstName() + " "
-						+ s.getLastName() + "\nAddress:" + s.getAddress() + "\n";
-				System.out.println(result);
-			}
+			Object obj=objectInputStream.readObject();
+			Student stu=(Student) obj;
+			//listStudent = (ArrayList<Student>) objectInputStream.readObject();
+			listStudent.add(stu);
 			objectInputStream.close();
 		} catch (Exception e) {
 			System.out.println("error:" + e.getMessage());
 		}
+		return listStudent;
+
 	}
+
+	public void Search(String name) {
+		ArrayList<Student> studentNames = new ArrayList<Student>();
+		for (Student s : listStudent) {
+			if (name.equalsIgnoreCase(s.getFirstName())) {
+				studentNames.add(s);
+			} else {
+				System.out.println("No data found");
+			}
+		}
+
+		for (Student s : studentNames) {
+			System.out.println("StudentName : " + s.getFirstName() + " "
+					+ s.getLastName() + " \nAddress : " + s.getAddress() + "");
+		}
+	}
+
 }

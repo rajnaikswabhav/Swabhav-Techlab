@@ -9,21 +9,21 @@ import com.techlabs.employee.Employee;
 
 public class Manager extends Employee {
 
-	private double HouseRentAllowance;
-	private double DernessAllowance;
+	private double houseRentAllowance;
+	private double dernessAllowance;
 
 	public Manager(String employeName, Date dateOfBirth, double basicSalary) {
 		super(employeName, dateOfBirth, basicSalary);
 	}
 
 	public double getHouseRentAllowance() {
-		HouseRentAllowance=(getBasicSalary()*50)/100;
-		return HouseRentAllowance;
+		houseRentAllowance=(getBasicSalary()*50)/100;
+		return houseRentAllowance;
 	}
 
 	public double getDernessAllowance() {
-		DernessAllowance=(getBasicSalary()*40)/100;
-		return DernessAllowance;
+		dernessAllowance=(getBasicSalary()*40)/100;
+		return dernessAllowance;
 	}
 
 	@Override

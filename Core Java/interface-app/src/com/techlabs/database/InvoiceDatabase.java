@@ -1,8 +1,8 @@
 package com.techlabs.database;
 
-import com.techlabs.crudable.CRUDable;
+import com.techlabs.crudable.ICRUDable;
 
-public class InvoiceDatabase implements CRUDable {
+public class InvoiceDatabase implements ICRUDable {
 
 	@Override
 	public void Create() {

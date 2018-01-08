@@ -18,7 +18,7 @@ public class TestAccount {
 		account2.deposit(200);
 		System.out.println(account2.getName() + " Your Balance is: "
 				+ account2.getBalance());
-		account2.withdraw(100);
+		account2.withdraw(500);
 		System.out.println(account2.getName() + " Your Balance is: "
 				+ account2.getBalance());
 		System.out.println("Total Account Holders:" + account.getCount());
