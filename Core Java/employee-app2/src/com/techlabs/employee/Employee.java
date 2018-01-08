@@ -7,18 +7,18 @@ public class Employee {
 	private String name;
 	private String designation;
 	private String salary;
-	private String birthDate;
+	private String joiningDate;
 	private String dearnessAllownce;
-	private String workingDays;
+	private String departments;
 	
 	public Employee(String id,String name,String designstion,String salary,String birthDate,String dearnessAllowance,String workingDays){
 		this.id=id;
 		this.name=name;
 		this.salary=salary;
 		this.designation=designstion;
-		this.birthDate=birthDate;
+		this.joiningDate=birthDate;
 		this.dearnessAllownce=dearnessAllowance;
-		this.workingDays=workingDays;
+		this.departments=workingDays;
 	}
 
 	public String getId() {
@@ -38,7 +38,7 @@ public class Employee {
 	}
 
 	public String getBirthDate() {
-		return birthDate;
+		return joiningDate;
 	}
 
 	public String getDearnessAllownce() {
@@ -46,8 +46,14 @@ public class Employee {
 	}
 
 	public String getWorkingDays() {
-		return workingDays;
+		return departments;
 	}
 	
-	
+
+	@Override
+	public String toString()
+	{
+		return getId()+  ","  +getName()+  ","  +getDesignation()+  ","  +getSalary()+  ","  +getBirthDate()+  ","  +getDearnessAllownce()+
+	 			 ","  +getWorkingDays();
+	}
 }

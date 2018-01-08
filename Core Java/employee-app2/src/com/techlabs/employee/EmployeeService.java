@@ -6,15 +6,16 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
 
 public class EmployeeService {
 	Employee employee;
-	Set<String> employeeDetails = new TreeSet<String>();
-	Set<String> employeeName = new TreeSet<String>();
-	Set<String> employeeSalary = new TreeSet<String>();
+	Set<String> employeeDetails = new HashSet<String>();
+	Set<Employee> employees = new HashSet<Employee>();
+
 	public void inIt() {
 		try {
 			FileInputStream fileInputStream = new FileInputStream(
@@ -38,39 +39,23 @@ public class EmployeeService {
 		}
 	}
 
-	public void get() {
-		for (String str : employeeDetails) {
-			StringTokenizer stringTokenizer = new StringTokenizer(str);
-			while (stringTokenizer.hasMoreTokens()) {
-				System.out.println(stringTokenizer.nextToken("" + ""));
-			}
-		}
-	}
-
-	public void sortByName() {
+	public Set<Employee> get() {
+		/*
+		 * for (String str : employeeDetails) { StringTokenizer stringTokenizer
+		 * = new StringTokenizer(str); while (stringTokenizer.hasMoreTokens()) {
+		 * employeeDetails.ad(stringTokenizer.nextToken("" + "")); } }
+		 */
 		for (String str : employeeDetails) {
 			String[] name = str.split(",");
 			name[1] = name[1].replaceAll("'", "");
+			name[2]=name[2].replaceAll("'", "");
+			name[4]=name[4].replaceAll("'", "");
+			name[6]=name[6].replaceAll(name[6], name[7]);
 			employee = new Employee(name[0], name[1], name[2], name[3],
 					name[4], name[5], name[6]);
-			employeeName.add(name[1]);
+			employees.add(employee);
 		}
-		for (String str : employeeName) {
-			System.out.println(str);
-		}
+		
+		return employees;
 	}
-	
-	public void sortBySalary(){
-		for (String str : employeeDetails) {
-			String[] name = str.split(",");
-			name[1] = name[1].replaceAll("'", "");
-			employee = new Employee(name[0], name[1], name[2], name[3],
-					name[4], name[5], name[6]);
-			employeeSalary.add(name[3]);
-		}
-		for (String str : employeeSalary) {
-			System.out.println(str);
-		}
-	}
-
 }

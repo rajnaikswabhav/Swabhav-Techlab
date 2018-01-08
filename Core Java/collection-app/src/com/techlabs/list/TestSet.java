@@ -9,9 +9,9 @@ public class TestSet {
 
 	public static void main(String[] args) {
 
-		Set<String> set = new HashSet<String>();
+		//Set<String> set = new HashSet<String>();
 		//Set<String> set=new TreeSet<String>();
-		//Set<String> set=new LinkedHashSet<String>();
+		Set<String> set=new LinkedHashSet<String>();
 		set.add("Akash");
 		set.add("Brijesh");
 		set.add("Parth");
