@@ -6,7 +6,7 @@ public class TestNumberGuesser {
 
 	public static void main(String[] args) {
 		
-		GameConsole console = new GameConsole(200, 5);
+		GameConsole console = new GameConsole(100, 5);
 		console.start();
 	}
 

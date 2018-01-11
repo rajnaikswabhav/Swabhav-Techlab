@@ -2,13 +2,11 @@ package com.techlabs.game;
 
 import java.util.Random;
 import com.techlabs.enums.GameState;
-import com.techlabs.enums.NumberState;
 
 public class NumberGuesser {
 
 	private int privateNumber;
 	private GameState gameState;
-	private NumberState numberState;
 
 	public void inIt(int range) {
 		Random random = new Random();
@@ -38,13 +36,4 @@ public class NumberGuesser {
 	public void setGameState(GameState gameState) {
 		this.gameState = gameState;
 	}
-
-	public NumberState getNumberState() {
-		return numberState;
-	}
-
-	public void setNumberState(NumberState numberState) {
-		this.numberState = numberState;
-	}
-
 }

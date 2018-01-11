@@ -49,24 +49,15 @@ public class GameConsole {
 		}
 
 		else if (numberGuesser.getGameState() == GameState.INPROGRESS) {
-			if(numberGuesser.getPrivateNumbe() > guessNumber){
-				System.out.println("Private number is greater than guess number.....");
-			}
-			else
-			{
-				System.out.println("Private number is less than guess number.....");
+			if (numberGuesser.getPrivateNumbe() > guessNumber) {
+				System.out
+						.println("Private number is greater than guess number.....");
+			} else {
+				System.out
+						.println("Private number is less than guess number.....");
 			}
 		}
 		count++;
 		start();
 	}
-
-	public NumberGuesser getNumberGuesser() {
-		return numberGuesser;
-	}
-
-	public void setNumberGuesser(NumberGuesser numberGuesser) {
-		this.numberGuesser = numberGuesser;
-	}
-
 }
