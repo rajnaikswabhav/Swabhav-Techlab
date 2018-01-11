@@ -14,7 +14,7 @@ public class StudentConsole {
 	private static final int SearchStudentChoice = 3;
 	private static final int DeleteStudentChoice = 4;
 	private static final int ExportToHTML = 5;
-	
+
 	public StudentConsole(IStudentStore obj) {
 		studentobj = obj;
 	}
@@ -59,7 +59,7 @@ public class StudentConsole {
 			String firstName = input.nextLine();
 
 			System.out.println("Enter Student LastName :");
-			String lastName= input.nextLine();
+			String lastName = input.nextLine();
 
 			System.out.println("Enter Student Address :");
 			String address = input.nextLine();
@@ -78,7 +78,8 @@ public class StudentConsole {
 	public void print(ArrayList<Student> students) {
 		for (Student student : students) {
 			System.out.println("Student Id:" + student.getId());
-			System.out.println("Student Name:" + student.getFirstName() +" "+student.getLastName());
+			System.out.println("Student Name:" + student.getFirstName() + " "
+					+ student.getLastName());
 			System.out.println("Student Location:" + student.getAddress()
 					+ "\n");
 		}
@@ -89,7 +90,8 @@ public class StudentConsole {
 		Student result = studentobj.search(input.nextLine());
 
 		System.out.println("Student ID:" + result.getId());
-		System.out.println("Student Name:" + result.getFirstName() + result.getLastName());
+		System.out.println("Student Name:" + result.getFirstName()
+				+ result.getLastName());
 		System.out.println("Student Location:" + result.getAddress());
 	}
 

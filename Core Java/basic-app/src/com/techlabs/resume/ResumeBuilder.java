@@ -1,7 +1,6 @@
 package com.techlabs.resume;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -93,9 +92,6 @@ public class ResumeBuilder {
 	
 	public String[] getSkills() {
 		return skills;
-	}
-	public ResumeBuilder() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void setSkills(String[] skills) {

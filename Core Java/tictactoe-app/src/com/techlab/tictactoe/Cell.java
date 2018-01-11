@@ -20,13 +20,13 @@ public class Cell {
 	public void paint() {
 		switch (content) {
 		case CROSS:
-			System.out.println(" X ");
+			System.out.print(" X ");
 			break;
 		case NOUGHT:
-			System.out.println(" O ");
+			System.out.print(" O ");
 			break;
 		case EMPTY:
-			System.out.println("  ");
+			System.out.print("  ");
 			break;
 		}
 	}

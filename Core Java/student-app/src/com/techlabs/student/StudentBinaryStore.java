@@ -18,9 +18,10 @@ public class StudentBinaryStore implements IStudentStore {
 	@SuppressWarnings({ "unchecked", "resource" })
 	public void init() {
 		try {
-			FileInputStream fileInputStream = new FileInputStream("Data/studentdata.ser");
-			studentlist = (ArrayList<Student>) new ObjectInputStream(fileInputStream)
-					.readObject();
+			FileInputStream fileInputStream = new FileInputStream(
+					"Data/studentdata.ser");
+			studentlist = (ArrayList<Student>) new ObjectInputStream(
+					fileInputStream).readObject();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -39,8 +40,10 @@ public class StudentBinaryStore implements IStudentStore {
 
 	private void save() {
 		try {
-			FileOutputStream fileOutputStream = new FileOutputStream("Data/studentdata.ser");
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+			FileOutputStream fileOutputStream = new FileOutputStream(
+					"Data/studentdata.ser");
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(
+					fileOutputStream);
 			objectOutputStream.writeObject(studentlist);
 			objectOutputStream.close();
 		} catch (Exception e) {

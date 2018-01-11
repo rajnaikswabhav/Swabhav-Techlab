@@ -3,15 +3,13 @@ package com.techlabs.game;
 import java.util.Scanner;
 
 import com.techlabs.enums.GameState;
-import com.techlabs.enums.NumberState;
 
 public class GameConsole {
 
-	private int range;
-	private int attempts;
+	private final int range;
+	private final int attempts;
 	private int guessNumber;
 	private NumberGuesser numberGuesser;
-	private NumberState numberState;
 	private int count = 1;
 
 	public GameConsole(int range, int attempts) {
@@ -45,18 +43,19 @@ public class GameConsole {
 
 	public void compare(int num) {
 
-		if (numberGuesser.getNumberState() == numberState.MATCH) {
+		if (numberGuesser.getGameState() == GameState.END) {
 			System.out.println("You win the game....");
 			System.exit(0);
 		}
 
-		else if (numberGuesser.getNumberState() == numberState.GREATERTHAN) {
-			System.out
-					.println("Private number is greater than guess number...");
-		}
-
-		else if (numberGuesser.getNumberState() == numberState.LESSTHAN) {
-			System.out.println("Private number is less than guess number...");
+		else if (numberGuesser.getGameState() == GameState.INPROGRESS) {
+			if(numberGuesser.getPrivateNumbe() > guessNumber){
+				System.out.println("Private number is greater than guess number.....");
+			}
+			else
+			{
+				System.out.println("Private number is less than guess number.....");
+			}
 		}
 		count++;
 		start();
