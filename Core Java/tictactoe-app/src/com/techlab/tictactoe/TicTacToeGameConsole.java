@@ -11,46 +11,22 @@ public class TicTacToeGameConsole {
 	private GameState currentState;
 	private Seed currentPlayer;
 
-	Scanner scanner = new Scanner(System.in);
+	private Scanner scanner = new Scanner(System.in);
 
-	public TicTacToeGameConsole() {
-		gameBoard = new GameBoard();
-	}
-
-	public void start() {
-		gameBoard.inIt();
-		currentPlayer = Seed.CROSS;
-		currentState = GameState.PLAYING;
-		
-		do{
-			playerMove(currentPlayer);
-			gameBoard.print();
-			updateGame(currentPlayer);
-			
-			if(currentState == GameState.CROSS_WON){
-				System.out.println("X is Win....");
-			}else if(currentState == GameState.NOUGHT_WON){
-				System.out.println("O is Win...");
-			}else if(currentState == GameState.DRAW){
-				System.out.println("Game is Draw....");
-			}
-			
-			currentPlayer = (currentPlayer == Seed.CROSS) ? Seed.NOUGHT : Seed.CROSS;
-		}while(currentState == GameState.PLAYING);
+	public TicTacToeGameConsole(GameBoard gameBoard) {
+		this.gameBoard = gameBoard;
+		//this.gameBoard.inIt();
 	}
 
 	public void playerMove(Seed theSeed) {
 		boolean valid = false;
-
 		do {
 			if (theSeed == Seed.CROSS) {
-				System.out
-						.println("Player 'X':Enter Your Move (row[1-3] column[1-3]): ");
+				System.out.println("Player 'X':Enter Your Move (row[1-3] column[1-3]): ");
+				
 			} else {
-				System.out
-						.println("Player 'O':Enter Your Move (row[1-3] column[1-3]): ");
+				System.out.println("Player 'O':Enter Your Move (row[1-3] column[1-3]): ");
 			}
-
 			int row = scanner.nextInt() - 1;
 			int col = scanner.nextInt() - 1;
 
@@ -84,5 +60,13 @@ public class TicTacToeGameConsole {
 		}else if(gameBoard.isDraw()){
 			currentState = GameState.DRAW;
 		}
+	}
+	
+	public Seed getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public void setCurrentPlayer(Seed currentPlayer) {
+		this.currentPlayer = currentPlayer;
 	}
 }

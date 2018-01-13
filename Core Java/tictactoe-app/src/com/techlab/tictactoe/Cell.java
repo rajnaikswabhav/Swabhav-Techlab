@@ -17,17 +17,28 @@ public class Cell {
 		content = Seed.EMPTY;
 	}
 
-	public void paint() {
+	public char printCell() {
 		switch (content) {
 		case CROSS:
-			System.out.print(" X ");
-			break;
+			return 'X';
 		case NOUGHT:
-			System.out.print(" O ");
-			break;
+			return 'O';
 		case EMPTY:
-			System.out.print("  ");
-			break;
+			return ' ';
 		}
+		return ' ';
+	}
+
+	/*
+	 * public void printCell() { switch (content) { case CROSS:
+	 * System.out.print(" X "); break; case NOUGHT: System.out.print(" O ");
+	 * break; case EMPTY: System.out.print("  "); break; } }
+	 */
+	public Seed getContent() {
+		return content;
+	}
+
+	public void setContent(Seed content) {
+		this.content = content;
 	}
 }

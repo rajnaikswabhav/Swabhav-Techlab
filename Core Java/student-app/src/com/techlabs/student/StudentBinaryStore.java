@@ -1,7 +1,12 @@
 package com.techlabs.student;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
@@ -76,5 +81,35 @@ public class StudentBinaryStore implements IStudentStore {
 	@Override
 	public void export() {
 
+		try {
+			FileReader fileReader = new FileReader("Resume/index.html");
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+			String currntLine = "";
+			String htmlLine = "";
+
+			while ((currntLine = bufferedReader.readLine()) != null) {
+				htmlLine = htmlLine + currntLine + "\n";
+			}
+			for (Student student : studentlist) {
+				htmlLine = htmlLine.replace("$name", student.getFirstName()
+						+ student.getLastName());
+				htmlLine = htmlLine.replace("$jobTitle", student.getAddress());
+				String resumeFileName = student.getFirstName()
+						.replace(" ", "-") + ".html";
+				FileWriter writer = new FileWriter(
+						"Resume/" + resumeFileName);
+				writer.write(htmlLine);
+				writer.close();
+
+			}
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

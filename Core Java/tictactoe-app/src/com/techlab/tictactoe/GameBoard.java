@@ -54,22 +54,6 @@ public class GameBoard {
 		return false;
 	}
 
-	public void print() {
-		for (int row = 0; row < ROWS; ++row) {
-			for (int col = 0; col < COLS; ++col) {
-				cells[row][col].paint();
-				if (col < COLS - 1) {
-					System.out.print("|");
-				}
-			}
-
-			System.out.println();
-			if (row < row - 1) {
-				System.out.println("--------------");
-			}
-		}
-	}
-
 	public static int getRows() {
 		return ROWS;
 	}
