@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>Welcome Page</title>
+</head>
+<body> 
+Name: <input type="text" id="name">
+<button type="button" onclick="wishButtonListener()">submit</button>
+<p id="wish"></p>
+</body>
+<script>
+function wishButtonListener(){
+	var txtName = document.getElementById("name");
+	var wish = document.getElementById("wish");
+	wish.innerHTML += " Welcome Wish Mr. "+txtName.value + "<br>" ;
+}
+
+function clearWish(){
+	
+}
+</script> 
+</html>
