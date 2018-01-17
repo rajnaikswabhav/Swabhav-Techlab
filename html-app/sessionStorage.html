@@ -3,16 +3,17 @@
 <title>sessionStorage</title>
 <script>
 function clickCounter(){
+	var result = document.getElementById("result");
 	if(typeof(Storage) !== "undefined"){
 		if(sessionStorage.clickCount){
 		sessionStorage.clickCount = Number(sessionStorage.clickCount)+1;
 		} else{
 			sessionStorage.clickCount = 1;
 			}
-		document.getElementById("result").innerHTML = "You have clicked the button " + sessionStorage.clickCount + " time(s).";
+		result.innerHTML = "You have clicked the button " + sessionStorage.clickCount + " time(s).";
 	}
 	else{
-		document.getElementById("result").innerHTML = "Sorry...";
+		result.innerHTML = "Sorry...";
 	}
 }
 </script>
