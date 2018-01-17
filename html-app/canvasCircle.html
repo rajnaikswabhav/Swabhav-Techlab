@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>CanvsCircle</title>
+</head>
+<body>
+
+    <canvas id="myCanvas" width="400" height="400" style="border:1px solid #d3d3d3;"></canvas>
+    <br><br>
+    <button type="button" id="button1">Fill Circle</button>
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        ctx.arc(200, 200, 100, 0, 2 * Math.PI);
+        ctx.stroke();
+    </script> 
+    
+</body>
+</html>

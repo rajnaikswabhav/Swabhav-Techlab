@@ -1,0 +1,27 @@
+<html>
+    <script>
+        (function() {
+            var student ={};
+            student.id = 101;
+            student.name = "Akash";
+            student.location = "mumbai";
+            var students = [{id:101 , name:"Akash" , location:"Mumbai"},
+                            {id:102 , name:"Brijesh" , location:"Mumbai"},
+                            {id:103 , name:"Parth" , location:"Ahmedabad"}];
+            console.log(typeof(students));
+            console.log(students);
+
+            student.toString = function(){
+                return "id: "+this.id+ " name: "+this.name+ " location: "+this.location;
+            }
+
+            console.log(student.toString());
+            console.log(JSON.stringify(student));
+            console.log(JSON.stringify(students));
+            
+            for(var c of students){
+                console.log(c);
+            }
+        })();
+    </script>
+</html>

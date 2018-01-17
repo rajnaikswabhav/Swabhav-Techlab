@@ -1,0 +1,34 @@
+<html>
+    <body>
+    <div>
+        Message : <input type="text" id="message" onchange="enter()">
+    </div>
+    <br><br>
+    <div id="div">
+    </div>
+    <script>
+        var message = document.getElementById("message");
+        function enter(){
+            onLoad();
+            var div = document.getElementById("div");
+            var clearButton = document.getElementById("clearButton");
+            div.innerText += message.value+"\n"; 
+            message.value="";            
+            console.log("inside enter..");
+        }
+        var onLoad = function(){
+            if(localStorage){
+                localStorage.setItem("msg",JSON.stringify(message));
+            }
+        }
+
+        var onRetrive = function(){
+            var msg = localStorage.getItem("msg");
+            var detail = JSON.parse(msg);
+           
+                div.innerText += m;
+        }
+
+    </script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+    <body>
+        <h1>Hoisting</h1>
+        <script>
+            function hoisting(){
+                console.log("Inside Function");
+                for( c = 1 ; c <= 10 ; c++){
+                    console.log(c);
+                }
+                console.log("Outside loop " +c);
+            }
+            hoisting();
+            console.log("End of script "+c);
+        </script>
+
+        <script>
+            f2();
+            function f2(){
+                console.log("Inside f2");
+            }
+
+            f2();
+           // f3();
+            var f3 = function() {
+                console.log("inside f3");
+            }
+            f3();
+        </script>
+    </body>
+</html>

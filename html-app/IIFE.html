@@ -1,0 +1,20 @@
+<html>
+        <h1>Immediately Invoked Function Expression</h1>
+    <script>
+        var f1 = function(){
+            console.log("Inside f1");
+        }();
+
+        (function f2(){
+            console.log("Inside f2");
+        })();
+
+        (function f3(){
+            console.log("Inside f3");
+            localStorage.setItem("swabhav.msg","home");
+
+            var obj = {id: 101,name:"Akash"}
+            localStorage.setItem("swabhav.msg",JSON.stringify(obj));
+        }())
+    </script>
+</html>

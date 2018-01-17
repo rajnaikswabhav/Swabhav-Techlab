@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Video Page</title>
+</head>
+<body>
+	<video id="video" width="320" height="240" >
+		<source src="movie.mp4" type="video/mp4">
+	</video>
+	<br><br>
+	
+<button type="button" id="playButton" onclick="play()">Play</button>
+<button type="button" id="pauseButton" onclick="pause()">Pause</button>
+<button type="button" id="endButton" onclick="end()">End</button>
+
+<script>
+	var video = document.getElementById("video");
+
+	function play(){
+		video.play();
+	}
+
+	function pause(){
+		
+			if(video.pause){
+				video.play();
+				var pause = document.getElementById("pauseButton");
+				pause.innerText = "Pause";
+			}
+			if(video.play){
+				video.pause();
+				var resume = document.getElementById("pauseButton");
+				resume.innerText = "Resume";
+			}
+	}
+
+	function end(){
+		video.end();
+	}
+</script>
+</body>
+</html>
