@@ -7,10 +7,12 @@
     <div id="div">
     </div>
     <script>
-        var message = document.getElementById("message");
+        
         function enter(){
-            onLoad();
+            var message = document.getElementById("message");
             var div = document.getElementById("div");
+            onLoad();
+            onRetrive();
             var clearButton = document.getElementById("clearButton");
             div.innerText += message.value+"\n"; 
             message.value="";            
@@ -26,7 +28,7 @@
             var msg = localStorage.getItem("msg");
             var detail = JSON.parse(msg);
            
-                div.innerText += m;
+                div.innerText = detail.value;
         }
 
     </script>
