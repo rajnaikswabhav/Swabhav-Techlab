@@ -6,8 +6,8 @@ Date,Description,Status
 ,Double equals(==) and Triple Equals(===) in javaScript,complete
 ,Object Literal in javaScript,complete
 ,JSON,complete
-16-01-18,create DOM using composite pattern,
+16-01-18,,
 ,Create counter example for local storage and session storage,complete
-,Make a HTML page for video Tag,
-,Draw canvas with button click,
-,Create Array and CRUD operation on it.Create Object Array.,
+,Make a HTML page for video Tag,complete
+,Draw canvas with button click,pending
+,Create Array and CRUD operation on it.Create Object Array.,pending
