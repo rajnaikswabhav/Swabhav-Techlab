@@ -1,0 +1,53 @@
+<html>
+    <body>
+        <h2>StopWatch</h2>
+        <h1><time>00:00:00</time></h1>
+        <button id="start">start</button>
+        <button id="stop">stop</button>
+        <button id="clear">clear</button>
+
+        <script>
+            (function(){
+                var heading1 = document.getElementsByTagName('h1')[0],
+                start = document.getElementById('start'),
+                stop = document.getElementById('stop'),
+                clear = document.getElementById('clear'),
+                seconds = 0, minutes = 0, hours = 0,
+                time;
+
+            function add() {
+                seconds++;
+                if (seconds >= 60) {
+                    seconds = 0;
+                    minutes++;
+                    if (minutes >= 60) {
+                        minutes = 0;
+                        hours++;
+                    }
+                }
+                
+                heading1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + 
+                (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + 
+                (seconds > 9 ? seconds : "0" + seconds);
+
+                timer();
+            }
+            function timer() {
+                    time = setTimeout(add, 1000);
+            }
+            timer();
+
+            start.onclick = timer;
+
+            stop.onclick = function() {
+                   clearTimeout(time);
+                }
+
+            clear.onclick = function() {
+                    heading1.textContent = "00:00:00";
+                    seconds = 0; minutes = 0; hours = 0;
+                }
+            }())
+        </script>
+    </body>
+</html>

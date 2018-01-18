@@ -11,10 +11,9 @@
         function enter(){
             var message = document.getElementById("message");
             var div = document.getElementById("div");
+            div.innerText += message.value+"\n";
             onLoad();
-            onRetrive();
-            var clearButton = document.getElementById("clearButton");
-            div.innerText += message.value+"\n"; 
+            onRetrive(); 
             message.value="";            
             console.log("inside enter..");
         }
@@ -23,13 +22,11 @@
                 localStorage.setItem("msg",JSON.stringify(message));
             }
         }
-
         var onRetrive = function(){
             var msg = localStorage.getItem("msg");
             var detail = JSON.parse(msg);
-           
-                div.innerText = detail.value;
-        }
+            div.innerText = msg;
+            }
 
     </script>
     </body>

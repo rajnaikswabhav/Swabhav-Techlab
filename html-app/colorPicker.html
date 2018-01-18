@@ -1,25 +1,27 @@
 <html>
-<head>
-<title>ColorPicker</title>
-</head>
-<body>
-ColorPicker:
-<select id="col" onchange = changeColor()>
-<option>--select</option>
-<option  value="#ff6666">Red</option>
-<option  value="#8080ff">Blue</option>
-<option  value="#66ff66">Green</option>
-<option  value="Yellow">Yellow</option>
-<option  value="pink">Pink</option>
-</select>
+	<head>	
+		<title>ColorPicker</title>
+	</head>
+	<body>
+		ColorPicker:
+		<select id="col">
+			<option>--select</option>
+			<option  value="#ff6666">Red</option>
+			<option  value="#8080ff">Blue</option>
+			<option  value="#66ff66">Green</option>
+			<option  value="Yellow">Yellow</option>
+			<option  value="pink">Pink</option>
+		</select>
 
-<script>
-function changeColor(){
-	var colorPick = document.getElementById("col");
-	document.body.style.backgroundColor = colorPick.value;
-	console.log("Inside the ");
-
-}
-</script>
-</body>
+		<script>
+		(function(){
+			var colorPick = document.getElementById("col");
+			colorPick.onchange = changeColor;
+			function changeColor(){
+			document.body.style.backgroundColor = colorPick.value;
+			console.log("Inside the ");
+			}
+		}())	
+		</script>
+	</body>
 </html>

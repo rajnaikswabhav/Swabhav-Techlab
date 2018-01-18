@@ -1,17 +1,23 @@
 <html>
-<head>
-<title>Welcome Page</title>
-</head>
-<body> 
-Name: <input type="text" id="name">
-<button type="button" onclick="wishButtonListener()">submit</button>
-<p id="wish"></p>
-</body>
-<script>
-function wishButtonListener(){
-	var txtName = document.getElementById("name");
-	var wish = document.getElementById("wish");
-	wish.innerHTML += " Welcome Wish Mr. "+txtName.value + "\n" ;
-}
-</script> 
+	<head>
+		<title>Welcome Page</title>
+	</head>
+	<body> 
+		Name: <input type="text" id="name">
+		<button type="button" id="button">submit</button>
+		<p id="wish"></p>
+		
+		<script>
+			(function(){
+				var wishButton = document.getElementById("button");
+				wishButton.onclick = wishButtonListener;
+				function wishButtonListener(){
+					var txtName = document.getElementById("name");
+					var wish = document.getElementById("wish");
+					wish.innerHTML += " Welcome Wish Mr. "+txtName.value + "<br>" ;
+					txtName.value = "";
+				}
+			}())
+		</script>
+	</body> 
 </html>

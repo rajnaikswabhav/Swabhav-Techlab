@@ -8,6 +8,7 @@ import com.techlabs.calculator.Calculator;
 
 public class MathTest {
 
+	@Test
 	public void add(){
 		Calculator calculator = new Calculator();
 		int expectedResult = 9;
