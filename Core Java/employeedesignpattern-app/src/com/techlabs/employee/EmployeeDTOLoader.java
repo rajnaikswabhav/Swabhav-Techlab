@@ -11,10 +11,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class EmployeeDTO {
+public class EmployeeDTOLoader {
 
 	private Employee employee;
-	private List<Employee> employeeList = new ArrayList<Employee>();;
+	private List<Employee> employeeList = new ArrayList<Employee>();
 	private Set<String> employeeSet = new HashSet<String>();
 
 	public void inIt() {
@@ -42,14 +42,10 @@ public class EmployeeDTO {
 	}
 
 	public List<Employee> get() {
-		for (String str : employeeSet) {
-			String[] name = str.split(",");
-			name[1] = name[1].replaceAll("'", "");
-			name[2] = name[2].replaceAll("'", "");
-			name[4] = name[4].replaceAll("'", "");
-			name[6] = name[6].replaceAll(name[6], name[7]);
-			employee = new Employee(name[0], name[1], name[2], name[3],
-					name[4], name[5], name[6]);
+		inIt();
+		for (String detail : employeeSet) {
+			String[] details = detail.split(",");
+			employee = new Employee(details[0], details[1],details[3]);
 			employeeList.add(employee);
 		}
 

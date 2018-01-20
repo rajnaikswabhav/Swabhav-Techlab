@@ -6,23 +6,14 @@ import java.util.List;
 public class Employee {
 	private String id;
 	private String name;
-	private String designation;
 	private String managerID;
-	private String joiningDate;
-	private String dearnessAllownce;
-	private String departments;
-	private List<Employee> reporteeList = new ArrayList<Employee>();
+	private List<Employee> reporteeList;
 
-	public Employee(String id, String name, String designstion,
-			String managerID, String birthDate, String dearnessAllowance,
-			String workingDays) {
+	public Employee(String id, String name,String managerID) {
 		this.id = id;
 		this.name = name;
 		this.managerID = managerID;
-		this.designation = designstion;
-		this.joiningDate = birthDate;
-		this.dearnessAllownce = dearnessAllowance;
-		this.departments = workingDays;
+		reporteeList = new ArrayList<Employee>() ;
 	}
 
 	public String getId() {
@@ -33,31 +24,27 @@ public class Employee {
 		return name;
 	}
 
-	public String getDesignation() {
-		return designation;
-	}
-
 	public String getManagerID() {
 		return managerID;
 	}
+	
+	
 
-	public String getBirthDate() {
-		return joiningDate;
+	public List<Employee> getReporteeList() {
+		return reporteeList;
 	}
 
-	public String getDearnessAllownce() {
-		return dearnessAllownce;
+	public void setReporteeList(List<Employee> reporteeList) {
+		this.reporteeList = reporteeList;
 	}
-
-	public String getWorkingDays() {
-		return departments;
+	
+	public void addReportee(Employee employee){
+		reporteeList.add(employee);
 	}
 
 	@Override
 	public String toString() {
-		return getId() + "," + getName() + "," + getDesignation() + ","
-				+ getManagerID() + "," + getBirthDate() + ","
-				+ getDearnessAllownce() + "," + getWorkingDays();
+		return  getName();
 	}
 
 }

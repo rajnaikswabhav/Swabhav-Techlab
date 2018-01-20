@@ -10,9 +10,9 @@ public class TestMap {
 
 	public static void main(String[] args) {
 
-		//Map<Integer, String> map=new HashMap<Integer, String>();
+		Map<Integer, String> map=new HashMap<Integer, String>();
 		//Map<Integer, String> map=new TreeMap<Integer, String>();
-		Map<Integer, String> map=new LinkedHashMap<Integer, String>();
+		//Map<Integer, String> map=new LinkedHashMap<Integer, String>();
 		map.put(101, "Akash");
 		map.put(104, "Brijesh");
 		map.put(103,"Parth");

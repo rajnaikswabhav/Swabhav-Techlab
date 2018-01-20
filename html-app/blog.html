@@ -1,33 +1,122 @@
 <html>
-    <body>
+
+<head>
+    <title>welcome to blog</title>
+</head>
+
+<body onload="print()">
     <div>
-        Message : <input type="text" id="message" onchange="enter()">
+        Message :
+        <input type="text" id="message">
     </div>
-    <br><br>
-    <div id="div">
+    <br>
+    <br>
+    <div id="messageDiv">
     </div>
     <script>
-        
-        function enter(){
-            var message = document.getElementById("message");
-            var div = document.getElementById("div");
-            div.innerText += message.value+"\n";
-            onLoad();
-            onRetrive(); 
-            message.value="";            
-            console.log("inside enter..");
-        }
-        var onLoad = function(){
-            if(localStorage){
-                localStorage.setItem("msg",JSON.stringify(message));
-            }
-        }
-        var onRetrive = function(){
-            var msg = localStorage.getItem("msg");
-            var detail = JSON.parse(msg);
-            div.innerText = msg;
-            }
+        var inputValue = document.getElementById("message");
+        inputValue.onchange = addMessage;
+        var messages = [];
+        var storeData = [];
 
+        function setLocalStorage() {
+            var objInput = { 'input': inputValue.value };
+            messages.push(objInput);
+            localStorage.setItem("text", JSON.stringify(messages));
+            console.log("messages");
+        }
+
+        function inIt() {
+            var previousMessage = JSON.parse(localStorage.getItem("text"));
+            if (previousMessage) {
+                for (var msg of previousMessage) {
+                    messages.push(msg);
+                }
+            }
+        }
+
+        function addMessage() {
+            var messageDiv = document.getElementById("messageDiv");
+            var messagePara = document.createElement("p");
+            var clearButton = document.createElement("Button");
+            var editButton = document.createElement("Button");
+            var cText = document.createTextNode("\u00D7");
+            var eText = document.createTextNode("edit");
+
+            clearButton.appendChild(cText);
+            editButton.appendChild(eText);
+            messageDiv.appendChild(messagePara);
+
+            if (inputValue === '') {
+                alert("You must write something!");
+            } else {
+                messagePara.innerHTML = inputValue.value;
+                messagePara.appendChild(clearButton);
+                messagePara.appendChild(editButton);
+                setLocalStorage();
+            }
+            inputValue.value = "";
+            clearButton.onclick = clearText;
+            editButton.onclick = editText;
+
+
+        }
+
+        function print() {
+            inIt();
+            alert("Page is loaded...");
+            var data = JSON.parse(localStorage.getItem("text"));
+            console.log(data);
+            for (var msg of data) {
+                var messageDiv = document.getElementById("messageDiv");
+                var messagePara = document.createElement("p");
+                var clearButton = document.createElement("Button");
+                var editButton = document.createElement("Button");
+                var cText = document.createTextNode("X");
+                var eText = document.createTextNode("edit");
+
+                clearButton.appendChild(cText);
+                editButton.appendChild(eText);
+                messageDiv.appendChild(messagePara);
+
+                messagePara.innerHTML = msg.input;
+                messagePara.appendChild(clearButton);
+                messagePara.appendChild(editButton);
+
+                clearButton.onclick = clearText;
+                editButton.onclick = editText;
+            }
+        }
+
+        function clearText() {
+            var parent = this.parentElement;
+            var val = parent.firstChild.nodeValue;
+            console.log(val) ;
+                       
+            for(var i=0; i < messages.length; i++){
+               if(messages[i].input === val){
+                   messages.splice(i,3);
+
+                   localStorage.setItem("text",JSON.stringify(messages));
+               }
+            }
+            parent.innerHTML = "";
+        }
+
+        function editText() {
+            var parent = this.parentElement;
+            var val = parent.firstChild.nodeValue;
+
+            for(var i=0; i< messages.length; i++){
+                if(messages[i].input === val){
+                    inputValue.value = val;
+                    messages.splice(i,1);
+                    localStorage.setItem("text",JSON.stringify(messages));
+                }
+            }
+            parent.innerHTML = "";
+        }
     </script>
-    </body>
+</body>
+
 </html>

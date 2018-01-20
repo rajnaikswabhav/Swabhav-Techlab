@@ -1,64 +1,38 @@
 package com.techlabs.employee;
 
-import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HierarchyBuilder {
 
-	private EmployeeDTO dto;
-	private List<Employee> listOfEmployee = new ArrayList<Employee>();;
-	private List<Employee> employeeCompositList = new ArrayList<Employee>();
+	private Map<String, Employee> employeeMap = new LinkedHashMap<String, Employee>();
+	private Employee rootEmployee;
 
-	public void inIt() {
-		dto = new EmployeeDTO();
-		dto.inIt();
-		listOfEmployee = dto.get();
-		buildHierarchy();
-	}
-
-	public void buildHierarchy() {
+	public Employee buildHierarchy(List<Employee> listOfEmployee) {
 		for (Employee employee : listOfEmployee) {
-			if (employee.getManagerID().equalsIgnoreCase("Null")) {
-				employeeCompositList.add(employee);
+
+			if (employee.getManagerID().equalsIgnoreCase("null")) {
+				
+				rootEmployee = employee;
+				employeeMap.put(employee.getId(), rootEmployee);
 			}
 		}
 
 		for (Employee employee : listOfEmployee) {
-			if (employee.getManagerID().equalsIgnoreCase(
-					employeeCompositList.get(0).getId())) {
-				employeeCompositList.add(employee);
+			employeeMap.put(employee.getId(), employee);
+		}
+
+		for (Employee emp : employeeMap.values()) {
+
+			for (Employee emp1 : employeeMap.values()) {
+
+				if (emp1.getManagerID().equalsIgnoreCase(emp.getId())) {
+					emp.addReportee(emp1);
+				}
 			}
 		}
-
-		for (Employee employee : listOfEmployee) {
-			if (employee.getManagerID().equalsIgnoreCase(
-					employeeCompositList.get(1).getId())) {
-				employeeCompositList.add(employee);
-			}
-		}
-
-		for (Employee employee : listOfEmployee) {
-			if (employee.getManagerID().equalsIgnoreCase(
-					employeeCompositList.get(2).getId())) {
-				employeeCompositList.add(employee);
-			}
-		}
-
-		for (Employee employee : listOfEmployee) {
-			if (employee.getManagerID().equalsIgnoreCase(
-					employeeCompositList.get(3).getId())) {
-				employeeCompositList.add(employee);
-			}
-		}
-
-	}
-
-	public void show() {
-		for (Employee e : employeeCompositList) {
-			System.out.println(e.getDesignation() + " " + e.getId() + " "
-					+ e.getManagerID() + " " + e.getName());
-		}
-		System.out.println(employeeCompositList.size());
-		System.out.println(listOfEmployee.size());
+		
+		return rootEmployee;
 	}
 }
