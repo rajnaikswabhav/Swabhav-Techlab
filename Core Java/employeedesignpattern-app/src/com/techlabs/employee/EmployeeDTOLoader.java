@@ -25,10 +25,10 @@ public class EmployeeDTOLoader {
 					fileInputStream);
 			BufferedReader bufferedReader = new BufferedReader(
 					new InputStreamReader(dataInputStream));
-			String details;
-			while ((details = bufferedReader.readLine()) != null) {
+			String detailOfEmployees;
+			while ((detailOfEmployees = bufferedReader.readLine()) != null) {
 
-				employeeSet.add(details);
+				employeeSet.add(detailOfEmployees);
 
 			}
 			dataInputStream.close();
@@ -45,7 +45,8 @@ public class EmployeeDTOLoader {
 		inIt();
 		for (String detail : employeeSet) {
 			String[] details = detail.split(",");
-			employee = new Employee(details[0], details[1],details[3]);
+			details[1] = details[1].replaceAll("'", "");
+			employee = new Employee(details[0], details[1], details[3]);
 			employeeList.add(employee);
 		}
 

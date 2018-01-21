@@ -1,25 +1,55 @@
 <html>
-    <hrad>
-        <style>
-                #drawRectangle{
-                width: 280px;
-                height: 80px;
-                background-color:gray;
+<head>
+    <style>
+        button {
+            width: 280px;
+            height: 80px;
+            background-color: rgba(185, 179, 179, 0.952); 
         }
-            </style>
+
+
+
+
+    </style>
+    <title>Find BlueBlue Box </title>
     </head>
-    <body>
-        <div id="drawRectangle" ></div><br>
+
+    <body onload="drawButton()">
+        <div id="drawRectangle">
+            
+        </div>
+        <br>
     </body>
     <script>
-        (function(){
             var draw = document.getElementById("drawRectangle");
-            function paint(){
-            for(var i=1; i<=100; i++){
-                var btn = document.createElement("button");
-                btn.
+            var ranNum = Math.floor((Math.random()*100)+1);
+            function drawButton(){
+               
+                console.log(ranNum);
+                for (var i = 1; i <= 100; i++) {
+                    // var button = document.createElement("button");
+                    // var btnText = document.createTextNode(i);
+                    // button.appendChild(btnText);
+                    // draw.appendChild(button);
+                    // button.onclick = check(btnText);    
+                    draw.innerHTML +=  "<button id="+i+"  type = 'button' onclick = 'check(this.id)' >"+"Box "+
+                                                                        i+"</button>";
+                }
+                
             }
-            }
-        }())
+
+            function check(id){
+                    var id = id;
+                    console.log(id);
+                    console.log("Inside Check..");
+                    if(id == ranNum){
+
+                       var button = document.getElementById("id");
+                       
+                    }
+                }
+
+        
     </script>
+
 </html>

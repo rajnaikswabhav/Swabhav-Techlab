@@ -1,0 +1,30 @@
+<employees>
+	<KING>
+		<BLAKE>
+			<ALLEN>
+			</ALLEN>
+			<JAMES>
+			</JAMES>
+			<TURNER>
+			</TURNER>
+			<WARD>
+			</WARD>
+			<MARTIN>
+			</MARTIN>
+		</BLAKE>
+		<JONES>
+			<SCOTT>
+				<ADAMS>
+				</ADAMS>
+			</SCOTT>
+			<FORD>
+				<SMITH>
+				</SMITH>
+			</FORD>
+		</JONES>
+		<CLARK>
+			<MILLER>
+			</MILLER>
+		</CLARK>
+	</KING>
+</employees>
