@@ -1,0 +1,231 @@
+<html>
+
+<head>
+    <title>Question Game</title>
+</head>
+<style>
+    body {
+        font-size: 20px;
+        font-family: sans-serif;
+        color: #333;
+    }
+
+    .question {
+        font-weight: 600;
+    }
+
+    .answers {
+        margin-bottom: 20px;
+    }
+
+    #submit {
+        font-family: sans-serif;
+        font-size: 20px;
+        background-color: #297;
+        color: #fff;
+        border: 0px;
+        border-radius: 3px;
+        padding: 20px;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+
+    #submit:hover {
+        background-color: #3a8;
+    }
+</style>
+
+<body>
+    <div id="questionDiv"></div>
+    <button id="submit" type="button">Result</button>
+    <div id="result"></div>
+
+    <script>
+        var ranNum = Math.floor((Math.random() * 5) + 1);
+        var quizContainer = document.getElementById("questionDiv");
+        var resultContainer = document.getElementById("result");
+        var submitButton = document.getElementById("submit");
+
+        var questionList = [
+            {
+                question: "Who is Prime Minister of India?",
+                answers: {
+                    a: 'ManmohanSinh',
+                    b: 'Narendra Modi',
+                    c: 'Rahul Gandhi',
+                    d: 'Ram Nath Kovind'
+                },
+                correctAnswer: 'b'
+            },
+
+            {
+                question: "Where is India Gate Located?",
+                answers: {
+                    a: 'Ahmedabad',
+                    b: 'Mumbai',
+                    c: 'Delhi',
+                    d: 'Chennai'
+                },
+                correctAnswer: 'c'
+            },
+
+            {
+                question: "What is Republic Day of India?",
+                answers: {
+                    a: '26th January',
+                    b: '15th August',
+                    c: '5th November',
+                    d: '3rd March'
+                },
+                correctAnswer: 'a'
+            },
+
+            {
+                question: "Who is Richest Man in India?",
+                answers: {
+                    a: 'Aditya Birla',
+                    b: 'Ratan Tata',
+                    c: 'Anil Ambani',
+                    d: 'Mukesh Ambani'
+                },
+                correctAnswer: 'd'
+            },
+
+            {
+                question: "Which is largest state in India?",
+                answers: {
+                    a: 'Maharastra',
+                    b: 'Uttar Pradesh',
+                    c: 'Rajsthan',
+                    d: 'Gujarat'
+                },
+                correctAnswer: 'c'
+            },
+
+            {
+                question: "Where is the home of Asiatic Lions?",
+                answers: {
+                    a: 'Gujarat',
+                    b: 'West Bangal',
+                    c: 'Punjab',
+                    d: 'TamilNadu'
+                },
+                correctAnswer: 'a'
+            },
+
+            {
+                question: "Where is Indian Film Industry Located?",
+                answers: {
+                    a: 'Delhi',
+                    b: 'Kerala',
+                    c: 'Bihar',
+                    d: 'Mumbai'
+                },
+                correctAnswer: 'd'
+            },
+
+            {
+                question: "What is 10/2?",
+                answers: {
+                    a: '3',
+                    b: '5',
+                    c: '7',
+                    d: '4'
+                },
+                correctAnswer: 'b'
+            },
+
+            {
+                question: "Who is caption of Indian Women Cricket Team?",
+                answers: {
+                    a: 'Manisha Koli',
+                    b: 'Nilam Chavda',
+                    c: 'Mitali Raj',
+                    d: 'Rani Shetty'
+                },
+                correctAnswer: 'c'
+            },
+
+            {
+                question: "When India won their first ICC Worldcup?",
+                answers: {
+                    a: '1987',
+                    b: '1993',
+                    c: '1978',
+                    d: '1983'
+                },
+                correctAnswer: 'd'
+            },
+
+        ];
+        generateQuiz(questionList, quizContainer, resultContainer, submitButton);
+
+        function generateQuiz(questionList, quizContainer, resultContainer, submitButton) {
+            console.log("inside generatequiz");
+            showQuestions(questionList, quizContainer);
+            function showQuestions(questionList, quizContainer) {
+                console.log("inside showquestion");
+                var output = [];
+                var answers;
+
+                for (var i = 0; i < questionList.length; i++) {
+
+                    answers = [];
+
+                    for (letter in questionList[i].answers) {
+
+                        answers.push(
+                            '<label>'
+                            + '<input type="radio" name="question' + i + '" value="' + letter + '">'
+                            + letter + ':'
+                            + questionList[i].answers[letter]
+                            + '</lable>'
+                        );
+                    }
+
+                    output.push(
+                        '<div class="question">' + questionList[i].question + '</div>'
+                        + '<div class = "answers">' + answers.join('') + '</div>'
+                    );
+                }
+                quizContainer.innerHtml = output.join('');
+            }
+
+            
+
+            function showResult(questionList, quizContainer, resultContainer) {
+
+                var answerContainers = quizContainer.querySelectorAll('.answers');
+
+                var userAnswer = '';
+                var numCorrect = 0;
+
+                for (var i = 0; i < questionList.length; i++) {
+
+                    userAnswer = (answerContainers[i].querySelector('input[name =question' + i 
+                    + ']:checked') || {}).value;
+
+                    if (userAnswer === questionList[i].correctAnswer) {
+                        numCorrect++;
+
+                        answerContainers[i].style.color = "lightgreen";
+
+                    }
+
+                    else {
+                        answerContainers[i].style.color = "red";
+                    }
+                }
+
+                resultContainer.innerHtml = numCorrect + "/" + questions.length;
+            }
+
+            submitButton.onclick = function () {
+                showResult(questionList, quizContainer, resultContainer);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

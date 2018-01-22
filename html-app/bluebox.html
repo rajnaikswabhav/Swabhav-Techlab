@@ -1,55 +1,66 @@
 <html>
+
 <head>
     <style>
         button {
             width: 280px;
             height: 80px;
-            background-color: rgba(185, 179, 179, 0.952); 
+            background-color: rgba(185, 179, 179, 0.952);
         }
-
-
-
-
     </style>
     <title>Find BlueBlue Box </title>
-    </head>
+</head>
 
-    <body onload="drawButton()">
-        <div id="drawRectangle">
+<body onload="startGame()">
+    <div id="drawButton">
+
+    </div>
+    <br>
+</body>
+<script>
+    var buttonDiv = document.getElementById("drawButton");
+    var ranNum = Math.floor((Math.random() * 100) + 1);
+    var counter = 0;
+    function startGame() {
+
+        console.log(ranNum);
+        for (var i = 1; i <= 100; i++) {
             
-        </div>
-        <br>
-    </body>
-    <script>
-            var draw = document.getElementById("drawRectangle");
-            var ranNum = Math.floor((Math.random()*100)+1);
-            function drawButton(){
-               
-                console.log(ranNum);
-                for (var i = 1; i <= 100; i++) {
-                    // var button = document.createElement("button");
-                    // var btnText = document.createTextNode(i);
-                    // button.appendChild(btnText);
-                    // draw.appendChild(button);
-                    // button.onclick = check(btnText);    
-                    draw.innerHTML +=  "<button id="+i+"  type = 'button' onclick = 'check(this.id)' >"+"Box "+
-                                                                        i+"</button>";
-                }
-                
-            }
+            buttonDiv.innerHTML += "<button id=" + i + "  type = 'button' onclick = 'check(this.id)' >" + "Box " +
+                i + "</button>";
+        }
 
-            function check(id){
-                    var id = id;
-                    console.log(id);
-                    console.log("Inside Check..");
-                    if(id == ranNum){
+    }
 
-                       var button = document.getElementById("id");
-                       
-                    }
-                }
+    function check(id) {
 
-        
-    </script>
+        var id = id;
+        console.log(id);
+
+        if (id > ranNum) {
+            var selectedButton = document.getElementById(id);
+            selectedButton.style.backgroundColor = "red";
+            counter = counter + 1;
+            console.log(counter);
+        }
+        else if (id < ranNum) {
+            var selectedButton = document.getElementById(id);
+            selectedButton.style.backgroundColor = "green";
+            counter = counter + 1;
+            console.log(counter);
+        }
+        else if (id == ranNum) {
+            var selectedButton = document.getElementById(id);
+            selectedButton.style.backgroundColor = "blue";
+            console.log(button);
+        }
+            if (counter === 3) {
+            alert("You are out of attempts.");
+            console.log("after body");
+        }
+    }
+
+
+</script>
 
 </html>
