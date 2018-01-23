@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-
+<head>
+    <Title>XML HTTP REQUEST</Title>
+</head>
 <body>
 
     <h2>XMLHttpRequest</h2>
@@ -12,13 +14,14 @@
     <script>
         function loadXMLDoc() {
             var xhttp = new XMLHttpRequest();
+            var demo = document.getElementById("demo");
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("demo").innerHTML =
+                    demo.innerHTML =
                         this.responseText;
                 }
             };
-            xhttp.open("GET","http//ipinfo.io/json", true);
+            xhttp.open("GET","http://localhost/html-app/dataFile.txt",true);
             xhttp.send();
         }
     </script>

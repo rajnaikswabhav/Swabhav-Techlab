@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>Number API</title>
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <label>Write Any Number:
+        <input type=" number" id="number">
+    </label>
+    <button type="button" id="submit">Submit</button>
+    <br>
+    <br>
+    <div id="response"></div>
+
+</body>
+<script>
+    $(document).ready(function () {
+        $("#submit").click(function () {
+            console.log($("#number").val());
+            $.post("http://numbersapi.com", 
+            $("#number").val(),
+             function (data) {
+                $('#response').val(data);
+            });
+        });
+    });
+</script>
+
+</html>

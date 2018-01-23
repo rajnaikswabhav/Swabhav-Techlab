@@ -1,0 +1,192 @@
+<html>
+
+<head>
+    <title>Quiz Game</title>
+</head>
+
+<body>
+    <div id="quizDiv"></div>
+    <button id="submit">Result</button>
+    <div id="result"></div>
+    <script>
+        (function(){
+        var quizContainer = document.getElementById("quizDiv");
+        var submitButton = document.getElementById("submit");
+        var resultContainer = document.getElementById("result");
+
+        var questionList = [
+            {
+                question: "Who is Prime Minister of India?",
+                answers: {
+                    a: 'ManmohanSinh',
+                    b: 'Narendra Modi',
+                    c: 'Rahul Gandhi',
+                    d: 'Ram Nath Kovind'
+                },
+                correctAnswer: 'b'
+            },
+
+            {
+                question: "Where is India Gate Located?",
+                answers: {
+                    a: 'Ahmedabad',
+                    b: 'Mumbai',
+                    c: 'Delhi',
+                    d: 'Chennai'
+                },
+                correctAnswer: 'c'
+            },
+
+            {
+                question: "What is Republic Day of India?",
+                answers: {
+                    a: '26th January',
+                    b: '15th August',
+                    c: '5th November',
+                    d: '3rd March'
+                },
+                correctAnswer: 'a'
+            },
+
+            {
+                question: "Who is Richest Man in India?",
+                answers: {
+                    a: 'Aditya Birla',
+                    b: 'Ratan Tata',
+                    c: 'Anil Ambani',
+                    d: 'Mukesh Ambani'
+                },
+                correctAnswer: 'd'
+            },
+
+            {
+                question: "Which is largest state in India?",
+                answers: {
+                    a: 'Maharastra',
+                    b: 'Uttar Pradesh',
+                    c: 'Rajsthan',
+                    d: 'Gujarat'
+                },
+                correctAnswer: 'c'
+            },
+
+            {
+                question: "Where is the home of Asiatic Lions?",
+                answers: {
+                    a: 'Gujarat',
+                    b: 'West Bangal',
+                    c: 'Punjab',
+                    d: 'TamilNadu'
+                },
+                correctAnswer: 'a'
+            },
+
+            {
+                question: "Where is Indian Film Industry Located?",
+                answers: {
+                    a: 'Delhi',
+                    b: 'Kerala',
+                    c: 'Bihar',
+                    d: 'Mumbai'
+                },
+                correctAnswer: 'd'
+            },
+
+            {
+                question: "What is 10/2?",
+                answers: {
+                    a: '3',
+                    b: '5',
+                    c: '7',
+                    d: '4'
+                },
+                correctAnswer: 'b'
+            },
+
+            {
+                question: "Who is caption of Indian Women Cricket Team?",
+                answers: {
+                    a: 'Manisha Koli',
+                    b: 'Nilam Chavda',
+                    c: 'Mitali Raj',
+                    d: 'Rani Shetty'
+                },
+                correctAnswer: 'c'
+            },
+
+            {
+                question: "When India won their first ICC Worldcup?",
+                answers: {
+                    a: '1987',
+                    b: '1993',
+                    c: '1978',
+                    d: '1983'
+                },
+                correctAnswer: 'd'
+            },
+
+        ];
+
+        function buildQuiz() {
+            var output = [];
+
+            questionList.forEach((currentQuestion, questionNumber) => {
+
+                var answers = [];
+
+                for (letter in currentQuestion.answers) {
+
+                    answers.push(
+                        '<label>'
+                        + '<input type="radio" name="question' + questionNumber + '" value="' + letter + '">'
+                        + letter + ':'
+                        + currentQuestion.answers[letters]
+                        + '</lable>'
+                    );
+                }
+
+                output.push(
+                    '<div class="question">' + currentQuestion.question + '</div>'
+                    + '<div class = "answers">' + answers.join('') + '</div>'
+                );
+            }
+            );
+
+            quizContainer.innerHTML = output.join('');
+        }
+
+        function showResult() {
+
+                var answerContainers = quizContainer.querySelectorAll('.answers');
+
+                var numCorrect = 0;
+
+                questionList.forEach((currentQuestion, questionNumber) => {
+
+                    var answerContainer = answerContainers[questionNumber];
+                    var selector = 'input[name=question' + questionNumber + ']:checked';
+                    var userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+                    if (userAnswer === currentQuestion.correctAnswer) {
+                        numCorrect++;
+
+                        answerContainers[questionNumber].style.color = 'lightgreen';
+                    }
+                    else {
+                        answerContainers[questionNumber].style.color = 'red';
+                    }
+                });
+
+                resultsContainer.innerHTML = numCorrect + ' / ' + questionList.length;
+            }
+
+            buildQuiz();
+
+            submitButton.onclick = function(){
+                showResult();
+            }
+        }())
+    </script>
+</body>
+
+</html>

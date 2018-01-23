@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Number API</title>
+    </head>
+    <body>
+        <label>Write Any Number: <input type=" number" id="number"></label>
+        <button type="button" id = "submit" onclick="loadNumberAPI()">Submit</button>
+        <br><br>
+        <div id="response"></div>
+    </body>
+    <script>
+        var response = document.getElementById("response");
+        var messages =JSON.parse(localStorage.getItem("responses"));
+        var responses = [];
+        if(messages){
+            for(var msg of messages){
+                messages.push(msg);
+                response.innerHTML = msg +"<br>";
+            }
+        }
+        
+        function loadNumberAPI(){
+            
+            
+            var number = document.getElementById("number").value    ;
+            var xhhtp = new XMLHttpRequest();
+            xhhtp.onreadystatechange = function(){
+
+                if(this.readyState == 4 && this.status == 200){
+                    response.innerHTML += this.responseText + "<br>";
+                    responses.push(this.responseText);
+                    localStorage.setItem("responses",JSON.stringify(responses));
+                }
+            };
+            console.log(number);
+            xhhtp.open("GET","http://numbersapi.com/"+number,true);
+            xhhtp.send();
+        }
+    </script>
+</html>

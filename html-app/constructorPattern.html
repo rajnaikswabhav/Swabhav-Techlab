@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>Module Pattern</title>
+</head>
+
+<body>
+    <script>
+        function DataService() {
+            console.log("Inside dataService...");
+            var limit = 100;
+            this.getData = function () {
+                return Math.floor(Math.random() * limit);
+            }
+
+            this.getStudent = function () {
+
+                var studentsDTO = [
+                    new student(101, 'Akash'),
+                    new student(102, 'Brijesh')
+                ];
+
+                return studentsDTO;
+            }
+        }
+        var service = new DataService();
+        console.log(service.getData());
+
+        function student(id, name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        console.log(service.getStudent());
+
+
+
+
+    </script>
+</body>
+
+</html>

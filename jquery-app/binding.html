@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <title>Binding</title>
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <div>
+        Message:
+        <input type="text" id="message">
+        <br>
+        <br> Font Color:
+        <select id="fontColor">
+            <option>--select</option>
+            <option value="#ff6666">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="yellow">Yellow</option>
+            <option value="pink">Pink</option>
+        </select>
+        <br>
+        <br> BgColor:
+        <select id="bgColor">
+            <option>--select</option>
+            <option value="#ff6666">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="yellow">Yellow</option>
+            <option value="pink">Pink</option>
+        </select>
+        <br>
+        <br> Font Size:
+        <input typr="number" id="fontSize"> pixel
+    </div>
+    <br>
+    <div>
+        <input type="text" id="result">
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#message").keypress(function () {
+                console.log($("#message").val());
+                $("#result").val($("#message").val());
+            });
+
+            $("#fontColor").click(function () {
+                $("#result").css("color", $("#fontColor").val());
+                console.log($("#fontColor").val());
+            });
+
+            $("#bgColor").click(function () {
+                $("#result").css("background-color", $("#bgColor").val());
+                console.log($("#bgColor").val());
+            });
+
+            $("#fontSize").change(function () {
+                $("#result").css("font-size", $("#fontSize").val());
+                console.log($("#fontSize").val());
+            });
+        });
+
+    </script>
+</body>
+
+</html>

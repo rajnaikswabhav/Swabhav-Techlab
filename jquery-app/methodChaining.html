@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Method Chaining JQuery</title>
+        <script src="jquery-3.3.1.min.js"></script>
+    </head>
+    <style>
+        button
+        {
+            background-color: blueviolet;
+            height: 100px;
+            width: 200px;
+            font-size: 30;
+        }
+        #para{
+            background-color: blue;
+            font-family: monospace;
+            font-size: 40px;
+            height: 100px;
+            widows: 200px;
+        }
+        .body{
+            background-color: Lightgray;
+        }
+
+    </style>
+    <body class="body">
+        
+        <p id="para">Jquery Chaining</p>
+        <button>Click Here</button>
+    
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $("#para").css("color","blue")
+                         .slideUp(1000)
+                         .slideDown(1000)
+                         .append(" Method")
+                         .css("font-size",50)
+                         .css("background-color","red");
+            });
+        });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Async Pattern</title>
+    </head>
+    <body>
+        <script>
+            var service = function(){
+                var obj={};
+
+                obj.getTweets = function(){
+                    return "Tweet #"+Math.floor(Math.random()*100);
+                };
+
+                obj.getTweetAsync = function(response){
+                    // var data = "Tweet #"+Math.floor(Math.random()*1000);
+                    // response(data);
+
+                    setTimeout(function(){
+                        var data = "Tweet #"+Math.floor(Math.random()*1000);
+                        response(data);
+                    },0);
+                };
+
+                return obj;
+            }();
+
+            var result = service.getTweets();
+            console.log(result);
+            service.getTweetAsync(function(data){
+                console.log(data);
+            });
+            console.log("End of Program...");
+        </script>
+    </body>
+</html>

@@ -110,11 +110,10 @@
             for(var i=0; i< messages.length; i++){
                 if(messages[i].input === val){
                     inputValue.value = val;
-                    messages.splice(i,1);
+                    messages.splice(i,val,1);
                     localStorage.setItem("text",JSON.stringify(messages));
                 }
             }
-            parent.innerHTML = "";
         }
     </script>
 </body>

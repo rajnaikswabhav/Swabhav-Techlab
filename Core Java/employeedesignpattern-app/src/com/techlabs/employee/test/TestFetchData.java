@@ -11,9 +11,9 @@ public class TestFetchData {
 		OrganizationHierarchyApp app = new OrganizationHierarchyApp(
 				new EmployeeDTOLoader(), new HierarchyBuilder());
 		app.printDetail();
-		String detaisOfEmployee = app.parseToXML();
-		app.save();
-		System.out.println(detaisOfEmployee);
+		
+		
+		
 	}
 
 }

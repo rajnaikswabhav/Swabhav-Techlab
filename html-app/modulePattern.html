@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>Module Pattern</title>
+</head>
+
+<body>
+    <script>
+        function dataService() {
+            console.log("Inside dataService...");
+            var limit = 100;
+            var obj = [];
+
+            obj.getData = function () {
+                return Math.floor(Math.random() * limit);
+            }
+
+            return obj;
+        }
+        console.log(dataService().getData());
+
+
+        var swabhavTechlab = function () {
+            var students = [
+                {
+                    name: "Akash"
+                },
+                {
+                    name: "Parth"
+                }
+            ];
+            var obj = [];
+            obj.getStudent = function () {
+                return students;
+            }
+            return obj;
+        }();
+        console.log(swabhavTechlab.getStudent());
+
+
+
+
+    </script>
+</body>
+
+</html>
