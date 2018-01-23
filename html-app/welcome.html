@@ -4,18 +4,23 @@
 	</head>
 	<body> 
 		Name: <input type="text" id="name">
-		<button type="button" id="button">submit</button>
+		<button type="button" id="submit">submit</button>
 		<p id="wish"></p>
 		
 		<script>
 			(function(){
-				var wishButton = document.getElementById("button");
+				var wishButton = document.getElementById("submit");
 				wishButton.onclick = wishButtonListener;
+				var wish = document.getElementById("wish");
 				function wishButtonListener(){
 					var txtName = document.getElementById("name");
-					var wish = document.getElementById("wish");
-					wish.innerHTML += " Welcome Wish Mr. "+txtName.value + "<br>" ;
+					wish.innerHTML += " Welcome Wish Mr. "+txtName.value + 
+					"<button type='button'  onclick='clear(this.wish)'>X</buton><br>" ;
 					txtName.value = "";
+				}
+
+				function clear(wish){
+					wish.innerHTML = "";
 				}
 			}())
 		</script>

@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Student Data</title>
+        <script src="jquery-3.3.1.min.js"></script>
+        <style>
+            table  {
+                border: 2px solid black;
+            }
+            tr td{
+                
+                width: 100px;
+                height: 30px;
+                font-family: monospace;
+                color: blue;
+                border:1px solid black;
+            }
+            th{
+                border: 1px solid black;
+                width: 50px;
+                height: 30px;
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="display-resources"></div>
+
+        <script>
+            $(document).ready(function(){
+                var displayResources = $("#display-resources");
+
+                $.ajax({
+                    type: "GET",
+                    url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students",
+                    success: function(result){
+                        console.log(result);
+    
+                        var output="<table><thead><tr><th>Roll No</th><th>Name</th><th>Age</th><th>Email</th><th>Date</th><th>Gender</th></thead><tbody>";
+
+                        for(var i in result){
+                            output +=  "<tr><td align='center'> " + result[i].rollNo +" </td><td align='center'>" 
+                            + result[i].name + " </td><td align='center'> " + result[i].age + " </td><td align='center'>  " 
+                            + result[i].email + "   </td><td align='center'>" + result[i].date + 
+                            " </td><td align='center'> " + result[i].isMale + " </td></tr>";
+                        }
+
+                        output += "</tbody></table>";
+                        displayResources.html(output);
+                        $("table").addClass("table");
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

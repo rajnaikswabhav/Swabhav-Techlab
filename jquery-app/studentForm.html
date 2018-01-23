@@ -1,0 +1,163 @@
+<html>
+
+<head>
+    <title>Student Details Form</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <style>
+        table {
+            border: 2px solid black;
+        }
+
+        tr td {
+
+            width: 100px;
+            height: 30px;
+            font-family: monospace;
+            color: blue;
+            border: 1px solid black;
+        }
+
+        th {
+            border: 1px solid black;
+            width: 50px;
+            height: 30px;
+            color: red;
+        }
+
+        button {
+            font-family: sans-serif;
+            font-size: 10px;
+            background-color: #297;
+            color: #fff;
+            border: 0px;
+            border-radius: 3px;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            margin-left: 4px;
+            margin-top: 8px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="mainDiv">
+        <h1>Student Details Form</h1>
+        <hr>
+        <br>
+        <form id="studentForm" method="POST">
+            <div id="rollNoDiv">
+                <label>Roll No: </label>
+                <input type="number" name="studentRollNo" id="studentRollNo" placeholder="Roll No" />
+                <br>
+                <br>
+            </div>
+
+            <div id="nameDiv">
+                <label>Name: </label>
+                <input type="text" name="studentName" id="studentName" placeholder="Name" />
+                <br>
+                <br>
+            </div>
+
+            <div id="ageDiv">
+                <label>Age: </label>
+                <input type="number" name="studentAge" id="studentAge" placeholder="Age" />
+                <br>
+                <br>
+            </div>
+
+            <div id="emailDiv">
+                <label>Email: </label>
+                <input type="text" name="studentEmail" id="studentEmail" placeholder="Email" />
+                <br>
+                <br>
+            </div>
+
+            <div id="dateDiv">
+                <label>Date: </label>
+                <input type="date" name="date" id="date" placeholder="date" />
+                <br>
+                <br>
+            </div>
+
+            <div id="genderDiv">
+                <label>isMale: </label>
+                <input type="boolean" name="studentGender" id="studentGender" placeholder="true/false" />
+                <br>
+                <br>
+            </div>
+        </form>
+        <button id="submit">Submit</button>
+        <button id="showData">Show Data</button>
+        <br>
+        <br>
+        <br>
+        <div id="display-resources"></div>
+
+        <script>
+            $(document).ready(function () {
+                $("#submit").click(function () {
+
+                    var studentRollNo = $("#studentRollNo").val();
+                    var studentName = $("#studentName").val();
+                    var studentAge = $("#studentAge").val();
+                    var studentEmail = $("#studentEmail").val();
+                    var date = $("#date").val();
+                    var studentGender = $("#studentGender").val();
+
+                    $.post("http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students",
+                        {
+                            rollNo: studentRollNo,
+                            name: studentName,
+                            age: studentAge,
+                            email: studentEmail,
+                            date: date,
+                            isMale: studentGender
+                        },
+
+                        function (response, status) {
+                            alert("*--------Received Data---------*\n\nResponse : " + response +
+                                "\n\nStatus : " + status);
+                        });
+                });
+
+                $("#showData").click(function () {
+                    var displayResources = $("#display-resources");
+                    $.ajax({
+                        type: "GET",
+                        url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students",
+                        success: function (result) {
+                            console.log(result);
+
+                            var output = "<table><thead><tr><th>Roll No</th><th>Name</th><th>Age</th><th>Email</th><th>Date</th><th>Gender</th><th>Event</th></thead><tbody>";
+
+                            for (var i in result) {
+                                output += "<tr><td align='center'> " + result[i].rollNo + " </td><td align='center'>"
+                                    + result[i].name + " </td><td align='center'> " + result[i].age + " </td><td align='center'>  "
+                                    + result[i].email + "   </td><td align='center'>" + result[i].date +
+                                    " </td><td align='center'> " + result[i].isMale + " </td><td>" +
+                                    "<button id= " + i + " onclick='editData(this.id)' class = 'edit'>Edit</button>"+
+                                    "<button id= " + i + "  class= 'delete'>Delete</button>" +
+                                    "</td></tr>";
+                            }
+
+                            output += "</tbody></table>";
+                            displayResources.html(output);
+                            $("table").addClass("table");
+                        }
+                    });
+                    
+                    $(".delete").click(function(){
+                        var deleteButton = $(this).parent();
+                        console.log(deleteButton);
+                    });
+                });
+            });
+        </script>
+    </div>
+</body>
+
+</html>

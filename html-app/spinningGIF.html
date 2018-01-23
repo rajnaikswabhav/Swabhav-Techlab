@@ -1,8 +1,34 @@
 <html>
-    <head>
-        <title>Spinning GIF</title>
-    </head>
-    <body>
-        <video src="http://localhost/html-app/giphy-downsized.gif"
-    </body>
+
+<head>
+    <title>Spinning GIF</title>
+    <style>
+        img.animated-gif {
+            width: 120px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gifDiv">
+        <img class="animated-gif" src="giphy-downsized.gif">
+    </div><br><br>
+    <button type="button" id="buttonStart" onclick="start()">Start</button>
+</body>
+<script>
+
+  var gifDiv = document.getElementById("gifDiv");
+    function start() {
+        
+        var startButton = document.getElementById("buttonStart");
+        gifDiv.style.display = "block";
+        setTimeout(hide(),1000);
+    }
+
+    function hide(){
+        gifDiv.style.display = "none";
+    }
+</script>
+
 </html>
