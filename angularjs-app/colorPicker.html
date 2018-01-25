@@ -1,0 +1,19 @@
+<html ng-app="colorPicker">
+
+<head>
+    <title>ColorPicker</title>
+    <script src="./angular.js"></script>
+    <script src="./colorPicker.js"></script>
+</head>
+
+<body ng-controller="colorPickerController" ng-style="{'background-color':color}">
+    <div>
+        ColorPicker:
+        <select ng-model="selectedColor" ng-options="color for color in colorNames" ng-change="changeColor(selectedColor)">
+        </select>
+    </div>
+    <h3>You Select: {{selectedColor}}</h3>
+    <h3>You Select: {{selectedColor}}</h3>
+</body>
+
+</html>
