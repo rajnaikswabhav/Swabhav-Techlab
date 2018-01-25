@@ -1,15 +1,15 @@
 angular.module('swabhav', ['hitech'])
-    .controller('customerController', function ($rootScope) {
+    .controller('customerController', ['$rootScope',function ($rootScope) {
         console.log("Inside Customer Controller");
         console.log("$rootScope");
         $rootScope.customer = {
             id: 101,
             name: 'Akash'
         };
-    });
+    }]);
 
 angular.module('hitech', [])
-    .controller('invoiceController', function ($scope, $rootScope) {
+    .controller('invoiceController', ['$scope','$rootScope',function ($scope, $rootScope) {
         console.log("Inside Invoice Controller");
         console.log($rootScope.customer);
         $scope.invoice = {
@@ -17,4 +17,4 @@ angular.module('hitech', [])
             name: 'book',
             cost: 500
         };
-    });
+    }]);

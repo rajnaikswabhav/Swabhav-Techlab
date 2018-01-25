@@ -1,5 +1,5 @@
 angular.module('dataBind',[])
-    .controller('dataBindController',function($scope , $timeout){
+    .controller('dataBindController',['$scope','$timeout',function($scope , $timeout){
         $scope.developer={
 
             name: 'Akash',
@@ -21,4 +21,4 @@ angular.module('dataBind',[])
             name: 'Sachin',
             age: 25
         };
-    });
+    }]);

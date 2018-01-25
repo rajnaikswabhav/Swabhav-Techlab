@@ -1,0 +1,19 @@
+<html ng-app="blueBox">
+    <head>
+        <title>BluBox AngularJS</title>
+        <script src="./angular.js"></script>
+        <script src="./blueBox.js"></script>
+    </head>
+    <style>
+        button {
+            width: 280px;
+            height: 80px;
+            background-color: rgba(185, 179, 179, 0.952);
+        }
+    </style>
+    <body>
+        <div ng-controller="gameController">
+            <button type="button" ng-repeat="x in boxes">{{x}}</button>
+        </div>
+    </body>
+</html>

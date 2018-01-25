@@ -25,7 +25,7 @@
 
         console.log(ranNum);
         for (var i = 1; i <= 100; i++) {
-            
+
             buttonDiv.innerHTML += "<button id=" + i + "  type = 'button' onclick = 'check(this.id)' >" + "Box " +
                 i + "</button>";
         }
@@ -36,26 +36,26 @@
 
         var id = id;
         console.log(id);
+        var selectedButton = document.getElementById(id);
 
         if (id > ranNum) {
-            var selectedButton = document.getElementById(id);
             selectedButton.style.backgroundColor = "red";
             counter = counter + 1;
             console.log(counter);
         }
         else if (id < ranNum) {
-            var selectedButton = document.getElementById(id);
             selectedButton.style.backgroundColor = "green";
             counter = counter + 1;
             console.log(counter);
         }
         else if (id == ranNum) {
-            var selectedButton = document.getElementById(id);
             selectedButton.style.backgroundColor = "blue";
-            console.log(button);
+            location.reload();
+            alert("You Win...");
         }
-            if (counter === 3) {
+        if (counter === 3) {
             alert("You are out of attempts.");
+            location.reload();
             console.log("after body");
         }
     }

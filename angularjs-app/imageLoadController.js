@@ -1,5 +1,5 @@
 angular.module('imageLoader',[])
-    .controller('imageLoaderController',function($scope){
+    .controller('imageLoaderController',['$scope',function($scope){
         $scope.loadResume = function(){
             console.log("Loadind Data");
             $scope.resume = 
@@ -38,4 +38,4 @@ angular.module('imageLoader',[])
                 
             ];
         };
-    });
+    }]);

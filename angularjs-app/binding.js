@@ -1,5 +1,9 @@
-angular.module('colorPicker', [])
-    .controller('colorPickerController', ['$scope',function ($scope) {
+angular.module('binding', [])
+    .controller('bindingController', function ($scope) {
+
+        $scope.write = function(text){
+            $scope.message = text;
+        }
 
         $scope.colorNames = ['red', 'blue', 'green', 'yellow', 'pink'];
 
@@ -7,4 +11,4 @@ angular.module('colorPicker', [])
             console.log("Inside Change Color");
             $scope.color = value;
         }
-    }]);
+    });
