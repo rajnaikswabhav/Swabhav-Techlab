@@ -1,0 +1,28 @@
+<html ng-app="dataBind">
+
+<head>
+    <title>DataBind Service</title>
+    <script src="./angular.js"></script>
+    <script src="./dataBind.js"></script>
+</head>
+
+<body>
+    <div ng-controller="dataBindController">
+        <br> Developer:{{::developer.name}}
+        <br> Company:{{developer.company}}
+    </div>
+    <br>
+    <br>
+    <br>
+    <div ng-controller="dataBindController">
+
+        Name:
+        <input type="text" ng-model="customer.name"> Age:
+        <input type="text" ng-model="customer.age">
+        <br>
+        <br> Customer:{{customer.name}}
+        <br> Age:{{customer.age}}
+    </div>
+</body>
+
+</html>

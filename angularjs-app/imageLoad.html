@@ -1,0 +1,47 @@
+<html ng-app="imageLoader">
+
+<head>
+    <title>Image Load</title>
+    <script src="./angular.js"></script>
+    <script src="./imageLoadController.js"></script>
+    <style>
+        img{
+            width:250;
+            height: 250;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div ng-controller="imageLoaderController">
+        <button type="button" ng-click="loadResume()">Load</button>
+        <br>
+        <br> Id: {{resume.id}}
+        <br>
+        <br> Name: {{resume.name}}
+        <br>
+        <br> Profile Picture:
+        <br>
+        <img ng-src="{{resume.photo}}">
+        <br>
+        <br> Age:{{resume.age}}
+        <br>
+        <br>
+    </div>
+    <div ng-controller="imageLoaderController">
+        <button type="button" ng-click="loadResumes()">Load All</button>
+        <br>
+        <br>
+        <p ng-repeat="x in resumes">
+            Id: {{x.id}}
+            <br> Name: {{x.name}}
+            <br> Profile Picture:<br>
+            <img ng-src="{{x.photo}}">
+             <br>Age:{{x.age}}
+            <br><br>
+        </p>
+    </div>
+</body>
+
+</html>

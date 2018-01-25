@@ -1,0 +1,122 @@
+<html>
+<link rel="stylesheet" href="../bootstrep-app/bootstrap-3.3.7-dist/css/bootstrap.css">
+
+<head>
+    <title>Shopping Cart</title>
+    <script src="./jquery-3.3.1.min.js"></script>
+    <script src="../bootstrep-app/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <style>
+        table {
+            border: 2px solid black;
+        }
+
+        tr td {
+
+            width: 100px;
+            height: 30px;
+            font-family: monospace;
+            color: blue;
+            border: 1px solid black;
+        }
+
+        th {
+            border: 1px solid black;
+            width: 50px;
+            height: 30px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Shopping Details</h2>
+    Product:
+    <select id="productList" type="text">
+        <option>Product</option>
+        <option value="50000" name="IPhone">IPhone</option>
+        <option value="15000" name="Mi Note 5">Mi Note 5</option>
+        <option value="35000" name="OnePlus 5">OnePlus 5</option>
+        <option value="40000" name="Google 5">Google 5</option>
+        <option value="60000" name="Samsung S8 Edge">Samsung S8 Edge</option>
+    </select>
+    Price:
+    <input type="text" id="price"> Quantity:
+    <input type="number" id="quantity">
+    <button class="btn-primary" id="order" type="button">Place Order</button>
+    <br>
+    <br>
+    <br>
+    <div id="productDetails">
+
+    </div>
+    <br>
+    <br>
+    <button type="button" class="btn-Success" id="checkoutButton" hidden>CheckOut</button>
+</body>
+
+<script>
+    $(document).ready(function () {
+        var productName;
+        var product;
+        var checkoutTotal = 0;
+        var products = [];
+        $("#productList").change(function () {
+            product = $("#productList").val();
+            $("#price").val(product);
+            productName = $("option[value = " + $("#productList").val() + "]").text();
+        });
+
+
+
+        $("#order").click(function () {
+
+            $("#checkoutButton").show();
+            var quantity = $("#quantity").val();
+            var total = product * quantity;
+            checkoutTotal = checkoutTotal + total;
+            if(products){
+                console.log("Inside Main if....");
+            for (var j in products) {
+                
+                if (products[j].name == productName && product[j].quantity != quantity) {
+                    console.log(products[j].name);
+                    console.log(products[j].quantity);
+                    console.log(quantity);
+                    products.splice(j,);
+                }
+
+            }
+            }
+            products.push(
+                {
+                    name: productName,
+                    price: product,
+                    quantity: quantity,
+                    total: total
+                }
+            );
+            
+
+            var output = "<table><thead><tr><th>Product</th><th>Price</th><th>Quantity</th>" +
+                "<th>Total</th></thead><tbody>";
+            for (var i in products) {
+
+                output += "<tr><td align='center'> " + products[i].name + "</td><td align='center'>" +
+                    products[i].price + "</td><td align ='center'>" + products[i].quantity +
+                    "</td><td align = 'center'>" + products[i].total + "</td></tr>"
+            }
+            output += "</tbody></table>";
+            $("#productDetails").html(output);
+            $("table").addClass("table");
+
+        });
+
+
+        $("#checkoutButton").click(function () {
+            alert("Checkout Total: " + checkoutTotal);
+        });
+
+    });
+</script>
+
+</html>
