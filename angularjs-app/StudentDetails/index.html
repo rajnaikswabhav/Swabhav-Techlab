@@ -1,9 +1,15 @@
-<html ng-app="student">
-
+<!DOCTYPE html>
+<html ng-app="Student">
 <head>
     <title>Student Details Form</title>
-    <script src="angular.js"></script>
-    <script src="studentData.js"></script>
+    <script src="../angular.js"></script>
+    <script src="./appConfig.js"></script>
+    <script src="../angular-route.js"></script>
+    <script src="./Templates/studentService.js"></script>
+    <script src="./Templates/homeController.js"></script>
+    <script src="./Templates/addController.js"></script>
+    <script src="./Templates/deleteController.js"></script>
+    <script src="./Templates/editController.js"></script>
     <style>
         table {
             border: 2px solid black;
@@ -32,7 +38,7 @@
             color: #fff;
             border: 0px;
             border-radius: 3px;
-            padding: 10px;
+            padding: 5px;
             cursor: pointer;
             margin-bottom: 10px;
             margin-left: 4px;
@@ -44,7 +50,8 @@
 </head>
 
 <body>
-
+    <h3><a href="#/addStudent">Add Student Detail</a></h3>
+    <div ng-view></div>
     <div ng-controller="studentController">
         <table>
             <thead>
@@ -66,8 +73,8 @@
                     <td align='center'>{{result.email}}</td>
                     <td align='center'>{{result.date}}</td>
                     <td align='center'>{{result.gender}}</td>
-                    <td> <button  onclick='editData(this.id)' >Edit</button>
-                         <button   onClick='deleteData()'>Delete</button> </td>
+                    <td ng-controller="editController"><a ><button ng-click="editData(result)">Edit</button></a>
+                         <button ng-controller="deleteController"  ng-click='deleteData(result.rollNo)'>Delete</button> </td>
                 </tr>
             </tbody>
         </table>

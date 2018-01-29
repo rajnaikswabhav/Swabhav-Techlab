@@ -1,30 +1,36 @@
-angular.module('student',[])
-    .factory('fetchData',['$http',function($http){
+angular.module('student', [])
+    .constant('API_URL', 'http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students')
+    .factory('getData', ['$http', 'API_URL', function ($http, API_URL) {
 
         console.log("Inside FetchData...");
-        var studentObj={};
+        var studentObj = {};
 
-        studentObj.getStudentData = function(){
-            $http.get('http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students')
-                .then(function(response){
-                    var result={
-                        rollNo : response.rollNo,
-                        name : response.name,
-                        age : response.age,
-                        email : response.email,
-                        date : response.date,
-                        gender : response.isMale,
-                     };
-
-                    return result;
-                },function(error){
-                    console.log(error);
-                    return error;
-                });
+        studentObj.getStudentData = function () {
+            return $http.get(API_URL);
         }
         return studentObj;
     }])
 
-    .controller('studentController',['fetchData','$scope',function($scope,fetchData){
-        $scope.result = fetchData.getStudentData();
+    .controller('studentController', ['getData', '$scope', function (getData, $scope) {
+        getData.getStudentData()
+            .then(function (responses) {
+                var data = responses.data
+                $scope.results  = [];
+                for (var i in data) {
+                    var result = {
+                        rollNo: data[i].rollNo,
+                        name: data[i].name,
+                        age: data[i].age,
+                        email: data[i].email,
+                        date: data[i].date,
+                        gender: data[i].isMale,
+                    };
+                    $scope.results.push(result);
+                    console.log(result);
+                }
+                console.log(responses.data);
+            }, function (error) {
+                $scope.result = error;
+            });
+
     }]);

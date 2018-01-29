@@ -135,13 +135,14 @@
                             var output = "<table><thead><tr><th>Roll No</th><th>Name</th><th>Age"+
                             "</th><th>Email</th><th>Date</th><th>Gender</th><th>Event</th></tr></thead><tbody>";
 
+                                
                             for (var i in result) {
-                                output += "<tr><td align='center'> " + result[i].rollNo + " </td><td align='center'>"
+                                output += "<tr><td align='center'> " + result[i].rollNo + " </td><td align='center'>"    
                                     + result[i].name + " </td><td align='center'> " + result[i].age + " </td><td align='center'>  "
                                     + result[i].email + "   </td><td align='center'>" + result[i].date +
                                     " </td><td align='center'> " + result[i].isMale + " </td><td>" +
                                     "<button id= " + i + " onclick='editData(this.id)' >Edit</button>"+
-                                    "<button id=" + i + "  onclick='deleteData()'>Delete</button>" +
+                                    "<button id=" + i + "  onclick='deleteData(this.id)'>Delete</button>" +
                                     "</td></tr>";
                             }
 
@@ -152,8 +153,15 @@
                     });
                 });
 
-                function deleteData(){
+                function deleteData(studentID){
                     console.log("Inside Delete");
+                    $.ajax({
+                        type : "DELETE",
+                        url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/"+studentID,
+                        success: function(result){
+                            alert("Data Deleted....");
+                        }
+                    });
                 }
                 // $(".delete").click(function(){
                 //     console.log("Inside Delete");

@@ -1,14 +1,14 @@
 angular.module('binding', [])
-    .controller('bindingController', function ($scope) {
-
-        $scope.write = function(text){
-            $scope.message = text;
-        }
-
+    .controller('bindingController', ['$scope',function ($scope) {
+        console.log($scope.message);
         $scope.colorNames = ['red', 'blue', 'green', 'yellow', 'pink'];
 
-        $scope.changeColor = function (value) {
+        $scope.fontColorChange = function (value) {
             console.log("Inside Change Color");
             $scope.color = value;
         }
-    });
+
+        $scope.backGroundColorChange = function(value){
+            $scope.colorBg = value;
+        }
+    }]);
