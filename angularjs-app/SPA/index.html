@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+ 
+<html ng-app="swabhav">
+    <head>
+        <title>Single Page Application</title>
+        <script src="../angular.js"></script>
+        <script src="../angular-route.js"></script>
+        <script src="./appConfig.js"></script>
+        <script src="./partialTempletes/homeController.js"></script>
+        <script src="./partialTempletes/careerController.js"></script>
+        <script src="./partialTempletes/aboutController.js"></script>
+    </head>
+    <body>
+       <h2> <a href="#/">Home</a>
+        <a href="#/career">Career</a>
+        <a href="#/about">About</a></h2>
+
+        <h2>This is Index</h2>
+        <div ng-view>
+
+        </div>
+    </body>
+</html>

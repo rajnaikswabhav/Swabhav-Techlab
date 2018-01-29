@@ -8,12 +8,15 @@
         button {
             width: 280px;
             height: 80px;
+            margin: 10px;
+            padding: 5px;
             background-color: rgba(185, 179, 179, 0.952);
         }
     </style>
     <body>
         <div ng-controller="gameController">
-            <button type="button" ng-repeat="x in boxes">{{x}}</button>
+            <button type="button" ng-repeat="x in size" ng-click="changeStatus(x)" 
+            ng-style="{'background-color':color} "> {{x}} </button>
         </div>
     </body>
 </html>

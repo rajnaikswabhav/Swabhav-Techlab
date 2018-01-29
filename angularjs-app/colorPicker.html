@@ -9,7 +9,8 @@
 <body ng-controller="colorPickerController" ng-style="{'background-color':color}">
     <div>
         ColorPicker:
-        <select ng-model="selectedColor" ng-options="color for color in colorNames" ng-change="changeColor(selectedColor)">
+        <select ng-model="selectedColor" ng-options="color for color in colorNames" 
+        ng-change="changeColor(selectedColor)">
         </select>
     </div>
 </body>
