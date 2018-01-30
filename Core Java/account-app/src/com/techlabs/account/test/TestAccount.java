@@ -15,7 +15,7 @@ public class TestAccount {
 				+ account.getBalance() + "\n");
 
 		Account account2 = new Account("Parth", 102);
-		account2.deposit(200);
+		account2.deposit(2000);
 		System.out.println(account2.getName() + " Your Balance is: "
 				+ account2.getBalance());
 		account2.withdraw(500);

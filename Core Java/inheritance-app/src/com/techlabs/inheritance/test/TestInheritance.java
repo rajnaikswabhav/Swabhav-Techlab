@@ -26,6 +26,7 @@ public class TestInheritance {
 		y = new Boy();
 		y.eat();
 		y.play();
+		y.read();
 	}
 
 	public static void case3() {
