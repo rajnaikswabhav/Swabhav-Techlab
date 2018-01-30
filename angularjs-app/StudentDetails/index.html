@@ -73,8 +73,8 @@
                     <td align='center'>{{result.email}}</td>
                     <td align='center'>{{result.date}}</td>
                     <td align='center'>{{result.gender}}</td>
-                    <td ng-controller="editController"><a ><button ng-click="editData(result)">Edit</button></a>
-                         <button ng-controller="deleteController"  ng-click='deleteData(result.rollNo)'>Delete</button> </td>
+                    <td ng-controller="editController"><a href="#/editStudent"><button ng-click="editData(result)">Edit</button></a>
+                     <button ng-controller="deleteController"  ng-click='deleteData(result.rollNo)'>Delete</button> </td>
                 </tr>
             </tbody>
         </table>

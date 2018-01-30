@@ -11,20 +11,25 @@ angular.module('blueBox', [])
 
         $scope.changeStatus = function (id) {
 
+            $scope.customStyle = {};
+            var button = document.getElementById(id);
             if (id > ranNum) {
                 console.log("Less than");
                 attempts++;
-                $scope.color = "red";
+                button.style.backgroundColor = "red";
                 console.log("Attempt: " + attempts);
+
             }
             else if (id < ranNum) {
                 console.log("Greater than");
                 attempts++;
-                $scope.color = "green";
+                button.style.backgroundColor = "green";
                 console.log("Attempt: " + attempts);
+
+
             }
             else if (id == ranNum) {
-                $scope.color = "blue";
+                button.style.backgroundColor = "blue";
                 alert("Match");
                 console.log("Match");
                 location.reload();

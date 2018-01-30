@@ -7,7 +7,7 @@ angular.module('Student')
             deleteService.deleteStudentData(studentID)
                 .then(function(response){
                     alert("Data Deleted..."+response.status);
-                    location.assign("./index.html"); 
+                    location.replace("./index.html"); 
                 },function(error){
                     alert("Error is:"+error);
                 });

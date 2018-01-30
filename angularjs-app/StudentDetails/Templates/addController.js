@@ -16,7 +16,7 @@ angular.module('Student')
         addService.addStudentData(dataObj)
         .then(function(response){
             alert("Data Added....."+"Status : "+response.status);    
-            location.assign("./index.html"); 
+            
         },function(error){
             alert(error);
         });

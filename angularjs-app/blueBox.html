@@ -14,9 +14,9 @@
         }
     </style>
     <body>
-        <div ng-controller="gameController">
-            <button type="button" ng-repeat="x in size" ng-click="changeStatus(x)" 
-            ng-style="{'background-color':color} "> {{x}} </button>
+        <div ng-controller="gameController" >
+            <button type="button" ng-repeat="x in size" id= {{x}} ng-click="changeStatus(x)" 
+            > {{x}} </button>
         </div>
     </body>
 </html>

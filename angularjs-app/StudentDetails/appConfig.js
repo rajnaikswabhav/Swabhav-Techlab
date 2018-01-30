@@ -11,4 +11,8 @@ angular.module('Student',['ngRoute'])
             templateUrl : './Templates/editStudent.html',
             controller : 'editController'
         })
+        .when('/index',{
+            templateUrl : './index.html',
+            controller : 'homeController'
+        })
     }]);

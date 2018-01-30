@@ -1,67 +1,52 @@
-
-<html>
-
-<head>
-    <title>Edit Page</title>
-    <script src="../../angular.js"></script>
-    <script src="../../angular-route.js"></script>
-    <script src="../appConfig.js"></script>
-    <script src="./studentService.js"></script>
-    <script src="./editController.js"></script>
-</head>
-
-<body  ng-controller="editController">
+<section>
     <div>
-        <h1>Student Details Form</h1>
+        <h1>Edit Form</h1>
         <br>
         <hr>
         <form>
             <div>
                 <label>Roll No: </label>
-                <input type="number" ng-value="{{result.rollNo}}" ng-model="student.rollNo" placeholder="Roll No" />
+                <input type="number" id="rollNo" value={{result.rollNo}} ng-model="result.rollNo" placeholder="Roll No" />
                 <br>
                 <br>
             </div>
 
             <div>
                 <label>Name: </label>
-                <input type="text" value="{{result.name}}" ng-model="student.name" placeholder="Name" />
+                <input type="text"  ng-model="result.name" placeholder="Name" />
                 <br>
                 <br>
             </div>
 
             <div>
                 <label>Age: </label>
-                <input type="number" ng-value="{{result.age}}" ng-model="student.age" placeholder="Age" />
+                <input type="number"  ng-model="result.age" placeholder="Age" />
                 <br>
                 <br>
             </div>
 
             <div>
                 <label>Email: </label>
-                <input type="text" value="{{result.email}}" ng-model="student.email" placeholder="Email" />
+                <input type="text"  ng-model="result.email" placeholder="Email" />
                 <br>
                 <br>
             </div>
 
             <div>
                 <label>Date: </label>
-                <input type="text" value="{{result.date}}" ng-model="student.date" placeholder="date" />
+                <input type="text"  ng-model="result.date" placeholder="date" />
                 <br>
                 <br>
             </div>
 
             <div>
                 <label>isMale: </label>
-                <input type="boolean" value="{{result.isMale}}" ng-model="student.isMale" placeholder="true/false" />
+                <input type="boolean"  ng-model="result.isMale" placeholder="true/false" />
                 <br>
                 <br>
             </div>
         </form>
-        <button type="submit" ng-click="postData(student.rollNo,student.name,
-                student.age,student.email,student.date,student.isMale)">Submit</button>
+        <button type="submit" ng-click="">Edit</button>
     </div>
 
-</body>
-
-</html>
+</section>

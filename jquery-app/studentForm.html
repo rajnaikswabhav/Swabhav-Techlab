@@ -92,7 +92,8 @@
         </form>
         <button id="submit">Submit</button>
         <button id="showData">Show Data</button>
-        
+        <button id="edit" hidden>Edit</button>
+
         <br>
         <br>
         <br>
@@ -122,6 +123,7 @@
                         function (response, status) {
                             alert("*--------Received Data---------*\n\nResponse : " + response +
                                 "\n\nStatus : " + status);
+                            location.reload();
                         });
                 });
 
@@ -132,17 +134,17 @@
                         url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students",
                         success: function (result) {
 
-                            var output = "<table><thead><tr><th>Roll No</th><th>Name</th><th>Age"+
-                            "</th><th>Email</th><th>Date</th><th>Gender</th><th>Event</th></tr></thead><tbody>";
+                            var output = "<table><thead><tr><th>Roll No</th><th>Name</th><th>Age" +
+                                "</th><th>Email</th><th>Date</th><th>Gender</th><th>Event</th></tr></thead><tbody>";
 
-                                
+
                             for (var i in result) {
-                                output += "<tr><td align='center'> " + result[i].rollNo + " </td><td align='center'>"    
+                                output += "<tr><td align='center'> " + result[i].rollNo + " </td><td align='center'>"
                                     + result[i].name + " </td><td align='center'> " + result[i].age + " </td><td align='center'>  "
                                     + result[i].email + "   </td><td align='center'>" + result[i].date +
                                     " </td><td align='center'> " + result[i].isMale + " </td><td>" +
-                                    "<button id= " + i + " onclick='editData(this.id)' >Edit</button>"+
-                                    "<button id=" + i + "  onclick='deleteData(this.id)'>Delete</button>" +
+                                    "<button id= " + i + " onclick='editData(" + result[i].rollNo + ")' >Edit</button>" +
+                                    "<button id=" + i + "  onclick='deleteData(" + result[i].rollNo + ")'  >Delete</button>" +
                                     "</td></tr>";
                             }
 
@@ -152,24 +154,60 @@
                         }
                     });
                 });
-
-                function deleteData(studentID){
-                    console.log("Inside Delete");
-                    $.ajax({
-                        type : "DELETE",
-                        url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/"+studentID,
-                        success: function(result){
-                            alert("Data Deleted....");
-                        }
-                    });
-                }
-                // $(".delete").click(function(){
-                //     console.log("Inside Delete");
-                // });
             });
+            function deleteData(rollNo) {
+                $.ajax({
+                    type: "DELETE",
+                    url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/" + rollNo,
+                    success: function (result) {
+                        alert("Data Deleted....");
+                        location.reload();
+                    }
+                });
+            }
 
-           
+            function editData(rollNo) {
+                $("#edit").show();
+                $.ajax({
+                    type: "GET",
+                    url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/" + rollNo,
+                    success: function (result) {
+                        $("#studentRollNo").val(result.rollNo);
+                        $("#studentName").val(result.name);
+                        $("#studentAge").val(result.age);
+                        $("#studentEmail").val(result.email);
+                        $("#date").val(result.date);
+                        $("#studentGender").val(result.isMale);
+                    }
+                });
+                $("#edit").click(function () {
+                    var studentRollNo = $("#studentRollNo").val();
+                    var studentName = $("#studentName").val();
+                    var studentAge = $("#studentAge").val();
+                    var studentEmail = $("#studentEmail").val();
+                    var date = $("#date").val();
+                    var studentGender = $("#studentGender").val();
+
+                    $.ajax({
+                        type: "PUT",
+                        url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/" + rollNo,
+                        data: {
+                            rollNo: studentRollNo,
+                            name: studentName,
+                            age: studentAge,
+                            email: studentEmail,
+                            date: date,
+                            isMale: studentGender
+                        },
+                        success: function (result, status) {
+                            alert("Data Updated:" + status);
+                            location.reload();
+                        }
+                    })
+                });
+            }
         </script>
     </div>
 </body>
+
 </html>
