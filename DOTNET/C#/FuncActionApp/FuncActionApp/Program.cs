@@ -18,7 +18,8 @@ namespace FuncActionApp
             Func<int, long> cubeEvenV1 = CubeEvenNumber;
             Console.WriteLine(cubeEvenV1(3));
 
-            Func<int, long> cubeEvenV2 = (n) => {
+            Func<int, long> cubeEvenV2 = (n) =>
+            {
                 if (isEvenV1(n))
                 {
                     return n * n * n;
@@ -34,7 +35,7 @@ namespace FuncActionApp
             {
                 for (int i = 1; i <= n; i++)
                 {
-                    if (i % 2 == 0) { Console.Write("{0},",i); }
+                    if (i % 2 == 0) { Console.Write("{0},", i); }
                 }
             };
             printEventV2(5);
@@ -43,7 +44,7 @@ namespace FuncActionApp
 
         private static bool IsAnEvenNumber(int number)
         {
-            return  (number % 2 == 0) ;
+            return (number % 2 == 0);
         }
 
         private static long CubeEvenNumber(int number)
@@ -58,8 +59,9 @@ namespace FuncActionApp
             }
         }
 
-        private static void PrintEvenNumberTill(int number) {
-            for(int i=1; i<=number; i++)
+        private static void PrintEvenNumberTill(int number)
+        {
+            for (int i = 1; i <= number; i++)
             {
                 if (i % 2 == 0)
                 {
