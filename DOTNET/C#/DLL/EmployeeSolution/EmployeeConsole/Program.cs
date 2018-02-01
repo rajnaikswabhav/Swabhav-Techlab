@@ -29,18 +29,19 @@ namespace EmployeeConsole
         {
             Console.WriteLine("Employee Name is: " + employee.EmployeeName);
             Console.WriteLine("Employee Degignation is: " + employee.GetType().Name);
-            if (employee.GetType().Name.Equals("Manager"))
+            Console.WriteLine("Employee Basic Salary is: "+employee.BasicSalary);
+            if (typeof(Manager).Equals(employee.GetType()) )
             {
                 Console.WriteLine("Employee HouseRentAllowance is: " + employee.HouseRentAllowance);
                 Console.WriteLine("Employee DearnessAllowance is: " + employee.DernessAllowance);
             }
-            else if (employee.GetType().Name.Equals("Developer"))
+            else if (typeof(Developer).Equals(employee.GetType()))
             {
                 Console.WriteLine("Employee Performance is: " + employee.Performance);
             }
             Console.WriteLine("Employee BirthDate is: " + employee.DateOfBirth);
             Console.WriteLine("Employee Age is: " + employee.CalculateAge());
-            Console.WriteLine("Employee Salary is : " + employee.CalculateSalary());
+            Console.WriteLine("Employee CTC Salary is : " + employee.CalculateSalary());
             Console.WriteLine();
         }
     }
