@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace WelcomeApp
 {
@@ -8,8 +10,24 @@ namespace WelcomeApp
         {
             //Case1(names);
             // Case2();
-            Case3();
+            //Case3();
+            IEnumerable<String> nameStartWithA = names.Where((n) => n.StartsWith("A"));
 
+            foreach (var name in nameStartWithA)
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine(name);
+            }
+
+            IEnumerable<String> nameStartWithAAndContainS = nameStartWithA.Where((n) => n.Contains("s"))
+                                                                          .Take(2);
+            Console.WriteLine();
+            foreach (var name in nameStartWithAAndContainS)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(name);
+            }
+            
         }
 
         private static void Case3()

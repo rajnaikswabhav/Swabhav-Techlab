@@ -8,10 +8,7 @@ namespace StudentApp
         {
 
             var studentConsole = new StudentConsole();
-           studentConsole.AddStudent();
-           studentConsole.showData();
-            
-
+            studentConsole.Start();
         }
     }
 }

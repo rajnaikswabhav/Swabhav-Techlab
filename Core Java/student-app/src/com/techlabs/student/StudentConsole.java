@@ -52,7 +52,7 @@ public class StudentConsole {
 
 	}
 
-	public void getDetails() {
+		public void getDetails() {
 
 		do {
 			System.out.println("Enter Student FirstName :");

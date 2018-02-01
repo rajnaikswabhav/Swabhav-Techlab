@@ -68,11 +68,11 @@ public class StudentBinaryStore implements IStudentStore {
 
 	@Override
 	public String delete(long id) {
-		for (Student studentName : studentlist) {
-			if (id == studentName.getId()) {
-				studentlist.remove(studentName);
+		for (Student student : studentlist) {
+			if (id == student.getId()) {
+				studentlist.remove(student);
 				save();
-				return "Student Delete By ID :" + studentName.getFirstName();
+				return "Student Delete By ID :" + student.getFirstName();
 			}
 		}
 		return "No Student found with this ID";

@@ -6,17 +6,17 @@ namespace IndexerExample
 {
     class SimpleCollection<T>
     {
-        private T[] arra = new T[100];
+        private T[] arry = new T[100];
 
         public  T this[int i]
         {
             get
             {
-                return arra[i];
+                return arry[i];
             }
             set
             {
-                arra[i] = value;
+                arry[i] = value;
             }
         }
     }

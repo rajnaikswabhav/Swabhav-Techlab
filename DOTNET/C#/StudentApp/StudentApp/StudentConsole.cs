@@ -1,43 +1,51 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 
 namespace StudentApp
 {
     class StudentConsole
     {
-        private List<Student> studentList = new List<Student>();
+        private const int ADD_CHOICE = 1;
+        private const int DISPLAY_CHOICE = 2;
+        private const int SEARCH_STUDENT_DETAILS = 3;
+        private const int DELETE_STUDENT_DETAILS = 4;
 
-        public StudentConsole()
+
+        private List<Student> listOfStudents;
+        private StudentService studentService = new StudentService();
+
+        public void Start()
         {
-            //InIt();
-        }
+            Console.WriteLine("Press 1 To Add Students");
+            Console.WriteLine("Press 2 To Display Students");
+            Console.WriteLine("Press 3 To Search Student detail");
+            Console.WriteLine("Press 4 To Delete Student");
 
-        public void InIt()
-        {
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            FileStream fileStreamIn = new FileStream("student.binary", FileMode.Open, FileAccess.Read);
+            int choice = int.Parse(Console.ReadLine());
 
-            try
+            switch (choice)
             {
-                using (fileStreamIn)
-                {
-                    List<Student> listStudent =(List<Student>)binaryFormatter.Deserialize(fileStreamIn);
-                    studentList = listStudent;
-                }
+                case ADD_CHOICE :
+                    GetDetails();
+                    break;
 
+                case DISPLAY_CHOICE :
+                    PrintData();
+                    break;
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception :" + e);
+                case SEARCH_STUDENT_DETAILS:
+                    GetSearch();
+                    break;
+
+                case DELETE_STUDENT_DETAILS:
+                    GetDelete();
+                    break;
             }
         }
-
-        public void AddStudent()
+        public void GetDetails()
         {
+            do { 
             Console.Write("Enter Student Name : ");
             String name = Console.ReadLine();
 
@@ -48,62 +56,43 @@ namespace StudentApp
             String address = Console.ReadLine();
 
             var student = new Student(name, age, address);
-            studentList.Add(student);
-            Save(studentList);
+            studentService.AddStudents(student);
+
+                Console.WriteLine("Thank You ! Your Details being saved.");
+                Console.WriteLine("Press 1 to add more Student");
+                Console.WriteLine("Any Other Number to Exit.");
+
+            } while (Console.Read() == ADD_CHOICE);
+            Start();
         }
 
-        public void Save(List<Student> listOfStudents)
+        public void PrintData()
         {
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            FileStream fileStream = new FileStream("student.binary",FileMode.Append,FileAccess.Write);
-            try
-            {
-                    using (fileStream)
-                    {
-                        binaryFormatter.Serialize(fileStream, listOfStudents);
-                        Console.WriteLine("Serialized......");
-                    }
-                
-                
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception : " + e);
-            }
-            Console.WriteLine("File Created....");
-            Console.WriteLine(studentList.Count);
-        }
-
-        public void GetDetails()
-        {
-
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            FileStream fileStreamIn = new FileStream("student.binary", FileMode.Open, FileAccess.Read);
-
-            try
-            {
-                using (fileStreamIn)
-                {
-                    Student student = (Student)binaryFormatter.Deserialize(fileStreamIn);
-                    studentList.Add(student);
-                }
-
-                fileStreamIn.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception :" + e);
-            }
-        }
-
-        public void showData()
-        {
-            foreach (Student stu in studentList)
+            listOfStudents = studentService.GetStudents;
+            foreach (Student stu in listOfStudents)
             {
                 Console.WriteLine("Student Name: " + stu.StudentName);
                 Console.WriteLine("Student Age: " + stu.Age);
                 Console.WriteLine("Student Location: " + stu.Address);
             }
         }
+
+        public void GetSearch()
+        {
+            Console.WriteLine("Enter Student Name: ");
+            String studentName = Console.ReadLine();
+            Student searchedStudent = studentService.Search(studentName);
+
+            Console.WriteLine("Student Id: "+searchedStudent.Id);
+            Console.WriteLine("Student Name: "+searchedStudent.StudentName);
+            Console.WriteLine("Student Age: "+searchedStudent.Age);
+            Console.WriteLine("Student Location: "+searchedStudent.Address);
+        }
+
+        public void GetDelete() {
+            Console.WriteLine("Enter student id to delete: ");
+            Console.WriteLine(studentService.DeleteStudentData(Console.ReadLine()));
+        }
+
     }
 }
