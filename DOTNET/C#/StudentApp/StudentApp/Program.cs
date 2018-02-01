@@ -6,6 +6,7 @@ namespace StudentApp
     {
         static void Main(string[] args)
         {
+
             var studentConsole = new StudentConsole();
            studentConsole.AddStudent();
            studentConsole.showData();

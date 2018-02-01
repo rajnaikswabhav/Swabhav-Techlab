@@ -24,8 +24,8 @@ namespace StudentApp
             {
                 using (fileStreamIn)
                 {
-                    Student student = (Student)binaryFormatter.Deserialize(fileStreamIn);
-                    studentList.Add(student);
+                    List<Student> listStudent =(List<Student>)binaryFormatter.Deserialize(fileStreamIn);
+                    studentList = listStudent;
                 }
 
 
@@ -49,23 +49,21 @@ namespace StudentApp
 
             var student = new Student(name, age, address);
             studentList.Add(student);
-            Save(student);
+            Save(studentList);
         }
 
-        public void Save(Student student)
+        public void Save(List<Student> listOfStudents)
         {
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             FileStream fileStream = new FileStream("student.binary",FileMode.Append,FileAccess.Write);
             try
             {
-                foreach (Student stu in studentList)
-                {
                     using (fileStream)
                     {
-                        binaryFormatter.Serialize(fileStream, stu);
+                        binaryFormatter.Serialize(fileStream, listOfStudents);
                         Console.WriteLine("Serialized......");
                     }
-                }
+                
                 
             }
             catch (Exception e)
