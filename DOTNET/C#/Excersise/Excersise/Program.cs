@@ -9,24 +9,14 @@ namespace Excersise
         
         static void Main(string[] args)
         {
-            //RefExample();
+            int value = 1;
+            Method(ref value);
+            Console.WriteLine("Value: "+value);
         }
 
-       /* private static void RefExample()
+        static void  Method(ref int number)
         {
-            var bookCollection = new BookCollection();
-            bookCollection.ListBooks();
-
-            ref var book = ref bookCollection.GetBookByTitle("xyz");
-            if (book != null)
-            {
-                book = new Book
-                {
-                    author = "Akash",
-                    title = "abc",
-                };
-                bookCollection.ListBooks();
-            }
-        }*/
+            number = 10;
+        }  
     }
 }

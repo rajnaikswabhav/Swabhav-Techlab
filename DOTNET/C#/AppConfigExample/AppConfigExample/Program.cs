@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Specialized;
 using System.Configuration;
 
@@ -15,8 +14,6 @@ namespace AppConfigExample
 
 
         }
-
-        public static NameValueCollection AppSettings { get; }
 
         static void ReadAllSettings()
         {
