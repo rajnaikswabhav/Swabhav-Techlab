@@ -15,7 +15,7 @@ public class TestEmployeeService {
 		TestEmployeeService tEmployeeService=new TestEmployeeService();
 		EmployeeService employeeService = new EmployeeService();
 		employeeService.inIt();
-		tEmployeeService.sortByName(employeeService.get());
+		//tEmployeeService.sortByName(employeeService.get());
 		tEmployeeService.sortBySalary(employeeService.get());
 	}
 

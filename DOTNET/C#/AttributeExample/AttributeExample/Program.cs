@@ -12,8 +12,9 @@ namespace AttributeExample
             MethodInfo[] methods = attribute.GetType().GetMethods();
             foreach(var method in methods)
             {
-                var attr = method.GetCustomAttributes(typeof(NeedRefectoring),true);
-                Console.WriteLine(attr.GetType().Name);
+                //Console.WriteLine(method.Name);
+                var methodAtrribute= method.GetCustomAttributes(typeof(NeedRefectoring),true).GetType().Name;
+                Console.WriteLine(methodAtrribute);        
             }
 
         }
