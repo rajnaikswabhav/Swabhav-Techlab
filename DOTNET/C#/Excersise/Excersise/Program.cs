@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Excersise
+namespace ReferenceExample
 {
     class Program
     {

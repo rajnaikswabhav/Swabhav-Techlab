@@ -45,7 +45,6 @@ namespace StudentApp
         }
         public void GetDetails()
         {
-            do { 
             Console.Write("Enter Student Name : ");
             String name = Console.ReadLine();
 
@@ -58,11 +57,8 @@ namespace StudentApp
             var student = new Student(name, age, address);
             studentService.AddStudents(student);
 
-                Console.WriteLine("Thank You ! Your Details being saved.");
-                Console.WriteLine("Press 1 to add more Student");
-                Console.WriteLine("Any Other Number to Exit.");
-
-            } while (Console.Read() == ADD_CHOICE);
+            Console.WriteLine("Your Data Saved successfully....");
+            Console.WriteLine();
             Start();
         }
 
@@ -74,6 +70,7 @@ namespace StudentApp
                 Console.WriteLine("Student Name: " + stu.StudentName);
                 Console.WriteLine("Student Age: " + stu.Age);
                 Console.WriteLine("Student Location: " + stu.Address);
+                Console.WriteLine();
             }
         }
 
