@@ -27,6 +27,23 @@ public class GameBoard {
 			}
 		}
 	}
+	
+	public void printBoard() {
+		
+		for (int row = 0; row < ROWS; ++row) {
+			for (int col = 0; col < COLS; ++col) {
+				System.out.print(cells[row][col].printCell());
+				if (col < COLS - 1) {
+					System.out.print("|");
+				}
+			}
+
+			System.out.println();
+			if (row < row - 1) {
+				System.out.println("--------------");
+			}
+		}
+	}
 
 	public boolean isDraw() {
 		for (int row = 0; row < ROWS; ++row) {

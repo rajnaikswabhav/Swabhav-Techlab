@@ -6,7 +6,12 @@ namespace CityCodeApp
 {
     class StateService
     {
-        Dictionary<string, string> stateDictionary = new Dictionary<string, string>();
+        private Dictionary<string, string> stateDictionary;
+
+        public StateService()
+        {
+            stateDictionary = new Dictionary<string, string>();
+        }
 
         public void IntilizeDictionary()
         {

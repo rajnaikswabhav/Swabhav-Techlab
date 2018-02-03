@@ -53,11 +53,6 @@ public class RectangleTest {
 				+ "\n\n");
 	}
 	
-	public static void fileWrite()
-	{
-		
-	}
-	
 	public static void fileRead() {
 		try {
 			FileInputStream fileInputStream = new FileInputStream(

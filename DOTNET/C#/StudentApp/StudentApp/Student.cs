@@ -10,7 +10,8 @@ namespace StudentApp
         private readonly String _address;
         private readonly String _id;
 
-        public Student(String studentName, int age, String address) {
+        public Student(String studentName, int age, String address)
+        {
             _studentName = studentName;
             _age = age;
             _address = address;
@@ -33,7 +34,8 @@ namespace StudentApp
             }
         }
 
-        public String Address {
+        public String Address
+        {
             get
             {
                 return _address;

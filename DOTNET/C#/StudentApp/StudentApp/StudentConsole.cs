@@ -26,11 +26,11 @@ namespace StudentApp
 
             switch (choice)
             {
-                case ADD_CHOICE :
+                case ADD_CHOICE:
                     GetDetails();
                     break;
 
-                case DISPLAY_CHOICE :
+                case DISPLAY_CHOICE:
                     PrintData();
                     break;
 
@@ -64,7 +64,7 @@ namespace StudentApp
 
         public void PrintData()
         {
-            listOfStudents = studentService.GetStudents;
+            listOfStudents = studentService.Students;
             foreach (Student stu in listOfStudents)
             {
                 Console.WriteLine("Student Name: " + stu.StudentName);
@@ -80,13 +80,14 @@ namespace StudentApp
             String studentName = Console.ReadLine();
             Student searchedStudent = studentService.Search(studentName);
 
-            Console.WriteLine("Student Id: "+searchedStudent.Id);
-            Console.WriteLine("Student Name: "+searchedStudent.StudentName);
-            Console.WriteLine("Student Age: "+searchedStudent.Age);
-            Console.WriteLine("Student Location: "+searchedStudent.Address);
+            Console.WriteLine("Student Id: " + searchedStudent.Id);
+            Console.WriteLine("Student Name: " + searchedStudent.StudentName);
+            Console.WriteLine("Student Age: " + searchedStudent.Age);
+            Console.WriteLine("Student Location: " + searchedStudent.Address);
         }
 
-        public void GetDelete() {
+        public void GetDelete()
+        {
             Console.WriteLine("Enter student id to delete: ");
             Console.WriteLine(studentService.DeleteStudentData(Console.ReadLine()));
         }

@@ -7,14 +7,14 @@ namespace StudentApp
 {
     class StudentService
     {
-        private List<Student> studentList = new List<Student>();
+        private List<Student> _studentList = new List<Student>();
 
         public StudentService()
         {
             IntializeList();
         }
 
-        public void IntializeList()
+        private void IntializeList()
         {
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             FileStream fileStreamIn = new FileStream("student.binary", FileMode.Open, FileAccess.Read);
@@ -23,19 +23,19 @@ namespace StudentApp
             {
                 using (fileStreamIn)
                 {
-                    studentList = (List<Student>)binaryFormatter.Deserialize(fileStreamIn);
+                    _studentList = (List<Student>)binaryFormatter.Deserialize(fileStreamIn);
                 }
 
             }
             catch (Exception e)
             {
-                throw e ;
+                throw e;
             }
         }
 
         public void AddStudents(Student student)
         {
-            studentList.Add(student);
+            _studentList.Add(student);
             Save();
         }
 
@@ -48,25 +48,26 @@ namespace StudentApp
             {
                 using (fileStream)
                 {
-                    binaryFormatter.Serialize(fileStream, studentList);
+                    binaryFormatter.Serialize(fileStream, _studentList);
                 }
             }
             catch (Exception e)
             {
-                throw  e ;
+                throw e;
             }
         }
 
-        public List<Student> GetStudents
+        public List<Student> Students
         {
-            get{
-                return studentList;
+            get
+            {
+                return _studentList;
             }
         }
 
         public Student Search(String studentName)
         {
-            foreach(Student student in studentList)
+            foreach (Student student in _studentList)
             {
                 if (studentName.Equals(student.StudentName))
                 {
@@ -78,13 +79,13 @@ namespace StudentApp
 
         public String DeleteStudentData(String id)
         {
-            foreach (Student student in studentList)
+            foreach (Student student in _studentList)
             {
                 if (id.Equals(student.Id))
                 {
-                    studentList.Remove(student);
+                    _studentList.Remove(student);
                     Save();
-                    return "Student deleted by Id : "+student.Id;
+                    return "Student deleted by Id : " + student.Id;
                 }
             }
             return "No data Found with this Id.";

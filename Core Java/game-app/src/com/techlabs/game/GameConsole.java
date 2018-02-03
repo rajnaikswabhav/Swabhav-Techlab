@@ -31,7 +31,7 @@ public class GameConsole {
 		}
 		numberGuesser.matched(guessNumber);
 		if (count < attempts) {
-			compare(guessNumber);
+			compare();
 		}
 
 		else {
@@ -41,7 +41,7 @@ public class GameConsole {
 		scanner.close();
 	}
 
-	public void compare(int num) {
+	public void compare() {
 
 		if (numberGuesser.getGameState() == GameState.END) {
 			System.out.println("You win the game....");

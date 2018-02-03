@@ -10,6 +10,7 @@ public class TicTacToeGameUI {
 	private static final int ROWS = 3;
 	private static final int COLS = 3;
 	public Cell[][] cells;
+	private GameBoard board;
 	private TicTacToeGameConsole console; 
 
 	public TicTacToeGameUI() {
@@ -25,11 +26,12 @@ public class TicTacToeGameUI {
 
 		currentPlayer = Seed.CROSS;
 		currentState = GameState.PLAYING;
-		console = new TicTacToeGameConsole(new GameBoard());
+		board = new GameBoard();
+		console = new TicTacToeGameConsole(board);
 
 		do {
 			console.playerMove(currentPlayer);
-			printBoard();
+			board.printBoard();
 			console.updateGame(currentPlayer);
 
 			if (currentState == GameState.CROSS_WON) {
@@ -43,22 +45,5 @@ public class TicTacToeGameUI {
 			currentPlayer = (currentPlayer == Seed.CROSS) ? Seed.NOUGHT
 					: Seed.CROSS;
 		} while (currentState == GameState.PLAYING);
-	}
-
-	public void printBoard() {
-		
-		for (int row = 0; row < ROWS; ++row) {
-			for (int col = 0; col < COLS; ++col) {
-				System.out.print(cells[row][col].printCell());
-				if (col < COLS - 1) {
-					System.out.print("|");
-				}
-			}
-
-			System.out.println();
-			if (row < row - 1) {
-				System.out.println("--------------");
-			}
-		}
 	}
 }
