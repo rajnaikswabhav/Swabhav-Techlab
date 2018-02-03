@@ -10,13 +10,12 @@ namespace EmployeeApp2
         {
             EmployeeService employeeService = new EmployeeService();
             employeeService.IntializeList();
-        }
-
-        public static void SortByName(HashSet<Employee> emSet)
-        {
-            Console.WriteLine("Sort By Name....");
-            HashSet<Employee> sortedByName = new HashSet<Employee>();
-            
+            HashSet<Employee> employeeList = employeeService.get();
+            Console.WriteLine(employeeList.Count);
+            foreach (var employee in employeeList)
+            {
+                Console.WriteLine(employee);
+            }
         }
     }
 }
