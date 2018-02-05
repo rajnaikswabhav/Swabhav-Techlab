@@ -5,7 +5,7 @@ using System.IO;
 
 namespace StudentCore
 {
-   public class BinaryDataLoader
+    public class BinaryDataLoader
     {
         private List<Student> _studentList = new List<Student>();
 
@@ -27,9 +27,9 @@ namespace StudentCore
                 }
 
             }
-            catch (Exception e)
+            catch (Exception exception)
             {
-                throw e;
+                throw exception;
             }
         }
 

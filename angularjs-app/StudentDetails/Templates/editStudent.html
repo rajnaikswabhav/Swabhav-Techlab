@@ -1,52 +1,54 @@
 <section>
     <div>
         <h1>Edit Form</h1>
-        <br>
         <hr>
+        <br>
         <form>
             <div>
                 <label>Roll No: </label>
-                <input type="number" id="rollNo" value={{result.rollNo}} ng-model="result.rollNo" placeholder="Roll No" />
+                <input type="number" id="rollNo" ng-value="eData.rollNo" placeholder="Roll No" />
                 <br>
                 <br>
             </div>
 
             <div>
                 <label>Name: </label>
-                <input type="text"  ng-model="result.name" placeholder="Name" />
+                <input type="text" ng-model="eData.name" placeholder="Name" />
                 <br>
                 <br>
             </div>
 
             <div>
                 <label>Age: </label>
-                <input type="number"  ng-model="result.age" placeholder="Age" />
+                <input type="number" ng-model="eData.age" placeholder="Age" />
                 <br>
                 <br>
             </div>
 
             <div>
                 <label>Email: </label>
-                <input type="text"  ng-model="result.email" placeholder="Email" />
+                <input type="text" ng-model="eData.email" placeholder="Email" />
                 <br>
                 <br>
             </div>
 
             <div>
                 <label>Date: </label>
-                <input type="text"  ng-model="result.date" placeholder="date" />
+                <input type="text" ng-model="eData.date" placeholder="date" />
                 <br>
                 <br>
             </div>
 
             <div>
                 <label>isMale: </label>
-                <input type="boolean"  ng-model="result.isMale" placeholder="true/false" />
+                <input type="radio" value="eData.gender" ng-model="eData.gender" />Male
+                <input type="radio" value="eData.gender" ng-model="eData.gender" />Female
                 <br>
                 <br>
             </div>
         </form>
-        <button type="submit" ng-click="">Edit</button>
+        <button type="button" ng-click="edit(eData.rollNo,eData.name,eData.age,
+        eData.email,eData.date,eData.gender)">Edit</button>
     </div>
 
 </section>

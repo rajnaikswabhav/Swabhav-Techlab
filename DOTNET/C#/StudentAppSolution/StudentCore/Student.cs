@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace StudentCore
 {
@@ -12,7 +9,6 @@ namespace StudentCore
         private readonly int _age;
         private readonly String _address;
         private readonly String _id;
-
         public Student(String studentName, int age, String address)
         {
             _studentName = studentName;

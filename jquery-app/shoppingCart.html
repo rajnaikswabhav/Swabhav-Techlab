@@ -55,11 +55,11 @@
 </body>
 
 <script>
+    var products = [];
     $(document).ready(function () {
         var productName;
         var product;
         var checkoutTotal = 0;
-        var products = [];
         $("#productList").change(function () {
             product = $("#productList").val();
             $("#price").val(product);
@@ -74,18 +74,18 @@
             var quantity = $("#quantity").val();
             var total = product * quantity;
             checkoutTotal = checkoutTotal + total;
-            if(products){
+            if (products) {
                 console.log("Inside Main if....");
-            for (var j in products) {
-                
-                if (products[j].name == productName && product[j].quantity != quantity) {
-                    console.log(products[j].name);
-                    console.log(products[j].quantity);
-                    console.log(quantity);
-                    products.splice(j,);
-                }
+                for (var j in products) {
 
-            }
+                    if (products[j].name == productName && product[j].quantity != quantity) {
+                        console.log(products[j].name);
+                        console.log(products[j].quantity);
+                        console.log(quantity);
+                        products.splice(j);
+                    }
+
+                }
             }
             products.push(
                 {
@@ -95,7 +95,7 @@
                     total: total
                 }
             );
-            
+
 
             var output = "<table><thead><tr><th>Product</th><th>Price</th><th>Quantity</th>" +
                 "<th>Total</th></thead><tbody>";
@@ -111,12 +111,12 @@
 
         });
 
-
         $("#checkoutButton").click(function () {
             alert("Checkout Total: " + checkoutTotal);
         });
 
     });
+    }
 </script>
 
 </html>

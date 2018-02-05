@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Collections.Generic;
 
 namespace StudentCore
 {
@@ -15,7 +14,7 @@ namespace StudentCore
         {
             dataSaver = new BinaryDataSaver();
             loadBinaryData = new BinaryDataLoader();
-            listOfStudent = new List<Student>();
+            listOfStudent = loadBinaryData.Students;
         }
 
         public void AddStudent(List<Student> studentList)
@@ -26,7 +25,18 @@ namespace StudentCore
 
         public List<Student> GetDetails()
         {
-           return loadBinaryData.Students;
+            return listOfStudent;
         }
-    }
+
+        public List<Student> SearchByName(string name) {
+            List<Student> filterList = new List<Student>();
+            IEnumerable<Student> searchByName = listOfStudent.Where((n) => n.StudentName.Equals(name));
+            foreach (var student in searchByName)
+            {
+                filterList.Add(student);
+            }
+            return filterList;
+        }
+
+       }
 }

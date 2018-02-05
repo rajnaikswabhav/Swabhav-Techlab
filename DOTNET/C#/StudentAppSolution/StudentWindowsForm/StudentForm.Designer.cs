@@ -1,6 +1,6 @@
 ﻿namespace StudentWindowsForm
 {
-    partial class Form1
+    partial class StudentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            
             this.name = new System.Windows.Forms.Label();
             this.nameTextbox = new System.Windows.Forms.TextBox();
             this.age = new System.Windows.Forms.Label();
@@ -37,9 +38,6 @@
             this.addButton = new System.Windows.Forms.Button();
             this.displayButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ageColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,38 +112,19 @@
             this.displayButton.Click += new System.EventHandler(this.displayButton_Click);
             // 
             // dataGridView1
-            // 
+            //
+            this.dataGridView1.Hide(); 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameColumn,
-            this.ageColumn,
-            this.addressColumn});
-            this.dataGridView1.Location = new System.Drawing.Point(16, 222);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 224);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(344, 154);
+            this.dataGridView1.Size = new System.Drawing.Size(464, 182);
             this.dataGridView1.TabIndex = 8;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // nameColumn
-            // 
-            this.nameColumn.HeaderText = "Student Name";
-            this.nameColumn.Name = "nameColumn";
-            // 
-            // ageColumn
-            // 
-            this.ageColumn.HeaderText = "Age";
-            this.ageColumn.Name = "ageColumn";
-            // 
-            // addressColumn
-            // 
-            this.addressColumn.HeaderText = "Location";
-            this.addressColumn.Name = "addressColumn";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 500);
+            this.ClientSize = new System.Drawing.Size(492, 500);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.displayButton);
             this.Controls.Add(this.addButton);
@@ -174,9 +153,6 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button displayButton;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ageColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addressColumn;
     }
 }
 

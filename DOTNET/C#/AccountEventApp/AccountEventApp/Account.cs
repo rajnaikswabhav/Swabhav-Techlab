@@ -4,21 +4,20 @@ using System.Text;
 
 namespace AccountEventApp
 {
-    public delegate void DBalanceModified(Account account);
+    //public delegate void DBalanceModified(Account account);
     public class Account
     {
         private readonly String name;
         private readonly int accountId;
         private double balance;
-        public event DBalanceModified OnBalanceChange = null;
+        public event Action<Account> OnBalanceChange = null;
+        //public event DBalanceModified OnBalanceChange = null; 
         public Account(String name, int accountId, double balance)
         {
             this.name = name;
             this.accountId = accountId;
             this.balance = balance;
         }
-
-        Action<>
 
         public void Deposit(double balance)
         {

@@ -1,7 +1,8 @@
 angular.module('Student',['ngRoute'])
     .config(['$routeProvider',function($routeProvider){
-
+        var type = window.location.hash.substr(1);
         console.log("Inside Configuration....");
+        console.log(type);
         $routeProvider
         .when('/addStudent',{
             templateUrl : './Templates/addStudent.html',
@@ -10,9 +11,5 @@ angular.module('Student',['ngRoute'])
         .when('/editStudent',{
             templateUrl : './Templates/editStudent.html',
             controller : 'editController'
-        })
-        .when('/index',{
-            templateUrl : './index.html',
-            controller : 'homeController'
         })
     }]);
