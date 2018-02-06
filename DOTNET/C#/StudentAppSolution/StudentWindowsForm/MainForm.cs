@@ -9,6 +9,8 @@ namespace StudentWindowsForm
         public MainForm()
         {
             InitializeComponent();
+            studentFormToolStripMenuItem.Enabled = false;
+            searchToolStripMenuItem.Enabled = false;
         }
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
@@ -19,11 +21,10 @@ namespace StudentWindowsForm
 
         private void studentFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
-         
+
             StudentForm studentForm = new StudentForm();
             studentForm.MdiParent = this;
             studentForm.Show();
-
         }
 
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -37,6 +38,7 @@ namespace StudentWindowsForm
         {
             loginForm.MdiParent = this;
             loginForm.Show();
+
         }
     }
 }

@@ -8,6 +8,7 @@ namespace StudentWindowsForm
 {
     public partial class LoginForm : Form
     {
+        private bool isExcute ;
         public LoginForm()
         {
             InitializeComponent();
@@ -28,14 +29,15 @@ namespace StudentWindowsForm
                 if (isValidPerson)
                 {
                     this.Hide();
-                    MainForm mainForm = new MainForm();
-                   
                 }
                 else
                 {
+                    isExcute = false;
                     MessageBox.Show("Invalid User....");
                 }
             }
         }
+
+        public bool IsExcute {get { return isExcute; } }
     }
 }
