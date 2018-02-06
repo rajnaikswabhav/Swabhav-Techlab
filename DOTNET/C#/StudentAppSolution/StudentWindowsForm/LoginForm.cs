@@ -28,9 +28,8 @@ namespace StudentWindowsForm
                 if (isValidPerson)
                 {
                     this.Hide();
-                    StudentForm studentForm = new StudentForm();
-                    studentForm.Text = "Wekcome@" + userName;
-                    studentForm.Show();
+                    MainForm mainForm = new MainForm();
+                   
                 }
                 else
                 {

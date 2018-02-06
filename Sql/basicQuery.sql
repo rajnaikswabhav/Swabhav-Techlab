@@ -17,6 +17,8 @@ REFERENCES Organization(Id)
 
 INSERT INTO Organization VALUES ('101','ABC','9987787654');
 INSERT INTO Exhibition VALUES ('1001','23/02/2018','PQR','Mumabi','101');
+INSERT INTO Exhibition VALUES ('1002','25/02/2028','XYZ','PUNE','102');
 
 --DROP TABLE Exhibition;
+
 

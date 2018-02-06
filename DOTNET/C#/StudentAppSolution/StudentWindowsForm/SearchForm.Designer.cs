@@ -80,7 +80,7 @@
             this.Controls.Add(this.nameTxtbox);
             this.Controls.Add(this.nameLabel);
             this.Name = "SearchForm";
-            this.Text = "SearchForm";
+            this.Text = "Search Form";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
