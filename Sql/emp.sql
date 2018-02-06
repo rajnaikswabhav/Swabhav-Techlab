@@ -95,5 +95,46 @@ SELECT *, YEAR(GETDATE()) - YEAR(HIREDATE) AS WorkingYears FROM EMP;
 SELECT YEAR(GETDATE()); 
 
 --Display employeename which conatin 's'.
-SELECT ENAME FROM EMP
-WHERE CONTAINS(ENAME , 's'); 
+SELECT * FROM EMP
+WHERE ENAME LIKE '%s%' ; 
+
+--Display employeename which starts with 'a',
+SELECT * FROM EMP 
+WHERE ENAME LIKE 'a%';
+
+--Display employeeName which ends with 'n'.
+SELECT * FROM EMP
+WHERE ENAME LIKE '%n';
+
+--Display all employee which in department of scott.
+SELECT * FROM EMP
+WHERE DEPTNO = (
+SELECT DEPTNO FROM EMP WHERE ENAME = 'SCOTT'
+)
+
+--Display employee which salary same as scott.
+SELECT * FROM EMP
+WHERE SAL = (
+SELECT SAL FROM EMP WHERE ENAME = 'SCOTT'
+);
+
+--Display department details...
+SELECT DEPTNO FROM EMP
+ORDER BY DEPTNO ASC;
+
+--Display unique deparment...
+SELECT DISTINCT DEPTNO FROM EMP
+ORDER BY DEPTNO ASC; 
+
+--Display hiredate in dd/MM/yyyy format.
+SELECT *,HIREDATE = CONVERT(VARCHAR , HIREDATE ,103) FROM EMP; 
+
+--Display number of employees.
+SELECT COUNT(EMPNO) AS HEADCOUNT FROM EMP;
+
+--Display number of employee in dept Id.
+SELECT COUNT(DEPTNO) AS HEADCOUNT FROM EMP
+WHERE DEPTNO = 10;
+
+--Display SUM of salary.
+SELECT SUM(SAL) AS TOTALSALARY FROM EMP;

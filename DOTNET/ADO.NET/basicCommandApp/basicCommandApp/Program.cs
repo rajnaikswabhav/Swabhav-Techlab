@@ -11,6 +11,25 @@ namespace basicCommandApp
             var connectionString = ConfigurationManager.ConnectionStrings["DevelopmentServer"].ConnectionString;
 
             SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand("SELECT * FROM EMP",connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    Console.WriteLine(dataReader["EMPNO"]+","+dataReader["ENAME"]+ ","+dataReader["JOB"]+ ","+
+                        dataReader["MGR"]+ ","+ dataReader["HIREDATE"]+ ","+ dataReader["SAL"]+ ","+ dataReader["COMM"]+
+                        ","+dataReader["DEPTNO"] );
+                }
+
+                dataReader.Close();
+                connection.Close();
+            }
+            catch(Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
         }
     }
 }
