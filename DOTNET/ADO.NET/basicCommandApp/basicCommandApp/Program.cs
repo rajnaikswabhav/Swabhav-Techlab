@@ -8,10 +8,14 @@ namespace basicCommandApp
     {
         static void Main(string[] args)
         {
+        
             var connectionString = ConfigurationManager.ConnectionStrings["DevelopmentServer"].ConnectionString;
-
+            Console.WriteLine("Employee id: ");
+            string empId = Console.ReadLine();
             SqlConnection connection = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand("SELECT * FROM EMP",connection);
+            SqlCommand command = new SqlCommand("SELECT * FROM EMP WHERE EMPNO ="
+              +empId,connection);
+                      
             try
             {
                 connection.Open();

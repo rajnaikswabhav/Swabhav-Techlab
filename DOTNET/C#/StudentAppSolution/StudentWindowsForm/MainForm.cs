@@ -38,7 +38,6 @@ namespace StudentWindowsForm
         {
             loginForm.MdiParent = this;
             loginForm.Show();
-
         }
     }
 }
