@@ -138,3 +138,60 @@ WHERE DEPTNO = 10;
 
 --Display SUM of salary.
 SELECT SUM(SAL) AS TOTALSALARY FROM EMP;
+
+--Display employeeName and their department name.
+ SELECT DEPT.DNAME , EMP.ENAME
+ FROM EMP INNER JOIN DEPT 
+ ON  EMP.DEPTNO = DEPT.DEPTNO
+ ORDER BY EMP.DEPTNO
+ --Display all departments and employess if any.
+ SELECT DEPT.DNAME , EMP.ENAME 
+ FROM DEPT LEFT JOIN EMP 
+ ON DEPT.DEPTNO = EMP.DEPTNO;
+
+ --Display all department there is no employee.
+ SELECT DEPT.DNAME 
+ FROM DEPT LEFT JOIN EMP
+ ON DEPT.DEPTNO = EMP.DEPTNO
+ WHERE EMP.DEPTNO IS NULL  
+
+
+ --Display employeename and boss name.
+ SELECT A.ENAME AS BOSS , B.ENAME AS EMPLOYEE , A.EMPNO AS BOSSID, B.MGR AS EMPLOYEEID  
+ FROM EMP A,EMP B
+ WHERE A.EMPNO = B.MGR 
+ 
+ --Display department wise employess.
+ SELECT EMP.DEPTNO, COUNT(EMPNO) AS HEADCOUNT
+ FROM EMP
+ GROUP BY EMP.DEPTNO
+
+ --Display job wise employees.
+ SELECT EMP.JOB , COUNT(EMPNO) AS HEADCOUNT
+ FROM EMP
+ GROUP BY EMP.JOB
+
+ --Display department job wise employees.
+ SELECT EMP.DEPTNO , EMP.JOB ,COUNT(EMPNO) AS HEADCOUNT
+ FROM EMP
+ GROUP BY EMP.DEPTNO ,EMP.JOB
+
+ --Display department job wise employee count which is >= 2 ,asecending order of department wise.
+ SELECT EMP.DEPTNO , EMP.JOB , COUNT(EMPNO) AS HEADCOUNT
+ FROM EMP
+ GROUP BY EMP.DEPTNO , EMP.JOB
+ HAVING COUNT(EMPNO) >= 2
+ ORDER BY  EMP.DEPTNO ASC 
+ 
+ --Display employee name , departmnet name and, boss name. 
+ SELECT A.ENAME  AS EMPLOYEE,DEPT.DNAME AS DEPARTMENT ,B.ENAME AS BOSS  
+ FROM EMP A , EMP B  LEFT JOIN DEPT
+ ON B.DEPTNO = DEPT.DEPTNO
+ WHERE B.EMPNO = A.MGR 
+ ORDER BY B.DEPTNO 
+
+--Display employee name ,department name and,manager name which is deparment 20,30.
+SELECT A.ENAME AS EMPLOYEE,DEPT.DNAME ,B.ENAME AS BOSS  
+ FROM EMP A , EMP B  INNER JOIN DEPT
+ ON B.DEPTNO = DEPT.DEPTNO AND ((B.DEPTNO = 20 OR B.DEPTNO = 30) OR (B.MGR IS NULL))
+ WHERE B.EMPNO = A.MGR 

@@ -11,7 +11,7 @@ namespace BasicTransactionApp
             var connectionString = ConfigurationManager.ConnectionStrings["DevelopmentServer"].ConnectionString;
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand cmd1 = new SqlCommand("UPDATE Merchant SET balance = balance + 250",connection);
-            SqlCommand cmd2 = new SqlCommand("UPDATE Customer SET balance = balance - 250",connection);
+            SqlCommand cmd2 = new SqlCommand("UPDATE Customer SET balance = balance - '250.50'",connection);
 
             connection.Open();
             SqlTransaction transaction = connection.BeginTransaction();

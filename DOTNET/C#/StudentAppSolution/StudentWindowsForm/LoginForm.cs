@@ -29,6 +29,9 @@ namespace StudentWindowsForm
                 if (isValidPerson)
                 {
                     this.Hide();
+                    Form displayForm = new Form();
+                    displayForm.MdiParent = new MainForm();
+                    displayForm.Show();
                 }
                 else
                 {
