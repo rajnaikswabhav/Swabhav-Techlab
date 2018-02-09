@@ -86,7 +86,8 @@ SELECT * FROM EMP
 WHERE ENAME = 'SCOTT';
 
 --Display top 3 earnig salary employee.
-SELECT TOP 3*, SAL * 12 + ISNULL(COMM , 0) * 12 AS ANNSAL FROM EMP
+SELECT TOP 3*, SAL * 12 + ISNULL(COMM , 0) * 12 AS ANNSAL 
+FROM EMP
 ORDER BY ANNSAL DESC;
 
 -- Display years of working of employees.
