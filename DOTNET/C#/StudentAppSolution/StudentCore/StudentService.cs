@@ -28,15 +28,10 @@ namespace StudentCore
             return listOfStudent;
         }
 
-        public List<Student> SearchByName(string name) {
-            List<Student> filterList = new List<Student>();
-            IEnumerable<Student> searchByName = listOfStudent.Where((n) => n.StudentName.Equals(name));
-            foreach (var student in searchByName)
-            {
-                filterList.Add(student);
-            }
-            return filterList;
+        public List<Student> Search(System.Func<Student, bool> predicate)
+        {
+            return listOfStudent.Where(predicate).ToList();
         }
 
-       }
+    }
 }

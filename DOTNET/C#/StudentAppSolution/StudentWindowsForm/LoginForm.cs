@@ -8,7 +8,6 @@ namespace StudentWindowsForm
 {
     public partial class LoginForm : Form
     {
-        private bool isExcute ;
         public LoginForm()
         {
             InitializeComponent();
@@ -18,6 +17,7 @@ namespace StudentWindowsForm
         {
             string userName = userTextbox.Text;
             string password = passTextbox.Text;
+            
             if (userName.Equals("") || password.Equals(""))
             {
                 MessageBox.Show("Please Enter all details....");
@@ -29,18 +29,16 @@ namespace StudentWindowsForm
                 if (isValidPerson)
                 {
                     this.Hide();
-                    Form displayForm = new Form();
-                    displayForm.MdiParent = new MainForm();
-                    displayForm.Show();
+                    StudentForm studentForm = new StudentForm();
+                    studentForm.MdiParent = this.ParentForm;
+                    studentForm.Text = "Welcome @" + userName;
+                    studentForm.Show();
                 }
                 else
                 {
-                    isExcute = false;
                     MessageBox.Show("Invalid User....");
                 }
             }
         }
-
-        public bool IsExcute {get { return isExcute; } }
     }
 }

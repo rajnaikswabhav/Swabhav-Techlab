@@ -23,8 +23,10 @@ namespace StudentWindowsForm
             dataGridView2.Rows.Clear();
             dataGridView2.Show();
             var name = nameTxtbox.Text;
+            var id = ageTxt.Text;
             StudentService studentService = new StudentService();
-            studentList = studentService.SearchByName(name);
+            studentList = studentService.Search(s => s.StudentName.Contains(name) ||
+            s.Id.Contains(id));
 
             dataGridView2.ColumnCount = 4;
             dataGridView2.Columns[0].Name = "Student Name";

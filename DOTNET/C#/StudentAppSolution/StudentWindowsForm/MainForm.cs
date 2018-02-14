@@ -1,28 +1,22 @@
-﻿using System;
+﻿using StudentCore;
+using System;
 using System.Windows.Forms;
 
 namespace StudentWindowsForm
 {
     public partial class MainForm : Form
     {
-        private LoginForm loginForm = new LoginForm();
+        private string userName;
+        private string password;
+
+        private StudentForm studentForm = new StudentForm();
         public MainForm()
         {
             InitializeComponent();
-            studentFormToolStripMenuItem.Enabled = false;
-            searchToolStripMenuItem.Enabled = false;
-        }
-
-        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            loginForm.MdiParent = this;
-            loginForm.Show();
         }
 
         private void studentFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            StudentForm studentForm = new StudentForm();
             studentForm.MdiParent = this;
             studentForm.Show();
         }
@@ -30,12 +24,14 @@ namespace StudentWindowsForm
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SearchForm searchForm = new SearchForm();
+            searchForm.Text = "Welcome @" + userName;
             searchForm.MdiParent = this;
             searchForm.Show();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            LoginForm loginForm = new LoginForm();
             loginForm.MdiParent = this;
             loginForm.Show();
         }

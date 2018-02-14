@@ -134,8 +134,7 @@
             this.Controls.Add(this.age);
             this.Controls.Add(this.nameTextbox);
             this.Controls.Add(this.name);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "studetnForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

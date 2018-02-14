@@ -5,13 +5,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class _Default : System.Web.UI.Page
+public partial class welcome : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        String name = Request.QueryString["user"];
         if (!this.IsPostBack)
         {
-            Response.Write("<h1>Method Get...</h1>");
+            Response.Write("<h1>Welcome Mr."+name+"</h1>");
+
         }
         else
         {

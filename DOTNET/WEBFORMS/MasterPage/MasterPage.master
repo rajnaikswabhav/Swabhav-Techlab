@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:Menu ID="homeMenu" runat="server" Orientation="Horizontal" OnMenuItemClick="homeMenu_MenuItemClick">
+            <Items>
+                <asp:MenuItem Text="Home" Value="home" NavigateUrl="~/homePage.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Career" Value="career" NavigateUrl="~/careerPage.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="About" Value="about" NavigateUrl="~/aboutPage.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Transaction" Value="transaction" NavigateUrl="~/Transaction.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Passbook" Value="passbook" NavigateUrl="~/Passbook.aspx"></asp:MenuItem>
+            </Items>
+        </asp:Menu>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

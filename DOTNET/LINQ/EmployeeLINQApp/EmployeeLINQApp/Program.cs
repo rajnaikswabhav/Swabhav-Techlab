@@ -219,15 +219,20 @@ namespace EmployeeLINQApp
             //    Console.WriteLine(detail.EmployeeName+","+detail.DeptName);
             //}
 
-            var diplayAllDepartments = (from emp in listOfEmployee
-                                        join dept in listOfDepartment
-                                        on emp.DepartmentNo equals dept.DeptId into deptInfo 
-                                        from dept1 in deptInfo.DefaultIfEmpty() 
-                                        select new { dept1.DeptName , emp.EmployeeName }).ToList();
-            foreach(var detail in diplayAllDepartments)
-            {
-                Console.WriteLine(detail.DeptName+","+detail.EmployeeName);
-            }
+            //var diplayAllDepartments = (from dept in listOfDepartment
+            //                            join emp in listOfEmployee
+            //                            on dept.DeptId equals emp.DepartmentNo
+            //                            select new { dept.DeptName , emp.EmployeeName });
+            //foreach(var detail in diplayAllDepartments)
+            //{
+            //    Console.WriteLine(detail.DeptName+","+detail.EmployeeName);
+            //}
+
+            var displayDepartmentThereIsNoEmp = (from dept in listOfDepartment
+                                                 join emp in listOfEmployee
+                                                 on dept.DeptId equals emp.DepartmentNo
+                                                 where dept.DeptId
+                                                  )
 
         }
     }
