@@ -13,14 +13,19 @@ namespace WelcomeMVCApp.Controllers
             return "<br><h1>Hello Says MVC Action Method</h1>";
         }
 
-        public ActionResult getDept(int id)
+        public ActionResult getDept(Nullable<int> id)
         {
             return Content("<h1>Display Employees in department "+id+"</h1>");
         }
 
-        public ActionResult getEmp(int rollNo)
+        public ActionResult getEmp(Nullable<int> rollNo)
         {
             return Content("<h1>Display Employee of RollNo "+rollNo+"</h1>");
+        }
+         
+        public ActionResult Index()
+        {
+            return View();
         }
     }
 }

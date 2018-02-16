@@ -1,0 +1,12 @@
+CREATE TABLE Bookmark (
+ID int NOT NULL IDENTITY(1,1) ,
+UNAME VARCHAR(20) NOT NULL,
+UPASS VARCHAR(12) NOT NULL,
+ULOC VARCHAR(20) NOT NULL,
+PRIMARY KEY (ID),
+);
+
+INSERT INTO Bookmark VALUES ('Akash','akash','Ahmedabad');
+INSERT INTO Bookmark VALUES ('Parth','parth','Ahmedabad');
+
+SELECT * FROM Bookmark;

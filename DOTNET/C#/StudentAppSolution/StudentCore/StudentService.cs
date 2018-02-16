@@ -19,7 +19,6 @@ namespace StudentCore
 
         public void AddStudent(List<Student> studentList)
         {
-            Console.WriteLine("Inside Add student....");
             dataSaver.Save(studentList);
         }
 

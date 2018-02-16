@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = null;
+    //ViewBagAndDataApp.Models.Employee empDetails = (ViewBagAndDataApp.Models.Employee) ViewData["EmployeeDetails"];
+    ViewBagAndDataApp.Models.Employee empDetails = ViewBag.EmployeeDetails;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Employee View</title>
+</head>
+<body>
+    <div> 
+        <h1>Using ViewData</h1>
+        Name : @empDetails.Name <br />
+        Age : @empDetails.Age <br />
+        Email : @empDetails.Email <br />
+        City : @empDetails.City <br />
+    </div>
+</body>
+</html>

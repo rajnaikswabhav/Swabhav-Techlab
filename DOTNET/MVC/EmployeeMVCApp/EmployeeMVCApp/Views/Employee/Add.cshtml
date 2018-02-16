@@ -1,0 +1,34 @@
+﻿@using EmployeeMVCApp.ViewModel;
+@model AddViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    @using (Html.BeginForm("Add", "Employee", FormMethod.Post))
+    {
+        <p>
+            EmpId : @Html.TextBox("id")
+        </p>
+        <p>
+            Name : @Html.TextBox("name")
+        </p>
+        <p>
+            Salary : @Html.TextBox("salary")
+        </p>
+        <p>
+            DeptNo : @Html.TextBox("deptNo")
+        </p>
+
+        <input type="submit" />
+    }
+</body>
+</html>

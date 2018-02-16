@@ -1,10 +1,6 @@
 ﻿using StudentCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 public partial class StudentAdd : System.Web.UI.Page
 {
@@ -17,7 +13,7 @@ public partial class StudentAdd : System.Web.UI.Page
 
     public void Add(object sender, EventArgs e)
     {
-        
+
         Student student = new Student(nameTxt.Text, int.Parse(ageTxt.Text), locationTxt.Text);
         studentList.Add(student);
         studentService.AddStudent(studentList);

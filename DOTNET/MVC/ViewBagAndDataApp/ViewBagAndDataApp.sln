@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookmarkCore", "BookmarkCore\BookmarkCore.csproj", "{18952DAC-6A44-49F8-81B4-3CD7F84949C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewBagAndDataApp", "ViewBagAndDataApp\ViewBagAndDataApp.csproj", "{ED0699C8-EBE5-4FAE-8939-1B810C2A5C2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{18952DAC-6A44-49F8-81B4-3CD7F84949C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18952DAC-6A44-49F8-81B4-3CD7F84949C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18952DAC-6A44-49F8-81B4-3CD7F84949C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18952DAC-6A44-49F8-81B4-3CD7F84949C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED0699C8-EBE5-4FAE-8939-1B810C2A5C2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED0699C8-EBE5-4FAE-8939-1B810C2A5C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED0699C8-EBE5-4FAE-8939-1B810C2A5C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED0699C8-EBE5-4FAE-8939-1B810C2A5C2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

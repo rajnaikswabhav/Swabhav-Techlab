@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookmarkCore", "BookmarkCore\BookmarkCore.csproj", "{18952DAC-6A44-49F8-81B4-3CD7F84949C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeMVCApp", "EmployeeMVCApp\EmployeeMVCApp.csproj", "{3A2EE149-72D6-4045-A5EE-338B6572997B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{18952DAC-6A44-49F8-81B4-3CD7F84949C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18952DAC-6A44-49F8-81B4-3CD7F84949C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18952DAC-6A44-49F8-81B4-3CD7F84949C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18952DAC-6A44-49F8-81B4-3CD7F84949C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A2EE149-72D6-4045-A5EE-338B6572997B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A2EE149-72D6-4045-A5EE-338B6572997B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A2EE149-72D6-4045-A5EE-338B6572997B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A2EE149-72D6-4045-A5EE-338B6572997B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <h1>Index View of WelcomeController</h1>
+        @for(int i=1; i<=6; i++){
+            @Html.Raw("<h"+@i+">Swabhav Techlabs</h"+@i+">");
+        }
+    </div>
+</body>
+</html>
