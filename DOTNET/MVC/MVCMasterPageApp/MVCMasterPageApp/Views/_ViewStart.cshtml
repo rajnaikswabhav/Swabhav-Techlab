@@ -1,0 +1,13 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_MasterPageLayout.cshtml";
+}
+@if (Request.Browser.IsMobileDevice)
+{
+    <h2>Mobile Layout</h2>
+}
+else {
+    <h2>Desktop Layout</h2>
+}
+

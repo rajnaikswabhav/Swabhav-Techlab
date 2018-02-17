@@ -69,5 +69,18 @@ namespace EmployeeMVCApp.Controllers
             empService.Delete(id);
             return RedirectToAction("Index");
         }
+
+        public ActionResult Search()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Search(string name)
+        {
+            var searchEmp = empService.Search(name);
+            return Json(searchEmp,JsonRequestBehavior.AllowGet);
+        }
     }
 }

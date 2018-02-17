@@ -48,5 +48,11 @@ namespace EmployeeMVCApp.Services
             var emp = listOfEmployee.Where(e => e.Id == id).Single();
             listOfEmployee.Remove(emp);
         }
+
+        public List<Employee> Search(string name)
+        {
+            var emp = listOfEmployee.Where(e => e.Name.Contains(name)).ToList();
+            return emp;
+        }
     }
 }

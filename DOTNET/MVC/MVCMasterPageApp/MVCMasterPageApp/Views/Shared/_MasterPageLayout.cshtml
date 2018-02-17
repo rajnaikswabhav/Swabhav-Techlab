@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "_MasterPageLayout";
+}
+
+<table>
+    <tr>
+        <td>@Html.ActionLink("Index", "Index", "Home")</td>
+        <td>@Html.ActionLink("AboutUs", "AboutUs", "Home")</td>
+        <td>@Html.ActionLink("Contact", "Contact", "Home")</td>
+        <td>@Html.ActionLink("Career", "Career", "Home")</td>
+    </tr>
+    <tr>
+        <td colspan="4"><section>@RenderBody()</section></td>
+    </tr>
+    <tr>
+        <td colspan="4">CopyRight &copy; @DateTime.Now.Year - My MVCMasterPage Application</td>
+        <td></td>
+    </tr>
+</table>
+

@@ -27,5 +27,17 @@ namespace WelcomeMVCApp.Controllers
         {
             return View();
         }
+
+        public ActionResult GetData()
+        {
+            var list =
+                new []{
+                   new { id = 101,name = "Akash" },
+                   new { id = 102 , name = "Brijesh"},
+                   new {id = 103 , name = "Parth"}
+                };
+
+            return Json(list,JsonRequestBehavior.AllowGet);
+        }
     }
 }

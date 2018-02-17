@@ -1,0 +1,49 @@
+﻿@using EmployeeMVCApp.Models;
+
+@model Employee
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/scripts/jquery-3.3.1.js"></script>
+    <title>Search</title>
+</head>
+<body>
+    <p>
+        Search <input type="text" id="searchTxt" />
+        <button id="findBtn">Find</button>
+    </p>
+    <div id="tableDiv">
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#findBtn").click(function () {
+                var display = $("#tableDiv");
+                $.post("http://localhost:50168/Employee/Search",
+                    {
+                        name: $("#searchTxt").val()
+                    },
+
+                    function (response, status) {
+                        var output = "<table border='1'><thead><tr><th>Id</th><th>Name</th><th>Salary" +
+                            "</th><th>DeptNo</th></tr></thead><tbody>";
+
+                        for (var r in response) {
+                            output += "<tr><td align='center'> " + response[r].Id + " </td><td align='center'>"
+                                   + response[r].Name + " </td><td align='center'> " + response[r].Salary +
+                                   " </td><td align='center'>  " + response[r].DeptNo + "</td></tr>";
+                        }
+
+                        output += "</tbody></table>";
+                        display.html(output);
+                    });
+            });
+        });
+    </script>
+</body>
+</html>
