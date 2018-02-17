@@ -1,0 +1,40 @@
+﻿@using EmployeeDropdownApp.ViewModel;
+@model DeptViewModel
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/scripts/jquery-3.3.1.js"></script>
+<br /><br />
+<center>
+    @Html.DropDownListFor(m => m.DNames, Model.DNames, "--Select");
+
+    <br /><br /><br /><br />
+    <div id="tableDiv"></div>
+</center>
+<script>
+    $(document).ready(function () {
+        $("#DNames").change(function () {
+            var display = $("#tableDiv");
+
+            $.post("http://localhost:50816/Home/Index",
+                {
+                    deptNo: $("#DNames option:selected").val()
+                },
+
+                function (response, status) {
+                    var output = "<table border='1'><thead><tr><th>Id</th><th>Name</th><th>Salary" +
+                        "</th><th>DeptNo</th></tr></thead><tbody>";
+
+                    for (var r in response) {
+                        output += "<tr><td align='center'> " + response[r].Id + " </td><td align='center'>"
+                               + response[r].Name + " </td><td align='center'> " + response[r].Salary +
+                               " </td><td align='center'>  " + response[r].DeptNo + "</td></tr>";
+                    }
+
+                    output += "</tbody></table>";
+                    display.html(output);
+                });
+        });
+    });
+</script>
+

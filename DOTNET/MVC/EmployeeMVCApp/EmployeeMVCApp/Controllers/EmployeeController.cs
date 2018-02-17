@@ -4,6 +4,7 @@ using EmployeeMVCApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -80,6 +81,7 @@ namespace EmployeeMVCApp.Controllers
         public ActionResult Search(string name)
         {
             var searchEmp = empService.Search(name);
+            Thread.Sleep(2000);
             return Json(searchEmp,JsonRequestBehavior.AllowGet);
         }
     }
