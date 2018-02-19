@@ -35,6 +35,7 @@
             this.passLabel = new System.Windows.Forms.Label();
             this.registerLabel = new System.Windows.Forms.Label();
             this.loginBtn = new System.Windows.Forms.Button();
+            this.signupLabel = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -50,53 +51,52 @@
             // userNameLabel
             // 
             this.userNameLabel.AutoSize = true;
-            this.userNameLabel.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNameLabel.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userNameLabel.Location = new System.Drawing.Point(215, 128);
             this.userNameLabel.Name = "userNameLabel";
-            this.userNameLabel.Size = new System.Drawing.Size(96, 22);
+            this.userNameLabel.Size = new System.Drawing.Size(64, 15);
             this.userNameLabel.TabIndex = 1;
             this.userNameLabel.Text = "UserName";
             // 
             // userTxt
             // 
-            this.userTxt.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userTxt.Location = new System.Drawing.Point(345, 129);
+            this.userTxt.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userTxt.Location = new System.Drawing.Point(304, 129);
             this.userTxt.Name = "userTxt";
-            this.userTxt.Size = new System.Drawing.Size(100, 26);
+            this.userTxt.Size = new System.Drawing.Size(186, 22);
             this.userTxt.TabIndex = 2;
             // 
             // passTxt
             // 
-            this.passTxt.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passTxt.Location = new System.Drawing.Point(345, 222);
+            this.passTxt.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passTxt.Location = new System.Drawing.Point(304, 192);
             this.passTxt.Name = "passTxt";
             this.passTxt.PasswordChar = '*';
-            this.passTxt.Size = new System.Drawing.Size(100, 26);
+            this.passTxt.Size = new System.Drawing.Size(186, 22);
             this.passTxt.TabIndex = 4;
             // 
             // passLabel
             // 
             this.passLabel.AutoSize = true;
-            this.passLabel.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passLabel.Location = new System.Drawing.Point(215, 221);
+            this.passLabel.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passLabel.Location = new System.Drawing.Point(215, 193);
             this.passLabel.Name = "passLabel";
-            this.passLabel.Size = new System.Drawing.Size(90, 22);
+            this.passLabel.Size = new System.Drawing.Size(59, 15);
             this.passLabel.TabIndex = 3;
             this.passLabel.Text = "Password";
             // 
             // registerLabel
             // 
             this.registerLabel.AutoSize = true;
-            this.registerLabel.Location = new System.Drawing.Point(219, 325);
+            this.registerLabel.Location = new System.Drawing.Point(74, 248);
             this.registerLabel.Name = "registerLabel";
             this.registerLabel.Size = new System.Drawing.Size(46, 13);
             this.registerLabel.TabIndex = 5;
             this.registerLabel.Text = "Register";
-            this.registerLabel.Click += new System.EventHandler(this.registerLabel_Click);
             // 
             // loginBtn
             // 
-            this.loginBtn.Location = new System.Drawing.Point(294, 279);
+            this.loginBtn.Location = new System.Drawing.Point(291, 243);
             this.loginBtn.Name = "loginBtn";
             this.loginBtn.Size = new System.Drawing.Size(75, 23);
             this.loginBtn.TabIndex = 6;
@@ -104,11 +104,23 @@
             this.loginBtn.UseVisualStyleBackColor = true;
             this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
             // 
+            // signupLabel
+            // 
+            this.signupLabel.AutoSize = true;
+            this.signupLabel.Location = new System.Drawing.Point(391, 248);
+            this.signupLabel.Name = "signupLabel";
+            this.signupLabel.Size = new System.Drawing.Size(74, 13);
+            this.signupLabel.TabIndex = 7;
+            this.signupLabel.TabStop = true;
+            this.signupLabel.Text = "Sign Up Here.";
+            this.signupLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.signupLabel_LinkClicked);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 480);
+            this.Controls.Add(this.signupLabel);
             this.Controls.Add(this.loginBtn);
             this.Controls.Add(this.registerLabel);
             this.Controls.Add(this.passTxt);
@@ -132,5 +144,6 @@
         private System.Windows.Forms.Label passLabel;
         private System.Windows.Forms.Label registerLabel;
         private System.Windows.Forms.Button loginBtn;
+        private System.Windows.Forms.LinkLabel signupLabel;
     }
 }

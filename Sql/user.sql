@@ -6,7 +6,27 @@ ULOC VARCHAR(20) NOT NULL,
 PRIMARY KEY (ID),
 );
 
-INSERT INTO Bookmark VALUES ('Akash','akash','Ahmedabad');
-INSERT INTO Bookmark VALUES ('Parth','parth','Ahmedabad');
+ALTER TABLE Bookmark 
+ADD EMAIL VARCHAR(20);
+
+INSERT INTO Bookmark VALUES ('Akash','akash','Ahmedabad',NULL);
+INSERT INTO Bookmark VALUES ('Parth','parth','Ahmedabad','parth@parth.com');
+
+DELETE FROM Bookmark
+WHERE ID=3;
+DELETE FROM Bookmark
+WHERE ID=4; 
+
+ALTER TABLE Bookmark
+ALTER COLUMN EMAIL VARCHAR(244);
+
+ALTER TABLE Bookmark
+ALTER COLUMN ULOC VARCHAR(244);
 
 SELECT * FROM Bookmark;
+
+CREATE TABLE UserBookmarks(
+BNAME VARCHAR(255) NOT NULL,
+bookmarkId int ,
+CONSTRAINT fk_bookmarkId FOREIGN KEY (bookmarkId) REFERENCES Bookmark(ID)
+);

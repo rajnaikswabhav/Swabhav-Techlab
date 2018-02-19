@@ -26,11 +26,6 @@ namespace BookmarkCore
                 {
                     return true;
                 }
-                else
-                {
-
-                    return false;
-                }
             }
             reader.Close();
             connection.Close();
@@ -40,13 +35,12 @@ namespace BookmarkCore
         public void RegisterUser(User user)
         {
             connection.Open();
-            SqlCommand cmd = new SqlCommand("Insert Into Bookmark(UNAME,UPASS,ULOC,EMAIL) Values (@UNAME,@UPASS,@ULOC,@EMAIL)", connection);
+            SqlCommand cmd = new SqlCommand("Insert Into Bookmark Values (@UNAME,@UPASS,@ULOC,@EMAIL)", connection);
             cmd.Parameters.AddWithValue("@UNAME", user.UserName);
             cmd.Parameters.AddWithValue("@UPASS", user.Password);
             cmd.Parameters.AddWithValue("@ULOC", user.Location);
             cmd.Parameters.AddWithValue("@EMAIL", user.Email);
-
-            cmd.ExecuteNonQuery();
+            int i = cmd.ExecuteNonQuery();
             connection.Close();
         }
 
@@ -54,11 +48,10 @@ namespace BookmarkCore
         {
             var fromAddress = new MailAddress("akashmalaviya001@gmail.com", "BookmarkApp Team");
             var toAddress = new MailAddress(emailId, userName);
-            const string fromPassword = "firetigo";
             string otp = GenerateOTP();
             const string subject = "Verify Email Address";
             string body = "Hello "+userName+" You recive this email because you register"
-                +"with BookmarkApp. Your OTP is " + otp;
+                +" with BookmarkApp. Your OTP is " + otp;
 
             var smtp = new SmtpClient
             {
@@ -78,9 +71,7 @@ namespace BookmarkCore
 
             }) {
                 smtp.Send(message);
-                return "Mail has been successfully sent.";
             }
-
             return otp;
         }
 
@@ -101,6 +92,12 @@ namespace BookmarkCore
                 otp += number;
             }
             return otp;
+        }
+
+        public void Save(string url)
+        {
+            connection.Open();
+            SqlCommand cmd = new SqlCommand("Insert Into UserBookmark VALUES()");
         }
     }
 }

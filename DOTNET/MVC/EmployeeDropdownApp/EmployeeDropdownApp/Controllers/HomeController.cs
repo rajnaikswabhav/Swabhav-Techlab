@@ -3,6 +3,7 @@ using EmployeeDropdownApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -23,6 +24,7 @@ namespace EmployeeDropdownApp.Controllers
         public ActionResult Index(string deptNo)
         {
             var employees = empService.GetEmployees(deptNo);
+            Thread.Sleep(2000);
             return Json(employees , JsonRequestBehavior.AllowGet);
         }
     }

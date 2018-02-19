@@ -1,11 +1,19 @@
 ﻿using BookmarkCore;
 using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace BookmarkApplication
 {
     public partial class Register : Form
     {
+        private BookmarkService service = new BookmarkService();
+        private string otp;
+        private string userName;
+        private string pass;
+        private string email;
+        private string location;
+
         public Register()
         {
             InitializeComponent();
@@ -13,31 +21,31 @@ namespace BookmarkApplication
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
-            var userName = userNameTxt.Text;
-            var pass = passTxtBox.Text;
-            var email = emailTxtBox.Text;
-            var location = locationTxtBox.Text;
-          
-            BookmarkService service = new BookmarkService();
-            string otp = service.VerifyByEmail(email,userName);
-
-            VerifyOTP verify = new VerifyOTP();
+            userName = userNameTxt.Text;
+            pass = passTxtBox.Text;
+            email = emailTxtBox.Text;
+            location = locationTxtBox.Text;
+            otp = service.VerifyByEmail(email, userName);
+            VerifyOTP verify = new VerifyOTP(this);
             verify.Show();
+        }
 
-            if (userOTP.Equals(otp)) {
-                User user = new User(userName,pass,email,location);
+        public void VerifyOTP(string userOTP)
+        {
+            if (userOTP.Equals(otp))
+            {
+                User user = new User(userName, pass, email, location);
                 service.RegisterUser(user);
-                detailLabel.Text = "You are register With us.Please go to login page and login"+
+                detailLabel.Text = "You are register With us.Please go to login page and login" +
                     "with your username and password.";
-                this.Close();
+                Thread.Sleep(2000);
+                this.Show(Parent);
             }
             else
             {
-                detailLabel.Text = "Something went wrong.Again Register your self.";
                 this.Refresh();
+                detailLabel.Text = "Something went wrong.Again Register your self.";
             }
         }
-
-        public string userOTP { get; set; }
     }
 }

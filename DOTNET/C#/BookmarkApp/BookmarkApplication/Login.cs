@@ -28,14 +28,15 @@ namespace BookmarkApplication
                 registerLabel.Text = "Login Success";
             }
             else {
-                registerLabel.Text = "";
+                registerLabel.Text = "Login Failed...";
             }
         }
 
-        private void registerLabel_Click(object sender, EventArgs e)
+        private void signupLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Register register = new Register();
             register.MdiParent = this.ParentForm;
+            this.Hide();
             register.Show();
         }
     }
