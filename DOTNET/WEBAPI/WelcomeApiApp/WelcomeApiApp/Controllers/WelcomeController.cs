@@ -15,7 +15,7 @@ namespace WelcomeApiApp.Controllers
 
         public IHttpActionResult Post()
         {
-            return InternalServerError();
+            throw new Exception();
         }
 
         public IHttpActionResult Put() {

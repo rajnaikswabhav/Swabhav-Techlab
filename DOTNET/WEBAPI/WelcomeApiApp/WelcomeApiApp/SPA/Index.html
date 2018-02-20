@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+    <meta charset="utf-8" />
+    <script src="../scripts/jquery-3.3.1.js"></script>
+</head>
+<body>
+    <h1>This is Index page..</h1><br />
+    <button type="button" id="getBtn">Get All Data</button>
+    <button type="button" id="addBtn" style="margin-left:10px">Add Students</button>
+    <br /><br /><br />
+    <div id="studentFormDiv" hidden>
+        Student Id : <input type="text" id="id"><br />
+        Student Name : <input type="text" id="name"><br />
+        Age : <input type="text" id="age"><br />
+        Location : <input type="text" id="location"><br />
+        <button type="button" id="add">Add</button>
+    </div><br />
+    <div id="tableDiv"></div>
+</body>
+<script>
+    $(document).ready(function () {
+        $("#getBtn").click(function () {
+            var display = $("#tableDiv");
+
+            $.get("http://localhost:50365/api/v1/SwabhavTechlab/Student/GetAllStudents",
+
+                function (response, status) {
+                    var output = "<table border='1'><thead><tr><th>Id</th><th>Name" +
+                        "</th><th>Age</th><th>Location</th><th>Event</th></tr></thead><tbody>";
+                    console.log(response);
+                    for (var r in response) {
+                        output += "<tr><td align='center'> " + response[r].Id + " </td><td align='center'>"
+                               + response[r].StudentName + " </td><td align='center'> " + response[r].Age +
+                               " </td><td align='center'>  " + response[r].Address +
+                               "</td><td><button id='editBtn'>Edit</button>"+
+                               "<button id='deleteBtn'>Delete</button></td></tr>";
+                    }
+
+                    output += "</tbody></table>";
+                    display.html(output);
+                });
+        });
+
+        $("#addBtn").click(function () {
+            $("#studentFormDiv").show();
+            $("#add").click(function () {
+
+                var name = $("#name").val();
+                var age = $("#age").val();
+                var location = $("#location").val();
+                var id = $("#id").val();
+
+                var student = JSON.stringify({
+                    StudentName: "Rahul",
+                    Age: 30,
+                    Address: "Delhi",
+                    Id: 120
+                });
+                console.log(student);
+
+                $.post("http://localhost:50365/api/v1/SwabhavTechlab/Student/AddStudent",
+                    {
+                        StudentName: name,
+                        Age: age,
+                        Address: location,
+                        Id: id
+                    },
+                    function (response, status) {
+                        alert("Data Inserted: " + response);
+                    });
+            });
+            $("#name").val("");
+            $("#age").val("");
+            $("#location").val("");
+            $("#id").val("");
+        });
+
+        $("#editBtn").click(function () {
+
+        });
+    });
+</script>
+
+</html>

@@ -30,3 +30,10 @@ BNAME VARCHAR(255) NOT NULL,
 bookmarkId int ,
 CONSTRAINT fk_bookmarkId FOREIGN KEY (bookmarkId) REFERENCES Bookmark(ID)
 );
+
+INSERT INTO UserBookmarks(BNAME,bookmarkId) VALUES(
+'www.google.com' ,1
+)
+
+SELECT * FROM UserBookmarks
+

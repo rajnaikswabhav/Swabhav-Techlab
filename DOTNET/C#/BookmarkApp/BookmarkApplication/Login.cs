@@ -25,9 +25,14 @@ namespace BookmarkApplication
             BookmarkService service = new BookmarkService();
             if (service.CheckLogin(userName, password))
             {
-                registerLabel.Text = "Login Success";
+                UserForm userForm = new UserForm(userName);
+                userForm.MdiParent = this.ParentForm;
+                userForm.Show();
+                this.Hide();
+
             }
             else {
+                this.Refresh();
                 registerLabel.Text = "Login Failed...";
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
@@ -94,10 +95,38 @@ namespace BookmarkCore
             return otp;
         }
 
-        public void Save(string url)
+        public void Save(string url,int id)
         {
             connection.Open();
-            SqlCommand cmd = new SqlCommand("Insert Into UserBookmark VALUES()");
+            SqlCommand cmd = new SqlCommand("Insert Into UserBookmarks VALUES(@BNAME,@bookmarkId)",connection);
+            cmd.Parameters.AddWithValue("@BNAME",url);
+            cmd.Parameters.AddWithValue("@bookmarkId",id);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public string GetUserByName(string userName)
+        {
+            connection.Open();
+            SqlCommand cmd = new SqlCommand("Select ID From Bookmark where UNAME="+userName,connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                return reader["ID"].ToString();
+            }
+            return  null ;
+        }
+
+        public DataSet GetBookmarks(int id)
+        {
+            connection.Open();
+            SqlCommand cmd = new SqlCommand("Select BNAME From UserBookmarks Where bookmarkId="+id,connection);
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataSet dataSet = new DataSet();
+            adapter.SelectCommand = cmd;
+            adapter.Fill(dataSet);
+
+            return dataSet;
         }
     }
 }

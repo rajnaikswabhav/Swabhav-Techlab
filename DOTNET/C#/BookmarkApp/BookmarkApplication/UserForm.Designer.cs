@@ -32,6 +32,8 @@
             this.urlTxt = new System.Windows.Forms.TextBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.logoutBtn = new System.Windows.Forms.Button();
+            this.showBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +56,7 @@
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(596, 36);
+            this.saveBtn.Location = new System.Drawing.Point(89, 88);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(75, 23);
             this.saveBtn.TabIndex = 2;
@@ -70,11 +72,33 @@
             this.dataGridView1.Size = new System.Drawing.Size(240, 150);
             this.dataGridView1.TabIndex = 3;
             // 
+            // logoutBtn
+            // 
+            this.logoutBtn.Location = new System.Drawing.Point(479, 88);
+            this.logoutBtn.Name = "logoutBtn";
+            this.logoutBtn.Size = new System.Drawing.Size(75, 23);
+            this.logoutBtn.TabIndex = 4;
+            this.logoutBtn.Text = "Logout";
+            this.logoutBtn.UseVisualStyleBackColor = true;
+            this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
+            // 
+            // showBtn
+            // 
+            this.showBtn.Location = new System.Drawing.Point(285, 88);
+            this.showBtn.Name = "showBtn";
+            this.showBtn.Size = new System.Drawing.Size(75, 23);
+            this.showBtn.TabIndex = 5;
+            this.showBtn.Text = "Show";
+            this.showBtn.UseVisualStyleBackColor = true;
+            this.showBtn.Click += new System.EventHandler(this.showBtn_Click);
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(683, 464);
+            this.Controls.Add(this.showBtn);
+            this.Controls.Add(this.logoutBtn);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.urlTxt);
@@ -93,5 +117,7 @@
         private System.Windows.Forms.TextBox urlTxt;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button logoutBtn;
+        private System.Windows.Forms.Button showBtn;
     }
 }
