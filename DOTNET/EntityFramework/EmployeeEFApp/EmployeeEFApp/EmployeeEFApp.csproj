@@ -54,12 +54,37 @@
     <Compile Include="Department.cs" />
     <Compile Include="EmpDbContext.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Migrations\201802201401184_InitialCreate.cs" />
+    <Compile Include="Migrations\201802201401184_InitialCreate.Designer.cs">
+      <DependentUpon>201802201401184_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802210606029_Add_Insert_Indetity.cs" />
+    <Compile Include="Migrations\201802210606029_Add_Insert_Indetity.Designer.cs">
+      <DependentUpon>201802210606029_Add_Insert_Indetity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802210628399_Add_NullValue.cs" />
+    <Compile Include="Migrations\201802210628399_Add_NullValue.Designer.cs">
+      <DependentUpon>201802210628399_Add_NullValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802201401184_InitialCreate.resx">
+      <DependentUpon>201802201401184_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802210606029_Add_Insert_Indetity.resx">
+      <DependentUpon>201802210606029_Add_Insert_Indetity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802210628399_Add_NullValue.resx">
+      <DependentUpon>201802210628399_Add_NullValue.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

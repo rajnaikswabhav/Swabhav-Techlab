@@ -1,0 +1,138 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="euphoriaApp">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <!-- load bootstrap and fontawesome via CDN -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <style>
+        html, body, input, select, textarea {
+            font-size: 1.05em !important;
+        }
+    </style>
+
+</head>
+<body>
+
+
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Euphoria Master !!</a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-home"></i> Organizers</a></li>
+                    <li><a href="#"><i class="fa fa-home"></i> Exhibitors</a></li>
+                </ul>
+
+               
+            </div>
+        </nav>
+    </header>
+
+    <div> 
+
+        
+
+
+        <body ng-controller="OrganizerCtrl">
+
+            <h1>{{Message}} </h1>
+            <h2>Contacts Manager</h2>
+            ID :
+            <br />
+            <input type="text" ng-model="contact.ID" required="required" />
+            <input type="button" value="Get Details" class="button" ng-click="fnSearch()" />
+            <span id="error"></span>
+            <p />
+            FirstName:
+            <br />
+            <input type="text" ng-model="contact.FirstName" />
+            <p />
+            LastName:
+            <br />
+            <input type="text" ng-model="contact.LastName" />
+            <p />
+            <input type="button" value="Delete" class="button" ng-click="fnDelete()" />
+            <input type="button" value="Update" class="button" ng-click="fnUpdate()" />
+            <input type="button" value="Add" class="button" ng-click="fnAdd()" />
+            <p />
+
+            <fieldset>
+                <legend>Contacts</legend>
+                <ul ng-repeat="c in contacts">
+                    <li>{{c.ID}}</li>
+                    <li>{{c.FirstName}}</li>
+                    <li>{{c.LastName}}</li>
+                </ul>
+
+                <table border='1'>
+                    <tr>
+                        <th>Tenant Id</th>
+                        <th>Name </th>
+                        <th>Description</th>
+                        <th>CreatedOn</th>
+                        <th>CreatedBy</th>
+                        <th>LastModifiedOn</th>
+                        <th>LastModifiedBy</th>
+                    </tr>
+
+
+                    <tr ng-repeat="c in contacts">
+
+                        <td>{{c.ID}}  </td>
+
+                        <td>{{c.FirstName}} </td>
+
+                        <td> {{c.LastName}}</td>
+                    </tr>
+
+
+
+                </table>
+            </fieldset>
+
+
+        </body>
+
+
+
+    </div>
+
+    <script src="https://code.angularjs.org/1.4.8/angular.js"></script>
+    <script src="https://code.angularjs.org/1.4.8/angular-resource.js"></script>
+   
+    <script>
+
+        var euphoriaApp = angular.module('euphoriaApp', ['ngResource']);
+        euphoriaApp.factory('organizerSVC', ['$resource', function ($resource) {
+
+            console.log('In factory');
+            return $resource("http://localhost:51205/api/v1/organizers/",{ callback: "JSON_CALLBACK" }, { get: { method: "JSONP" } });;
+        }]);
+
+
+        euphoriaApp.controller('OrganizerCtrl', ['$scope', '$resource', 'organizerSVC', function ($scope, $resource, organizerSVC) {
+
+            organizerSVC.query(function (data) {
+                console.log(data[0].name);
+            });
+
+
+        }])
+
+
+    </script>
+
+
+
+</body>
+</html>

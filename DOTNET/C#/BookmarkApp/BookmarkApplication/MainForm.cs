@@ -21,6 +21,7 @@ namespace BookmarkApplication
         {
             Login login = new Login();
             login.MdiParent = this;
+            login.WindowState = FormWindowState.Maximized;
             login.Show();
         }
     }

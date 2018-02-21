@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -51,8 +52,8 @@ namespace BookmarkCore
             var toAddress = new MailAddress(emailId, userName);
             string otp = GenerateOTP();
             const string subject = "Verify Email Address";
-            string body = "Hello "+userName+" You recive this email because you register"
-                +" with BookmarkApp. Your OTP is " + otp;
+            string body = "Hello " + userName + " You recive this email because you register"
+                + " with BookmarkApp. Your OTP is " + otp;
 
             var smtp = new SmtpClient
             {
@@ -70,7 +71,8 @@ namespace BookmarkCore
                 Subject = subject,
                 Body = body
 
-            }) {
+            })
+            {
                 smtp.Send(message);
             }
             return otp;
@@ -95,38 +97,67 @@ namespace BookmarkCore
             return otp;
         }
 
-        public void Save(string url,int id)
+        public void Save(string url, int id)
         {
             connection.Open();
-            SqlCommand cmd = new SqlCommand("Insert Into UserBookmarks VALUES(@BNAME,@bookmarkId)",connection);
-            cmd.Parameters.AddWithValue("@BNAME",url);
-            cmd.Parameters.AddWithValue("@bookmarkId",id);
+            SqlCommand cmd = new SqlCommand("Insert Into UserBookmarks VALUES(@BNAME,@bookmarkId)", connection);
+            cmd.Parameters.AddWithValue("@BNAME", url);
+            cmd.Parameters.AddWithValue("@bookmarkId", id);
             cmd.ExecuteNonQuery();
             connection.Close();
         }
 
-        public string GetUserByName(string userName)
+        public int GetUserByName(string userName)
         {
+            int id = 0;
             connection.Open();
-            SqlCommand cmd = new SqlCommand("Select ID From Bookmark where UNAME="+userName,connection);
+            SqlCommand cmd = new SqlCommand("Select ID From Bookmark where UNAME=@name", connection);
+            cmd.Parameters.Add("@name", SqlDbType.VarChar);
+            cmd.Parameters["@name"].Value = userName;
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                return reader["ID"].ToString();
+                id = Convert.ToInt32(reader["ID"]); ;
             }
-            return  null ;
+            connection.Close();
+            if (id == 0)
+            {
+                return id;
+            }
+            else
+            {
+                return id;
+            }
         }
 
         public DataSet GetBookmarks(int id)
         {
             connection.Open();
-            SqlCommand cmd = new SqlCommand("Select BNAME From UserBookmarks Where bookmarkId="+id,connection);
+            SqlCommand cmd = new SqlCommand("Select BNAME From UserBookmarks Where bookmarkId=" + id, connection);
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
             adapter.SelectCommand = cmd;
-            adapter.Fill(dataSet);
-
+            adapter.Fill(dataSet,"bookmarkTable");
+            connection.Close();
             return dataSet;
+        }
+
+        public void ExportToHTMl(string userName, int id)
+        {
+            DataSet set = GetBookmarks(id);
+
+            StreamWriter writer = new StreamWriter("C:/Users/Welcome/Desktop/" + userName + ".html", true);
+            string parseToHTMl = "<html><head><title>Bookmarks</title></head><br><body><h2>Your Bookmarks @"
+                + userName + "</h2><br><br>";
+
+            foreach (var s in set.Tables["bookmarkTable"].Rows)
+            {
+                parseToHTMl += "<li><a href=" + s + "></a><br></li>";
+            }
+
+            parseToHTMl += "</body></html>";
+            writer.Write(parseToHTMl);
+            writer.Close();
         }
     }
 }

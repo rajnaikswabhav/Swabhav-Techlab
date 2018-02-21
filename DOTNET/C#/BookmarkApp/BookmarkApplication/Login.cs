@@ -27,6 +27,7 @@ namespace BookmarkApplication
             {
                 UserForm userForm = new UserForm(userName);
                 userForm.MdiParent = this.ParentForm;
+                userForm.WindowState = FormWindowState.Maximized;
                 userForm.Show();
                 this.Hide();
 

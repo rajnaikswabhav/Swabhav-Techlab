@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[Exhibition]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY
+)

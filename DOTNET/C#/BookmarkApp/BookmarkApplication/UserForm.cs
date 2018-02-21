@@ -19,6 +19,7 @@ namespace BookmarkApplication
         public UserForm(String userName)
         {
             name = userName;
+            id = service.GetUserByName(name);
             this.Text = "Welcome @ " + userName;
             InitializeComponent();
         }
@@ -27,20 +28,32 @@ namespace BookmarkApplication
         {
            
             service.Save(urlTxt.Text,id);
+            urlTxt.Text = "";
+            result.Text = "Url is Bookmarked...";
         }
 
         private void logoutBtn_Click(object sender, EventArgs e)
         {
-
+            Login login = new Login();
+            login.WindowState = FormWindowState.Maximized;
+            login.Show();
+            login.MdiParent = this.ParentForm;
+            this.Hide();
         }
 
         private void showBtn_Click(object sender, EventArgs e)
         {
-            dataGridView1.Hide();
+            
             DataSet dataset = new DataSet();
             dataset = service.GetBookmarks(id);
             dataGridView1.DataSource = dataset.Tables[0];
+            tableLabel.Show();
             dataGridView1.Show();
+        }
+
+        private void exportBtn_Click(object sender, EventArgs e)
+        {
+            service.ExportToHTMl(name,id);
         }
     }
 }

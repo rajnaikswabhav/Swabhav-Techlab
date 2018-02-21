@@ -1,10 +1,35 @@
 SELECT * FROM Departments;
 SELECT * FROM Employees;
 
-SET IDENTITY_INSERT Departments ON 
-GO
+DROP TABLE Departments
+DROP TABLE Employees
+DROP TABLE __MigrationHistory
 
-INSERT INTO Departments VALUES (10,'ACCOUNTING','NEW YORK');
-INSERT INTO Departments VALUES (20,'RESEARCH','DALLAS');
-INSERT INTO Departments VALUES (30,'SALES','CHICAGO');
-INSERT INTO Departments VALUES (40,'OPERATIONS','BOSTON');
+SET IDENTITY_INSERT dbo.Departments ON
+INSERT INTO dbo.Departments(id,Dname,loc) VALUES (10,'ACCOUNTING','NEW YORK');
+SET IDENTITY_INSERT dbo.Departments ON
+INSERT INTO dbo.Departments(Id,Dname,loc) VALUES (20,'RESEARCH','DALLAS');
+SET IDENTITY_INSERT dbo.Departments ON
+INSERT INTO dbo.Departments(Id,Dname,loc) VALUES (30,'SALES','CHICAGO');
+SET IDENTITY_INSERT dbo.Departments ON
+INSERT INTO dbo.Departments(id,dname,loc) VALUES (40,'OPERATIONS','BOSTON');
+
+SET IDENTITY_INSERT dbo.Employees ON
+INSERT INTO Employees(id,Ename,Designation,MGR,HireDate,Salary,Commision,DeptId) VALUES (7839,'KING','PRESIDENT',NULL,'17-NOV-81',5000,NULL,10);
+
+SET IDENTITY_INSERT dbo.Employees ON
+INSERT INTO Employees(id,Ename,Designation,MGR,HireDate,Salary,Commision,DeptId) VALUES (7698,'BLAKE','MANAGER',7839,'1-MAY-81',2850,NULL,30);
+INSERT INTO Employees(id,Ename,Designation,MGR,HireDate,Salary,Commision,DeptId) VALUES (7782,'CLARK','MANAGER',7839,'9-JUN-81',2450,NULL,10);
+INSERT INTO Employees(id,Ename,Designation,MGR,HireDate,Salary,Commision,DeptId) VALUES (7566,'JONES','MANAGER',7839,'2-APR-81',2975,NULL,20);
+INSERT INTO Employees(id,Ename,Designation,MGR,HireDate,Salary,Commision,DeptId) VALUES (7654,'MARTIN','SALESMAN',7698,'28-SEP-81',1250,1400,30);
+INSERT INTO Employees(id,Ename,Designation,MGR,HireDate,Salary,Commision,DeptId) VALUES (7499,'ALLEN','SALESMAN',7698,'20-FEB-81',1600,300,30);
+INSERT INTO Employees(id,Ename,Designation,MGR,HireDate,Salary,Commision,DeptId) VALUES (7844,'TURNER','SALESMAN',7698,'8-SEP-81',1500,0,30);
+INSERT INTO Employees(id,Ename,Designation,MGR,HireDate,Salary,Commision,DeptId) VALUES (7900,'JAMES','CLERK',7698,'3-DEC-81',950,NULL,30);
+INSERT INTO Employees(id,Ename,Designation,MGR,HireDate,Salary,Commision,DeptId) VALUES (7521,'WARD','SALESMAN',7698,'22-FEB-81',1250,500,30);
+INSERT INTO Employees(id,Ename,Designation,MGR,HireDate,Salary,Commision,DeptId) VALUES (7902,'FORD','ANALYST',7566,'3-DEC-81',3000,NULL,20);
+INSERT INTO Employees(id,Ename,Designation,MGR,HireDate,Salary,Commision,DeptId) VALUES (7369,'SMITH','CLERK',7902,'17-DEC-80',800,NULL,20);
+INSERT INTO Employees(id,Ename,Designation,MGR,HireDate,Salary,Commision,DeptId) VALUES (7788,'SCOTT','ANALYST',7566,'09-DEC-82',3000,NULL,20);
+INSERT INTO Employees(id,Ename,Designation,MGR,HireDate,Salary,Commision,DeptId) VALUES (7876,'ADAMS','CLERK',7788,'12-JAN-83',1100,NULL,20);
+INSERT INTO Employees(id,Ename,Designation,MGR,HireDate,Salary,Commision,DeptId) VALUES (7934,'MILLER','CLERK',7782,'23-JAN-82',1300,NULL,10);
+
+

@@ -11,5 +11,10 @@ namespace EmployeeEFApp
     {
         public  DbSet<Department> DEPT  { get; set; }
         public DbSet<Employee>  EMP { get; set; }
+
+        public EmpDbContext()
+        {
+            this.Database.Log = Logger.Log;
+        }
     }
 }

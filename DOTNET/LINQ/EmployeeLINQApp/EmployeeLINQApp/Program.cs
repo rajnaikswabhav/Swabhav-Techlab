@@ -81,8 +81,8 @@ namespace EmployeeLINQApp
             //foreach (var employee in displaySpecificEmployee)
             //{
             //    Console.WriteLine(employee.EmployeeId + "," + employee.EmployeeName + "," + employee.Designation + "," +
-            //        employee.MGR+","+employee.HireDate+","+employee.Salary+","+employee.Commision+","
-            //        +employee.DepartmentNo);
+            //        employee.MGR + "," + employee.HireDate + "," + employee.Salary + "," + employee.Commision + ","
+            //        + employee.DepartmentNo);
             //}
 
             //var displayEmpCommNull = listOfEmployee.Where(e => e.Commision == null);
@@ -97,19 +97,19 @@ namespace EmployeeLINQApp
             //{
             //    name = e.EmployeeName,
             //    salary = e.Salary,
-            //    annualSalary = e.Salary * 12 +  (e.Commision ?? 0 ) * 12 
+            //    annualSalary = e.Salary * 12 + (e.Commision ?? 0) * 12
             //});
             //foreach (var employee in displayNameSalaryAnnsal)
             //{
-            //    Console.WriteLine(employee.name+", "+employee.salary+", "+employee.annualSalary);
+            //    Console.WriteLine(employee.name + ", " + employee.salary + ", " + employee.annualSalary);
             //}
 
             //var displayDeptEmployee = listOfEmployee.Where(e => e.DepartmentNo == 20 || e.DepartmentNo == 10);
             //foreach (var employee in displayDeptEmployee)
             //{
             //    Console.WriteLine(employee.EmployeeId + "," + employee.EmployeeName + "," + employee.Designation + "," +
-            //        employee.MGR+","+employee.HireDate+","+employee.Salary+","+employee.Commision+","
-            //        +employee.DepartmentNo);
+            //        employee.MGR + "," + employee.HireDate + "," + employee.Salary + "," + employee.Commision + ","
+            //        + employee.DepartmentNo);
             //}
 
             //var displayEmployeeScott = listOfEmployee.Where(e => e.EmployeeName == "SCOTT");
@@ -128,7 +128,8 @@ namespace EmployeeLINQApp
             //        + employee.DepartmentNo);
             //}
 
-            //var displayYearsOfWorking = listOfEmployee.Select(e => new {
+            //var displayYearsOfWorking = listOfEmployee.Select(e => new
+            //{
             //    id = e.EmployeeId,
             //    name = e.EmployeeName,
             //    desi = e.Designation,
@@ -137,13 +138,13 @@ namespace EmployeeLINQApp
             //    salary = e.Salary,
             //    comm = e.Commision,
             //    deptNo = e.DepartmentNo,
-            //    workingYears =DateTime.Today.Year - DateTime.Parse(e.HireDate).Year
+            //    workingYears = DateTime.Today.Year - DateTime.Parse(e.HireDate).Year
             //});
-            //foreach(var employee in displayYearsOfWorking)
+            //foreach (var employee in displayYearsOfWorking)
             //{
             //    Console.WriteLine(employee.id + "," + employee.name + "," + employee.desi + "," +
             //        employee.mgr + "," + employee.hiredate + "," + employee.salary + "," + employee.comm + ","
-            //        + employee.deptNo+","+employee.workingYears);
+            //        + employee.deptNo + "," + employee.workingYears);
             //}
 
             //var displayEmployeeContainS = listOfEmployee.Where(e => e.EmployeeName.Contains("S".ToUpper()));
@@ -209,30 +210,31 @@ namespace EmployeeLINQApp
             //var sumOfTotalSalary = listOfEmployee.Sum(e => e.Salary);
             //Console.WriteLine(sumOfTotalSalary);
 
-            //var displayEmployeeNameDeptName = (from emp in listOfEmployee join dept in listOfDepartment 
-            //                                   on emp.DepartmentNo equals dept.DeptId
+            //var displayEmployeeNameDeptName = (from emp in listOfEmployee
+            //                                   join dept in listOfDepartment
+            //        on emp.DepartmentNo equals dept.DeptId
             //                                   orderby emp.DepartmentNo
             //                                   select new
-            //                                   {  emp.EmployeeName , dept.DeptName }).ToList();
-            //foreach(var detail in displayEmployeeNameDeptName)
+            //                                   { emp.EmployeeName, dept.DeptName }).ToList();
+            //foreach (var detail in displayEmployeeNameDeptName)
             //{
-            //    Console.WriteLine(detail.EmployeeName+","+detail.DeptName);
+            //    Console.WriteLine(detail.EmployeeName + "," + detail.DeptName);
             //}
 
             //var diplayAllDepartments = (from dept in listOfDepartment
             //                            join emp in listOfEmployee
             //                            on dept.DeptId equals emp.DepartmentNo
-            //                            select new { dept.DeptName , emp.EmployeeName });
-            //foreach(var detail in diplayAllDepartments)
+            //                            select new { dept.DeptName, emp.EmployeeName });
+            //foreach (var detail in diplayAllDepartments)
             //{
-            //    Console.WriteLine(detail.DeptName+","+detail.EmployeeName);
+            //    Console.WriteLine(detail.DeptName + "," + detail.EmployeeName);
             //}
 
-            var displayDepartmentThereIsNoEmp = (from dept in listOfDepartment
-                                                 join emp in listOfEmployee
-                                                 on dept.DeptId equals emp.DepartmentNo
-                                                 where dept.DeptId
-                                                  )
+            //var displayDepartmentThereIsNoEmp = (from dept in listOfDepartment
+            //                                     join emp in listOfEmployee
+            //                                     on dept.DeptId equals emp.DepartmentNo
+            //                                     where dept.DeptId
+            //                                      )
 
         }
     }

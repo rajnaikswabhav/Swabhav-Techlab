@@ -12,7 +12,7 @@ namespace ConsoleEntityApp
         public DbSet<Student> Students { get; set; }
         public HiTechDbContext()
         {
-          //  this.Database.Log = Logger.Log;
+            this.Database.Log = Logger.Log;
         }
 
         
