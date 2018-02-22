@@ -137,7 +137,7 @@ namespace BookmarkCore
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
             adapter.SelectCommand = cmd;
-            adapter.Fill(dataSet,"bookmarkTable");
+            adapter.Fill(dataSet, "bookmarkTable");
             connection.Close();
             return dataSet;
         }
@@ -150,12 +150,13 @@ namespace BookmarkCore
             string parseToHTMl = "<html><head><title>Bookmarks</title></head><br><body><h2>Your Bookmarks @"
                 + userName + "</h2><br><br>";
 
-            foreach (var s in set.Tables["bookmarkTable"].Rows)
+            foreach (DataTable table in set.Tables)
             {
-                parseToHTMl += "<li><a href=" + s + "></a><br></li>";
+                foreach (DataRow r in table.Rows)
+                    parseToHTMl += "<li><a href=" + r.ToString() + "></a><br></li>";
             }
 
-            parseToHTMl += "</body></html>";
+            parseToHTMl += "<br><h2>End</h2></body></html>";
             writer.Write(parseToHTMl);
             writer.Close();
         }
