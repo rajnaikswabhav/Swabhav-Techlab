@@ -13,7 +13,7 @@ LastName: {{student.lastName}}
 Profile Picture :<br><img [src] = 'student.profilePic' [style.width.px] = 'imageWidth'/>
 
 <h1>Using Event Binding</h1>
-<input type="button" value="LoadCourse" (click)="LoadCourse($event)"/>
+<input type="button" class="btn-primary" value="LoadCourse" (click)="LoadCourse($event)"/>
 <p>
     <li *ngFor="let course of courses">{{course}}</li>
 </p>

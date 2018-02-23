@@ -19,7 +19,7 @@ export class StudentComponent {
             firstName: 'Abc',
             lastName: 'Xyz',
             cgpa: this.studentCGPA,
-            profilePic: '../../assets/Images/coniglio_rabbit_small.svg'
+            profilePic: 'assets/Images/coniglio_rabbit_small.svg'
         }
         this.someData = "This is some data from the view.";
     }

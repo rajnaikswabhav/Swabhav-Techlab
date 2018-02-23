@@ -1,18 +1,18 @@
-First Name: <input type="text" placeholder="firstName" [ngModel]="firstName"
-                (ngModelChange) = "firstNameChange($event)"/>
+First Name: <input class="form-control" type="text" placeholder="firstName" [ngModel]="firstName"
+                (ngModelChange) = "firstNameChange($event)"/><br>
 
-<p>First Name is: {{firstName}}</p>
+<p>First Name is: {{firstName | uppercase}}</p>
 
-Last Name: <input type="text" [(ngModel)]="lastName">
-
+Last Name: <input type="text" [(ngModel)]="lastName"> <br>
+<br>
 <p>Last Name is: {{lastName}}</p>
 
-<div>
+<div class="dropdown">
     Companies: 
     <select [(ngModel)]="company">
         <option disabled>--Select</option>
         <option *ngFor="let i of companies">{{i}}</option>
     </select>   
-    
+    <br><br>
     <p>Selected Company is: {{company}}</p>
 </div>

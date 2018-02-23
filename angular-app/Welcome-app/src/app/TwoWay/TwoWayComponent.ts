@@ -18,5 +18,6 @@ export class TwoWayComponent {
 
     firstNameChange(newName){
         this.firstName = newName;
+ 
     }
 }
