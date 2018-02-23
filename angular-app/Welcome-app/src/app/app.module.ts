@@ -1,4 +1,6 @@
+import { TwoWayComponent } from './TwoWay/TwoWayComponent';
 import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 
@@ -11,10 +13,12 @@ import { BlueboxComponent } from './BlueBox/BlueboxComponent';
   declarations: [
     welcomeComponent,
     StudentComponent,
-    BlueboxComponent
+    BlueboxComponent,
+    TwoWayComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [welcomeComponent]
