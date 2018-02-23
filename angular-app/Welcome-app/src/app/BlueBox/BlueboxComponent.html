@@ -1,0 +1,6 @@
+<div>
+    <button type="button" *ngFor="let s of size; let i = index" id="{{i + 1}}" (click) = "ChangeStatus($event)"
+    [style.width.px]=280 [style.height.px]=80 [style.margin.px]=10
+    [style.padding.px]=5 [style.background-color]= '"rgba(185, 179, 179, 0.952)"'
+    >{{s}}</button> 
+</div>

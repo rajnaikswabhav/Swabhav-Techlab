@@ -1,0 +1,19 @@
+<br>
+<h1>Using Expression Binding</h1>
+<h2>{{student | json}}</h2>
+Roll No: {{student.rollNo}}<br>
+FirstName: {{student.firstName}}<br>
+LastName: {{student.lastName}}
+
+<h1>Using Property Binding</h1>
+<p [innerHTML] = 'student.firstName'></p>
+<p [innerHTML] = 'someData'></p>
+<p [innerHTML] = "'someData'"></p>
+<P [innerHTML] = 'student.cgpa' [style.background-color] = 'Color'></P>
+Profile Picture :<br><img [src] = 'student.profilePic' [style.width.px] = 'imageWidth'/>
+
+<h1>Using Event Binding</h1>
+<input type="button" value="LoadCourse" (click)="LoadCourse($event)"/>
+<p>
+    <li *ngFor="let course of courses">{{course}}</li>
+</p>
