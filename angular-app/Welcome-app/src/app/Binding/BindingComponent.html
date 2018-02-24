@@ -1,0 +1,19 @@
+<div class="jumbotron">
+    Message: <input type="text" [(ngModel)]='message'>
+    <br><br>
+    Font Color:
+    <select [(ngModel)]='color'>
+        <option *ngFor="let c of colorNames" >{{c}}</option>
+    </select>
+    <br><br>
+    BgColor:
+    <select [(ngModel)]='bgColor'>
+        <option *ngFor="let c of colorNames" >{{c}}</option>
+    </select>
+    <br><br>
+    Font Size:
+    <input type="number" [(ngModel)]='fontSize'> pixel
+    <br><br>
+    <p [style.color]='color' [style.background-color]='bgColor' 
+    [style.font-size.px]= 'fontSize'>{{message}}</p>
+</div>

@@ -1,18 +1,41 @@
-First Name: <input class="form-control" type="text" placeholder="firstName" [ngModel]="firstName"
-                (ngModelChange) = "firstNameChange($event)"/><br>
+<div class="jumbotron">
+    First Name:
+    <input class="form-control" type="text" placeholder="firstName" [ngModel]="firstName" (ngModelChange)="firstNameChange($event)"
+    />
+    <br>
 
-<p>First Name is: {{firstName | uppercase}}</p>
+    <p>First Name is: {{firstName | uppercase}}</p>
 
-Last Name: <input type="text" [(ngModel)]="lastName"> <br>
-<br>
-<p>Last Name is: {{lastName}}</p>
+    Last Name:
+    <input class="form-control" type="text" [(ngModel)]="lastName">
+    <br>
+    <p>Last Name is: {{lastName}}</p>
 
-<div class="dropdown">
-    Companies: 
-    <select [(ngModel)]="company">
-        <option disabled>--Select</option>
-        <option *ngFor="let i of companies">{{i}}</option>
-    </select>   
-    <br><br>
-    <p>Selected Company is: {{company}}</p>
+    <div class="dropdown">
+        Companies:
+        <select [(ngModel)]="company">
+            <option disabled>--Select</option>
+            <option *ngFor="let i of companies">{{i}}</option>
+        </select>
+        <br>
+        <br>
+        <p>Selected Company is: {{company}}</p>
+    </div>
+
+    <div>
+        Check Prime:
+        <input class="form-control" type="number" (blur)='onCheckPrime()' [style.background-color]='primeValidationColor' [(ngModel)]='numToCheck'>
+        <!-- <button (click)='onCheckPrime()'>Check</button> -->
+        <br>
+        <!-- <p [style.background-color]='primeValidationColor'>{{result}}</p> -->
+    </div>
+    <br>
+    <br>
+    <div>
+        Get Data:
+        <input class="form-control" type="number" (change)='GetData()' [(ngModel)]='numToGetData'>
+        <!-- <button (click)='onCheckPrime()'>Check</button> -->
+        <br>
+        <p>{{data}}</p>
+    </div>
 </div>

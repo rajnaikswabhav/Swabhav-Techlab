@@ -1,12 +1,17 @@
+import { BlogComponent } from './Blog/BlogComponent';
 import { TwoWayComponent } from './TwoWay/TwoWayComponent';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 
 
 import { welcomeComponent } from './Welcome/welcomeComponent';
 import { StudentComponent } from './Student/StudentComponent';
 import { BlueboxComponent } from './BlueBox/BlueboxComponent';
+import { BindingComponent } from './Binding/BindingComponent';
+import { MathService } from './TwoWay/Service/MathService';
+import { NumberApiService } from './TwoWay/Service/NumberApiService';
 
 
 @NgModule({
@@ -14,13 +19,19 @@ import { BlueboxComponent } from './BlueBox/BlueboxComponent';
     welcomeComponent,
     StudentComponent,
     BlueboxComponent,
-    TwoWayComponent
+    TwoWayComponent,
+    BindingComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    MathService,
+    NumberApiService
+  ],
   bootstrap: [welcomeComponent]
 })
 export class AppModule { }
