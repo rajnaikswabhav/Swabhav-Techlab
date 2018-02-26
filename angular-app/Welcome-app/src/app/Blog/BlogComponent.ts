@@ -39,12 +39,11 @@ export class BlogComponent {
     ClearItem($event) {
         let id = $event.target.id;
         console.log("Inside ClearItem");
-        console.log($event.target);
-        for (let i in this.messages) {
-            if (this.messages[i] == id) {
-                console.log(this.messages[i]);
-                this.messages.splice(i, 1);
-                localStorage.setItem("messages", JSON.stringify(this.messages));
+        console.log(id);
+        for(let i=0; i<this.messages.length; i++){
+            if(this.messages[i] == id){
+                this.messages.splice(i,1);
+                localStorage.setItem("messages",JSON.stringify(this.messages));
             }
         }
 

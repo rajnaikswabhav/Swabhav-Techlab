@@ -14,7 +14,7 @@ export class TwoWayComponent {
     company: string;
     numToCheck: number;
     result: number;
-    data:string;
+    data:any;
     numToGetData:number;
     primeValidationColor = "yellow";
     companies = ["HiTech", "Swabhav", "Fitphelia", "Aurion", "Infosys"];
@@ -52,9 +52,9 @@ export class TwoWayComponent {
     GetData(){
         console.log("Inside GetData...");
         this.httpService.GetDetail(this.numToGetData)
-                        .then(r => {
-                            console.log(r);
-                            this.data = r._body;
+                        .then((Response:any) => {
+                            console.log(Response);
+                            this.data = Response._body;
                         })
                         .catch(r => {
                             console.log(r);

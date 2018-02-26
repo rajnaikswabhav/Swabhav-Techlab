@@ -1,3 +1,7 @@
+import { QuizGameService } from './QiuzGame/Service/QuizGameService';
+import { SummaryPipe } from './CustomPipe/SummaryPipe';
+import { ToggeLButtonComponent } from './Master-Child-Component/ToggelButtonComponent';
+import { MasterComponent } from './Master-Child-Component/MasterComponent';
 import { BlogComponent } from './Blog/BlogComponent';
 import { TwoWayComponent } from './TwoWay/TwoWayComponent';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,6 +16,9 @@ import { BlueboxComponent } from './BlueBox/BlueboxComponent';
 import { BindingComponent } from './Binding/BindingComponent';
 import { MathService } from './TwoWay/Service/MathService';
 import { NumberApiService } from './TwoWay/Service/NumberApiService';
+import { StarComponent } from './Master-Child-Component/StarComponent';
+import { CustomPipeComponent } from './CustomPipe/CustomPipeComponent';
+import { QuizGameComponent } from './QiuzGame/QuizGameComponent';
 
 
 @NgModule({
@@ -21,7 +28,13 @@ import { NumberApiService } from './TwoWay/Service/NumberApiService';
     BlueboxComponent,
     TwoWayComponent,
     BindingComponent,
-    BlogComponent
+    BlogComponent,
+    MasterComponent,
+    ToggeLButtonComponent,
+    StarComponent,
+    SummaryPipe,
+    CustomPipeComponent,
+    QuizGameComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +43,8 @@ import { NumberApiService } from './TwoWay/Service/NumberApiService';
   ],
   providers: [
     MathService,
-    NumberApiService
+    NumberApiService,
+    QuizGameService
   ],
   bootstrap: [welcomeComponent]
 })

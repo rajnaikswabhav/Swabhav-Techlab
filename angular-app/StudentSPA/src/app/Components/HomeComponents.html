@@ -1,0 +1,60 @@
+<style>
+        table {
+            border: 2px solid black;
+        }
+        tr td {
+            width: 100px;
+            height: 30px;
+            font-family: monospace;
+            color: blue;
+            border: 1px solid black;
+        }
+        th {
+            border: 1px solid black;
+            width: 50px;
+            height: 30px;
+            color: red;
+        }
+        button {
+            font-family: sans-serif;
+            font-size: 10px;
+            background-color: #297;
+            color: #fff;
+            border: 0px;
+            border-radius: 3px;
+            padding: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            margin-left: 4px;
+            margin-top: 8px;
+        }
+    </style>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>isMale</th>
+                <th>Event</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let i of data">
+            <tr>
+                <td align='center'>{{i.rollNo}}</td>
+                <td align='center'>{{i.name}}</td>
+                <td align='center'>{{i.age}}</td>
+                <td align='center'>{{i.email}}</td>
+                <td align='center'>{{i.date}}</td>
+                <td align='center'>{{i.isMale}}</td>
+                <td><a [routerLink] = '"edit"'>
+                    <button>Edit</button></a>
+                 <button>Delete</button> </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

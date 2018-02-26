@@ -2,7 +2,7 @@
     Message:
     <input type="text" (change)='AddMessage($event)'>
     <br><br><br>
-    <p *ngFor="let m of messages">
+    <p *ngFor="let m of messages; let i = index">
         <label >{{m}}<span><button type="button"
             id="{{m}}" (click)="ClearItem($event)">X</button></span></label>
     </p>
