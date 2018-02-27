@@ -30,5 +30,12 @@ export class AddStudentComponent {
         this.addService.AddStudent(dataObj)
             .then(r => { alert("Response status: " + r.status) })
             .catch(r => { console.log(r) });
+
+        this.rollNo = null;
+        this.name = "";
+        this.age = null;
+        this.email = "";
+        this.date = null;
+        this.isMale = true;
     }
 }

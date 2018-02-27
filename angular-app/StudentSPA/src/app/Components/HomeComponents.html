@@ -1,37 +1,6 @@
-<style>
-        table {
-            border: 2px solid black;
-        }
-        tr td {
-            width: 100px;
-            height: 30px;
-            font-family: monospace;
-            color: blue;
-            border: 1px solid black;
-        }
-        th {
-            border: 1px solid black;
-            width: 50px;
-            height: 30px;
-            color: red;
-        }
-        button {
-            font-family: sans-serif;
-            font-size: 10px;
-            background-color: #297;
-            color: #fff;
-            border: 0px;
-            border-radius: 3px;
-            padding: 5px;
-            cursor: pointer;
-            margin-bottom: 10px;
-            margin-left: 4px;
-            margin-top: 8px;
-        }
-    </style>
 
 <div class="container">
-    <table class="table">
+    <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Roll No</th>
@@ -45,15 +14,15 @@
         </thead>
         <tbody *ngFor="let i of data">
             <tr>
-                <td align='center'>{{i.rollNo}}</td>
-                <td align='center'>{{i.name}}</td>
-                <td align='center'>{{i.age}}</td>
-                <td align='center'>{{i.email}}</td>
-                <td align='center'>{{i.date}}</td>
-                <td align='center'>{{i.isMale}}</td>
-                <td><a [routerLink] = '"edit"'>
-                    <button>Edit</button></a>
-                 <button>Delete</button> </td>
+                <td >{{i.rollNo}}</td>
+                <td >{{i.name}}</td>
+                <td >{{i.age}}</td>
+                <td >{{i.email}}</td>
+                <td >{{i.date}}</td>
+                <td >{{i.isMale}}</td>
+                <td>
+                    <button (click)='EditData(i.rollNo)' class="btn btn-warning btn-xs">Edit</button>
+                 <button (click)='ClearItem(i.rollNo)' class="btn btn-danger btn-xs">Delete</button> </td>
             </tr>
         </tbody>
     </table>

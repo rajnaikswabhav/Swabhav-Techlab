@@ -1,5 +1,6 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { IStudent} from '../IStudetnt';
 
 @Injectable()
 export class StudentService {
@@ -10,15 +11,19 @@ export class StudentService {
         return this.http.get(this.API_URL).toPromise();
     }
 
-    EditStudentData(studentId,dataObj){
-        return this.http.put(this.API_URL+'/'+studentId,dataObj);
+    EditStudentData(studentId,studentObj:IStudent){
+        return this.http.put(this.API_URL+'/'+studentId,studentObj).toPromise();
     }
 
     GetStudentById(studentId){
         return this.http.get(this.API_URL+'/'+studentId).toPromise();
     }
 
-    AddStudent(dataObj){
-        return this.http.post(this.API_URL,dataObj).toPromise();
+    AddStudent(studentObj:IStudent){
+        return this.http.post(this.API_URL,studentObj).toPromise();
+    }
+
+    DeleteData(studentId){
+        return this.http.delete(this.API_URL+'/'+studentId).toPromise();
     }
 }
