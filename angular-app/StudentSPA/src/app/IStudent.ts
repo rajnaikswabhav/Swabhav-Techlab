@@ -1,9 +1,9 @@
 
-interface IStudent {
+export interface IStudent {
     rollNo : number;
     name : string ;
     age : number ;
     email : string ; 
-    date : Date ;
+    date : string ;
     isMale : boolean;
 }

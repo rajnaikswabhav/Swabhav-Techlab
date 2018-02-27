@@ -5,6 +5,7 @@ import { Response } from '@angular/http';
 import { EventEmitter } from 'events';
 import { EditComponent } from './EditComponent';
 import { Router } from '@angular/router';
+import { IStudent } from '../IStudent';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
     templateUrl : 'HomeComponents.html'
 })
 export class HomeComponent {
-    data : any =[] ;
+    data : IStudent ;
     studentId:number;
     editComponent:any;
     constructor(private getService : StudentService,private router:Router){
@@ -22,7 +23,7 @@ export class HomeComponent {
     ngOnInit(){
         console.log("Inside Home....");
         this.getService.GetData()
-            .then(r => this.data = r.json())
+            .then(r => this.data = r)
     }
 
     ClearItem(id){
@@ -30,6 +31,7 @@ export class HomeComponent {
         this.getService.DeleteData(id)
             .then(r => alert("Data Deleted: "+r.status))
             .catch(r => {console.log(r)});
+        this.ngOnInit();
     }
 
     EditData(id){

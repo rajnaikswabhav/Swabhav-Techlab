@@ -1,14 +1,18 @@
+import { IStudent } from './../IStudent';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { IStudent} from '../IStudetnt';
+
 
 @Injectable()
 export class StudentService {
     API_URL = "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students";
+
     constructor (private http : Http){}
 
-    GetData(){
-        return this.http.get(this.API_URL).toPromise();
+    GetData() : Promise<IStudent>{
+        return  this.http.get(this.API_URL).toPromise()
+        .then(r => {return <IStudent>r.json();
+        });
     }
 
     EditStudentData(studentId,studentObj:IStudent){
@@ -16,11 +20,12 @@ export class StudentService {
     }
 
     GetStudentById(studentId){
-        return this.http.get(this.API_URL+'/'+studentId).toPromise();
+        return this.http.get(this.API_URL+'/'+studentId).toPromise()
+        .then(r => {return <IStudent>r.json()});
     }
 
     AddStudent(studentObj:IStudent){
-        return this.http.post(this.API_URL,studentObj).toPromise();
+        return  this.http.post(this.API_URL,studentObj).toPromise();
     }
 
     DeleteData(studentId){

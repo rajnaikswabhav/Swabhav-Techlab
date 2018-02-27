@@ -2,6 +2,8 @@ import { ActivatedRoute } from '@angular/router';
 import { EventEmitter } from 'events';
 import { StudentService } from './../Service/StudentService';
 import { Component } from '@angular/core';
+import { IStudent } from '../IStudent';
+import { parse } from 'querystring';
 
 
 @Component({
@@ -14,10 +16,10 @@ export class EditComponent {
     name: string;
     age: number;
     email: string;
-    date: Date;
-    isMale: boolean;
+    date: string;
+    isMale: Boolean;
     id: number;
-    data: any = {};
+    data: IStudent;
 
     constructor(private editService: StudentService, private route: ActivatedRoute) {
         this.route.params.subscribe(params => {
@@ -26,14 +28,14 @@ export class EditComponent {
             this.editService.GetStudentById(this.id)
                 .then((r: any) => {
                     console.log(r._body)
-                    this.data = r.json();
+                    this.data = r;
 
                     console.log(this.data.rollNo);
                     this.rollNo = this.data.rollNo;
                     this.name = this.data.name;
                     this.age = this.data.age;
                     this.email = this.data.email;
-                    this.date = this.data.date;
+                    this.date = this.data.date; 
                     this.isMale = this.data.isMale;
 
                 })
@@ -42,7 +44,7 @@ export class EditComponent {
     }
 
     EditStudentData(rollNo,name,age,email,date,isMale){
-        let dataObj = {
+        this.data = {
             rollNo : rollNo,
             name : name,
             age : age,
@@ -51,7 +53,7 @@ export class EditComponent {
             isMale : isMale
         }
 
-        this.editService.EditStudentData(this.id,dataObj)
+        this.editService.EditStudentData(this.id,this.data)
             .then(r => {console.log("Data Edited : "+r.status)})
             .catch(r => {console.log(r)});
         

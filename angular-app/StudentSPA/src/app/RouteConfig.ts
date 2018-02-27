@@ -4,7 +4,7 @@ import { HomeComponent } from './Components/HomeComponent';
 import { Routes } from '@angular/router';
 import { EditComponent } from './Components/EditComponent';
 
-export const routesArray: Routes = [
+export const Routes_Array: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'Add Student', component: AddStudentComponent },
     { path: 'edit', component: EditComponent },

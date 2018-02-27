@@ -1,5 +1,6 @@
 import { StudentService } from './../Service/StudentService';
 import { Component } from '@angular/core';
+import { IStudent } from '../IStudent';
 
 @Component({
     selector: 'ht-student-add',
@@ -11,14 +12,18 @@ export class AddStudentComponent {
     name : string;
     age : number;
     email : string;
-    date:Date;
-    isMale:boolean;
+    date:string;
+    isMale:Boolean;
+    gender : Boolean;
+    studentObj:IStudent;
+
     constructor(private addService: StudentService) {
+    
     }
 
     AddStudent(rollNo, name, age, email, date, isMale) {
         console.log(rollNo);
-        let dataObj = {
+        this.studentObj = {
             rollNo: rollNo,
             name: name,
             age: age,
@@ -26,8 +31,8 @@ export class AddStudentComponent {
             date: date,
             isMale: isMale
         };
-
-        this.addService.AddStudent(dataObj)
+        console.log(this.studentObj);
+        this.addService.AddStudent(this.studentObj)
             .then(r => { alert("Response status: " + r.status) })
             .catch(r => { console.log(r) });
 
