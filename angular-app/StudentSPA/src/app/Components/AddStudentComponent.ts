@@ -1,5 +1,6 @@
-import { StudentService } from './../Service/StudentService';
 import { Component } from '@angular/core';
+
+import { StudentService } from './../Service/StudentService';
 import { IStudent } from '../IStudent';
 
 @Component({
@@ -8,17 +9,16 @@ import { IStudent } from '../IStudent';
 })
 export class AddStudentComponent {
 
-    rollNo : number;
-    name : string;
-    age : number;
-    email : string;
-    date:string;
-    isMale:Boolean;
-    gender : Boolean;
-    studentObj:IStudent;
+    rollNo: number;
+    name: string;
+    age: number;
+    email: string;
+    date: string;
+    isMale: Boolean;
+    studentObj: IStudent;
 
     constructor(private addService: StudentService) {
-    
+
     }
 
     AddStudent(rollNo, name, age, email, date, isMale) {

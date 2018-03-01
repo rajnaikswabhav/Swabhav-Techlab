@@ -9,7 +9,7 @@ import { HomeComponent } from './Components/HomeComponent';
 import { DeleteComponent } from './Components/DeleteComponent';
 import { EditComponent } from './Components/EditComponent';
 
-import { Routes_Array } from './RouteConfig';
+import { ROUTS_ARRAY } from './RouteConfig';
 import { StudentService } from './Service/StudentService';
 
 import { AppComponent } from './app.component';
@@ -29,7 +29,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpModule,
     FormsModule,
-    RouterModule.forRoot(Routes_Array),
+    RouterModule.forRoot(ROUTS_ARRAY),
   ],
   providers: [StudentService],
   bootstrap: [AppComponent]

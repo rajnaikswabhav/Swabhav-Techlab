@@ -1,0 +1,69 @@
+<div class="container">
+    <br>
+    <br>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Product List</div>
+        <div class="panel-body" align="center">
+            Filter By
+            <input type="text">
+        </div>
+        <div class="panel-body" *ngIf="FLAG == 1">
+            <table class="table  table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <button type="button" (click)='HideImage()' class="btn btn-primary">Hide Image</button>
+                        </th>
+                        <th>Product</th>
+                        <th>Code</th>
+                        <th>Available</th>
+                        <th>Price</th>
+                        <th>5 Star Rating</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let i of data">
+                    <tr>
+                        <td>
+                            <img [src]='i.imageUrl' width="50">
+                        </td>
+                        <td (click)='GetDetail(i.productId)'>{{i.productName}}</td>
+                        <td>{{i.productCode}}</td>
+                        <td>{{i.releaseDate}}</td>
+                        <td>{{i.price}}</td>
+                        <td>
+                            <ht-star [rating]='i.starRating'></ht-star>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-body" *ngIf="FLAG == 0">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <button type="button" (click)='ShowImage()' class="btn btn-primary">Show Image</button>
+                        </th>
+                        <th>Product</th>
+                        <th>Code</th>
+                        <th>Available</th>
+                        <th>Price</th>
+                        <th>5 Star Rating</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let i of data">
+                    <tr>
+                        <td></td>
+                        <td (click)='GetDetail(i.productId)'>{{i.productName}}</td>
+                        <td>{{i.productCode}}</td>
+                        <td>{{i.releaseDate}}</td>
+                        <td>{{i.price}}</td>
+                        <td>
+                            <ht-star [rating]='i.starRating'></ht-star>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

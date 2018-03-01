@@ -1,4 +1,5 @@
 import { IStudent } from './../IStudent';
+
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
@@ -19,7 +20,7 @@ export class StudentService {
         return this.http.put(this.API_URL+'/'+studentId,studentObj).toPromise();
     }
 
-    GetStudentById(studentId){
+    GetStudentById(studentId) : Promise<IStudent>{
         return this.http.get(this.API_URL+'/'+studentId).toPromise()
         .then(r => {return <IStudent>r.json()});
     }

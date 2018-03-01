@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>
+            Welcome App
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <ion-label floating="danger" stacked>Person 1:</ion-label>
+            <ion-input type="email" floatig="primary" [(ngModel)]='name1'></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating="danger" stacked>Person 2:</ion-label>
+            <ion-input type="email" floatig="primary" [ngModel]='name2'  (ngModelChange)='Calculate($event)'></ion-input>
+        </ion-item>
+    </ion-list>
+    <br>
+    <br>
+    <br>
+    <ion-card style="background-color: lightyellow">
+        <ion-card-header>
+            <p style="font-size: 40px;color: blue">{{name1}}
+                <ion-icon style="margin: 20px;font-size: 50px;color: red" name="heart"> 
+                </ion-icon> {{name2}}</p>
+        </ion-card-header>
+        <ion-list>
+            <ion-item>
+                <ion-label  style="font-size: 35px;color: green" stacked>{{result}}</ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>

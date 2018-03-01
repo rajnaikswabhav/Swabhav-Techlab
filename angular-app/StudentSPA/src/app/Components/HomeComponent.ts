@@ -1,41 +1,43 @@
-import { Output } from '@angular/core';
-import { Component } from '@angular/core';
-import { StudentService } from "../Service/StudentService";
+import { Component, Output } from '@angular/core';
 import { Response } from '@angular/http';
-import { EventEmitter } from 'events';
-import { EditComponent } from './EditComponent';
 import { Router } from '@angular/router';
+
+import { StudentService } from "../Service/StudentService";
+import { EditComponent } from './EditComponent';
 import { IStudent } from '../IStudent';
 
 
+import { EventEmitter } from 'events';
+
+
 @Component({
-    selector : 'ht-student-home',
-    templateUrl : 'HomeComponents.html'
+    selector: 'ht-student-home',
+    templateUrl: 'HomeComponents.html'
 })
 export class HomeComponent {
-    data : IStudent ;
-    studentId:number;
-    editComponent:any;
-    constructor(private getService : StudentService,private router:Router){
-        
+    data: IStudent;
+    studentId: number;
+    editComponent: any;
+    constructor(private getService: StudentService, private router: Router) {
+
     }
 
-    ngOnInit(){
-        console.log("Inside Home....");
+    ngOnInit() {
         this.getService.GetData()
             .then(r => this.data = r)
     }
 
-    ClearItem(id){
-        console.log(id);
+    ClearItem(id) {
         this.getService.DeleteData(id)
-            .then(r => alert("Data Deleted: "+r.status))
-            .catch(r => {console.log(r)});
-        this.ngOnInit();
+            .then(r => {
+                alert("Data Deleted: " + r.status);
+                this.ngOnInit();
+            })
+            .catch(r => { console.log(r) });
+
     }
 
-    EditData(id){
-        console.log("EditData...");
-        this.router.navigate(['edit',id]);
+    EditData(id) {
+        this.router.navigate(['edit', id]);
     }
 }

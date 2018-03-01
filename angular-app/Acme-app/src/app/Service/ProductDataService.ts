@@ -8,11 +8,21 @@ export class ProductDataService {
 
     constructor(private http :Http) {}
 
-    public GeeJsonData(){
+    public GetJsonData(){
         return this.http.get("assets/products.json")
                     .map((response : any) => {
                         const data = response.json();
                         return data;
                     });
+    }
+
+    public GetDataById(id){
+        console.log(id);
+        return this.http.get("assets/products.json")
+                    .map((response : any) => {
+                        const data = response.json();
+                        return data;
+                    })
+                    .filter(data => data.productId == 5);
     }
 }

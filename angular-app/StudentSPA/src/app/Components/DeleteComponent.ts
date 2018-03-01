@@ -1,17 +1,20 @@
-import { HomeComponent } from './HomeComponent';
-import { Component } from '@angular/core';
-import { StudentService } from './../Service/StudentService';
 import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+
+import { StudentService } from './../Service/StudentService';
+import { HomeComponent } from './HomeComponent';
+
 
 @Component({
-    selector:'ht-student-home',
-    templateUrl:'HomeComponents.html'
+    selector: 'ht-student-home',
+    templateUrl: 'HomeComponents.html'
 })
 export class DeleteComponent {
 
-    id:number;
+    id: number;
+    data:any;
 
-    constructor(private deleteService:StudentService,private route:ActivatedRoute){
+    constructor(private deleteService: StudentService, private route: ActivatedRoute) {
         this.route.params.subscribe(params => {
             this.id = params['id'];
         })
@@ -19,9 +22,9 @@ export class DeleteComponent {
         this.DeleteData(this.id);
     }
 
-    DeleteData(studentId){
+    DeleteData(studentId) {
         this.deleteService.DeleteData(studentId)
-            .then(r => {alert("Data Deleted.."+r.status)})
-            .catch(r => {console.log(r)});
+            .then(r => { alert("Data Deleted.." + r.status) })
+            .catch(r => { console.log(r) });
     }
 }

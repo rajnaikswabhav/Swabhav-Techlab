@@ -1,9 +1,11 @@
 import { ActivatedRoute } from '@angular/router';
-import { EventEmitter } from 'events';
-import { StudentService } from './../Service/StudentService';
 import { Component } from '@angular/core';
+
+import { EventEmitter } from 'events';
+
+import { StudentService } from './../Service/StudentService';
 import { IStudent } from '../IStudent';
-import { parse } from 'querystring';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,41 +23,39 @@ export class EditComponent {
     id: number;
     data: IStudent;
 
-    constructor(private editService: StudentService, private route: ActivatedRoute) {
+    constructor(private editService: StudentService, private route: ActivatedRoute,private router : Router) {
         this.route.params.subscribe(params => {
             this.id = params['id'];
 
             this.editService.GetStudentById(this.id)
                 .then((r: any) => {
-                    console.log(r._body)
                     this.data = r;
-
-                    console.log(this.data.rollNo);
                     this.rollNo = this.data.rollNo;
                     this.name = this.data.name;
                     this.age = this.data.age;
                     this.email = this.data.email;
-                    this.date = this.data.date; 
+                    this.date = this.data.date;
                     this.isMale = this.data.isMale;
-
                 })
                 .catch(r => console.log(r));
         });
     }
 
-    EditStudentData(rollNo,name,age,email,date,isMale){
+    EditStudentData(rollNo, name, age, email, date, isMale) {
         this.data = {
-            rollNo : rollNo,
-            name : name,
-            age : age,
-            email : email,
-            date : date,
-            isMale : isMale
+            rollNo: rollNo,
+            name: name,
+            age: age,
+            email: email,
+            date: date,
+            isMale: isMale
         }
 
-        this.editService.EditStudentData(this.id,this.data)
-            .then(r => {console.log("Data Edited : "+r.status)})
-            .catch(r => {console.log(r)});
-        
+        this.editService.EditStudentData(this.id, this.data)
+            .then(r => {
+                alert("Data Edited: "+r.status); 
+                this.router.navigateByUrl("home") })
+            .catch(r => { console.log(r) });
+
     }
 }
