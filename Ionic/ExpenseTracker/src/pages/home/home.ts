@@ -1,3 +1,4 @@
+import { UUID } from 'angular2-uuid';
 import { ExpensesDetails } from './../ExpensesDetails/ExpensesDetails';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -11,23 +12,24 @@ export class HomePage {
 
   expenseList = [];
   FLAG = 0;
-  constructor(public navCtrl: NavController,private expenseService : ExpenseSevice) {
+  constructor(public navCtrl: NavController, private expenseService: ExpenseSevice) {
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.expenseList = this.expenseService.listOfExpense;
-    console.log(this.expenseList);
   }
 
-  OnSelect(id){
+  OnSelect(id) {
     console.log(id);
     let exp = this.expenseService.GetById(id);
     console.log(exp);
-    this.navCtrl.push(ExpensesDetails,exp);
+    this.navCtrl.push(ExpensesDetails, exp);
   }
 
-  AddExpenses(){
+  AddExpenses() {
     this.FLAG = 1;
-    this.navCtrl.push(ExpensesDetails,{flag : this.FLAG});
+    this.navCtrl.push(ExpensesDetails, { 
+      flag: this.FLAG,
+      id : UUID.UUID() });
   }
 }

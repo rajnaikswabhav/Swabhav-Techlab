@@ -1,24 +1,32 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar color="secondary">
     <ion-title>
       ExpenseTracker
     </ion-title>
   </ion-navbar>
+  <h1 align="center" style="color:goldenrod;font-style: italic">ExpensesTracker</h1>
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <button ion-item  style="background-color:lightgrey;margin: 5px" 
-    *ngFor="let expense of expenseList" (click) = 'OnSelect(expense.id)'>
-          <h1><img src="assets/imgs/rupee-indian.png" width="17px">{{expense.money}}</h1>
-          <ion-note item-end><h2 style="color: red">{{expense.catagory}}</h2></ion-note>
-          <p>{{expense.description}}</p>
-          <p>{{expense.date}}</p>
+  <ion-list *ngIf="expenseList.length != null">
+    <button ion-item style="background-color:lightgrey;margin: 5px" *ngFor="let expense of expenseList" (click)='OnSelect(expense.id)'>
+      <h1>
+        <img src="assets/imgs/rupee-indian.png" width="17px">{{expense.money}}</h1>
+      <ion-note item-end>
+        <h2 style="color: red">{{expense.catagory}}</h2>
+      </ion-note>
+      <p>{{expense.description}}</p>
+      <p>{{expense.date | date: 'dd/MM/yyyy'}}</p>
+
+      <ion-note item-end>
+        <ion-icon name="arrow-dropright" color="dark"></ion-icon>
+      </ion-note>
     </button>
-    <ion-fab end>
-        <button ion-fab (click)='AddExpenses()' color="danger" fab-bottom fab-right>
-          <ion-icon name="add" color="dark"></ion-icon>
-        </button>
-      </ion-fab>
   </ion-list>
+  <ion-fab bottom right>
+    <button ion-fab (click)='AddExpenses()' color="secondary" mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-label color="danger" *ngIf="expenseList.length == null" stacked>No Data Found</ion-label>
 </ion-content>

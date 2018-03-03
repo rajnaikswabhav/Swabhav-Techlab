@@ -1,38 +1,24 @@
 import { Injectable } from "@angular/core";
+import { Storage } from "@ionic/storage";
 
 
 @Injectable()
 export class ExpenseSevice {
 
-    listOfExpense = [{
-        id: 101,
-        money: 1000,
-        catagory: 'Food',
-        description: 'Lunch',
-        date: '2018-02-17',
-    },
-    {
-        id: 102,
-        money: 15000,
-        catagory: 'Travel',
-        description: 'Travel for work',
-        date: '2017-12-10',
-    },
-    {
-        id: 103,
-        money: 30000,
-        catagory: 'Maintance',
-        description: 'Maintance of Machiens',
-        date: '2017-10-28',
-    },
-    {
-        id: 104,
-        money: 10000,
-        catagory: 'Salary',
-        description: 'Salary of employees',
-        date: '2018-02-07',
-    },
-    ]
+    listOfExpense = [];
+
+    constructor(private storage: Storage) {
+        if (this.listOfExpense.length != null) {
+            this.storage.get('expenses')
+                .then(m => {
+                    let expenses = JSON.parse(m);
+                    for (let expense of expenses) {
+                        this.listOfExpense.push(expense);
+                    }
+                })
+                .catch(e => console.log("Error is", e));
+        }
+    }
 
     GetById(id) {
 
@@ -47,7 +33,6 @@ export class ExpenseSevice {
     EditExpensesData(exp) {
         for (let e = 0; e < this.listOfExpense.length; e++) {
             if (this.listOfExpense[e].id == exp.id) {
-                console.log("Inside if...");
                 this.listOfExpense[e].id = exp.id;
                 this.listOfExpense[e].money = exp.money;
                 this.listOfExpense[e].catagory = exp.catagory;
@@ -56,10 +41,13 @@ export class ExpenseSevice {
                 break;
             }
         }
+
+        this.storage.set('expenses', JSON.stringify(this.listOfExpense));
     }
 
-    AddExpensesData(exp){
+    AddExpensesData(exp) {
         this.listOfExpense.push(exp);
+        this.storage.set('expenses', JSON.stringify(this.listOfExpense));
     }
 
     DeleteExpensesData(id) {
@@ -68,5 +56,6 @@ export class ExpenseSevice {
                 this.listOfExpense.splice(e, 1);
             }
         }
+        this.storage.set('expenses', JSON.stringify(this.listOfExpense));
     }
 }

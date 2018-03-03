@@ -1,4 +1,3 @@
-import { HomePage } from './../home/home';
 import { ExpenseSevice } from './../../Services/ExpenseService';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -19,6 +18,8 @@ export class ExpensesDetails {
     date: Date;
     exp: any;
     catagories = [];
+    validate: string;
+
     constructor(private navBar: NavController, private navParams: NavParams,
         private service: ExpenseSevice, private alertCtrl: AlertController) {
     }
@@ -32,7 +33,9 @@ export class ExpensesDetails {
         this.date = this.exp.date;
         this.catagories = ["Food", "Travel", "Maintance", "Salary", "Infrastructure", "Electricity", "Labor Work"];
         this.FLAG = this.navParams.get('flag');
-        console.log(this.exp);
+        if (this.FLAG == 1) {
+            this.id = this.navParams.get('id');
+        }
     }
 
     CloseEdit() {
@@ -40,50 +43,37 @@ export class ExpensesDetails {
     }
 
     SaveEditData(id, money, catagory, description, date) {
-        
-        console.log("inside save");
-        console.log(id, money, catagory, description, date);
-        let newExp = {
-            id: id,
-            money: money,
-            catagory: catagory,
-            description: description,
-            date: date,
-        }
-        if(this.FLAG == 1){
-            console.log("Inside flag if...");
-            this.service.AddExpensesData(newExp);
-        }
-        else{
-            this.service.EditExpensesData(newExp);
-            this.navBar.push(HomePage);
-        }
-    }
 
-    AddData(id, money, catagory, description, date) {
-        console.log("inside add");
-        console.log(id, money, catagory, description, date);
-        let newExp = {
-            id: id,
-            money: money,
-            catagory: catagory,
-            description: description,
-            date: date,
+        if (money == null || catagory == null || description == "" || date == null) {
+            alert("Something is missing...");
         }
-
-        this.service.AddExpensesData(newExp);
-        this.navBar.push(HomePage);
+        else {
+            let newExp = {
+                id: id,
+                money: money,
+                catagory: catagory,
+                description: description,
+                date: date,
+            }
+            if (this.FLAG == 1) {
+                this.service.AddExpensesData(newExp);
+                this.navBar.pop();
+            }
+            else {
+                this.service.EditExpensesData(newExp);
+                this.navBar.pop();
+            }
+        }
     }
 
     DeleteData(id) {
-        console.log("Inside delete... ");
         let alert = this.alertCtrl.create({
             title: 'Delete Item',
             message: 'Are you sure, you want to delete this item?',
             buttons: [
                 {
                     text: 'DISAGREE',
-                    role: 'cansel',
+                    role: 'cancel',
                     handler: () => {
                         console.log("Cansel clicked");
                     }
@@ -92,11 +82,12 @@ export class ExpensesDetails {
                     text: 'AGREE',
                     handler: () => {
                         this.service.DeleteExpensesData(id);
-                        this.navBar.push(HomePage);
+                        this.navBar.pop();
                     }
                 }
             ]
         });
         alert.present();
     }
+
 }
