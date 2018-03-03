@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>
+            ExpensesDetail
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button (click)='CloseEdit()' icon-only>
+                <ion-icon name="close"></ion-icon>
+            </button>
+            <button ion-button (click)='SaveEditData(id,money,catagory,description,date)'
+            *ngIf="id != null" icon-only>
+                <ion-icon name="checkmark"></ion-icon>
+            </button>
+            <button ion-button (click)='AddData(id,money,catagory,description,date)'
+            *ngIf = "id == null" icon-only>
+                <ion-icon name="checkmark"></ion-icon>
+            </button>
+            <button ion-button (click)='DeleteData(id)' icon-only>
+                <ion-icon name="trash"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label color="danger" floating stacked>Id</ion-label>
+            <ion-input type="number" [(ngModel)] = 'id'></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="danger" floating stacked>Money</ion-label>
+            <ion-input type="text" [(ngModel)]='money'></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="danger" floating stacked>Catagory</ion-label>
+            <ion-select [(ngModel)]='catagory'>
+                <ion-option *ngFor="let c of catagories">{{c}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label color="danger" floating stacked>Description</ion-label>
+            <!-- <ion-input type="text" [(ngModel)] = 'description'></ion-input> -->
+            <ion-input type="text" [(ngModel)]='description'></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="danger" flaoting stacked>Date</ion-label>
+            <ion-input type="date" [(ngModel)]='date'></ion-input>
+        </ion-item>
+    </ion-list>
+</ion-content>

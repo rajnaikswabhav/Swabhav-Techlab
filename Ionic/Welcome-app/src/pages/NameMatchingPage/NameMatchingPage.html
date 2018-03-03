@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar color="primary">
-        <ion-title>
+        <ion-title> 
             Welcome App
         </ion-title>
     </ion-navbar>
@@ -8,26 +8,32 @@
 <ion-content>
     <ion-list>
         <ion-item>
-            <ion-label floating="danger" stacked>Person 1:</ion-label>
-            <ion-input type="email" floatig="primary" [(ngModel)]='name1'></ion-input>
+
+            <ion-label floating="danger" color="danger" stacked>Person 1</ion-label>
+            <ion-input type="text" floatig="primary" [(ngModel)]='name1'></ion-input>
+            <button ion-button (click)='SelectPerson1()' icon-only item-end color="light">
+                <ion-icon name="contacts" color="dark"></ion-icon>
+            </button>
+
         </ion-item>
         <ion-item>
-            <ion-label floating="danger" stacked>Person 2:</ion-label>
-            <ion-input type="email" floatig="primary" [ngModel]='name2'  (ngModelChange)='Calculate($event)'></ion-input>
+            <ion-label floating="danger" color="danger" stacked>Person 2</ion-label>
+            <ion-input type="text" floating="primary" item-width="50px" [ngModel]='name2' (ngModelChange)='Calculate($event)'></ion-input>
+            <button ion-button (click)='SelectPerson2()' icon-only item-end color="light">
+                <ion-icon name="contacts" color="dark"></ion-icon>
+            </button>
         </ion-item>
     </ion-list>
     <br>
-    <br>
-    <br>
     <ion-card style="background-color: lightyellow">
         <ion-card-header>
-            <p style="font-size: 40px;color: blue">{{name1}}
-                <ion-icon style="margin: 20px;font-size: 50px;color: red" name="heart"> 
+            <p style="font-size: 20px;color: blue">{{name1}}
+                <ion-icon style="margin: 20px;font-size: 50px;color: red" name="heart" isActive="false">
                 </ion-icon> {{name2}}</p>
         </ion-card-header>
         <ion-list>
             <ion-item>
-                <ion-label  style="font-size: 35px;color: green" stacked>{{result}}</ion-label>
+                <ion-label style="font-size: 35px;color: green" align="center" stacked>{{result}}</ion-label>
             </ion-item>
         </ion-list>
     </ion-card>

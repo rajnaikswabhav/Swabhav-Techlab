@@ -1,19 +1,19 @@
+import { ExpensesDetails } from './../pages/ExpensesDetails/ExpensesDetails';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { Contacts } from '@ionic-native/contacts'
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { NameMatch } from '../pages/NameMatchingPage/NameMatchingPage';
+import { ExpenseSevice } from '../Services/ExpenseService';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    NameMatch
+    ExpensesDetails
   ],
   imports: [
     BrowserModule,
@@ -23,12 +23,12 @@ import { NameMatch } from '../pages/NameMatchingPage/NameMatchingPage';
   entryComponents: [
     MyApp,
     HomePage,
-    NameMatch
+    ExpensesDetails
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    Contacts,
+    ExpenseSevice,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

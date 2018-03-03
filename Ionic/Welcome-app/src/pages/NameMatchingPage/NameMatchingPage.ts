@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Contact, Contacts } from '@ionic-native/contacts';
 
 @Component({
     selector:'ht-namematch',
@@ -9,9 +10,23 @@ export class NameMatch {
 
     name1 : string;
     name2 : string;
-    result : number;
-    constructor(private navCtr : NavController){
+    result : string;
+    constructor(private navCtr : NavController,private contactService : Contacts){
     }
+
+    SelectPerson1(){
+        this.contactService.pickContact()
+            .then(s => this.name1 = s.displayName)
+            .catch(e => console.log(e));
+    }
+
+    SelectPerson2(){
+        this.contactService.pickContact()
+            .then(s => this.Calculate(s.displayName))
+            .catch(e => console.log(e));
+    }
+
+
 
     Calculate(newName){
         console.log(newName);
@@ -26,7 +41,7 @@ export class NameMatch {
             sum = sum + this.name2.toUpperCase().charCodeAt(i);
         }
         console.log(sum);
-         this.result = sum%101;
+         this.result = sum%101 +" %";
     }
 
 }

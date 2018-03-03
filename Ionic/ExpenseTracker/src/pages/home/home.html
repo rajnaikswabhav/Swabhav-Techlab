@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      ExpenseTracker
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item  style="background-color:lightgrey;margin: 5px" 
+    *ngFor="let expense of expenseList" (click) = 'OnSelect(expense.id)'>
+          <h1><img src="assets/imgs/rupee-indian.png" width="17px">{{expense.money}}</h1>
+          <ion-note item-end><h2 style="color: red">{{expense.catagory}}</h2></ion-note>
+          <p>{{expense.description}}</p>
+          <p>{{expense.date}}</p>
+    </button>
+    <ion-fab end>
+        <button ion-fab (click)='AddExpenses()' color="danger" fab-bottom fab-right>
+          <ion-icon name="add" color="dark"></ion-icon>
+        </button>
+      </ion-fab>
+  </ion-list>
+</ion-content>
