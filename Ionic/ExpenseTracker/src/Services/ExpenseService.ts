@@ -8,7 +8,7 @@ export class ExpenseSevice {
     listOfExpense = [];
 
     constructor(private storage: Storage) {
-        if (this.listOfExpense.length != null) {
+        if (this.listOfExpense.length != 4) {
             this.storage.get('expenses')
                 .then(m => {
                     let expenses = JSON.parse(m);

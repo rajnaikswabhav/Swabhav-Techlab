@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-navbar color="secondary">
+        <ion-title>
+            ExpensesTracker
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label color="danger" floating stacked>UserName</ion-label>
+            <ion-input type="text" [(ngModel)]='userName' required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="danger" floating stacked>Password</ion-label>
+            <ion-input type="password" [(ngModel)]='password' required></ion-input>
+        </ion-item>
+        <br>
+        <br>
+        <button ion-button color="primary" (click)='ValidateUser()' round>Login</button>
+    </ion-list>
+</ion-content>

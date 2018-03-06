@@ -18,9 +18,9 @@
 </ion-header>
 <ion-content padding>
     <ion-list>
-            <ion-item>
-                    <ion-label color="danger" stacked>Expense Id: {{id}}</ion-label>
-                </ion-item>
+        <ion-item>
+            <ion-label color="danger" stacked>Expense Id: {{id}}</ion-label>
+        </ion-item>
         <ion-item>
             <ion-label color="danger" floating stacked>Money</ion-label>
             <ion-input type="text" [(ngModel)]='money'></ion-input>
@@ -33,12 +33,11 @@
         </ion-item>
         <ion-item>
             <ion-label color="danger" floating stacked>Description</ion-label>
-            <!-- <ion-input type="text" [(ngModel)] = 'description'></ion-input> -->
             <ion-input type="text" [(ngModel)]='description'></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="danger" flaoting stacked>Date</ion-label>
-            <ion-datetime displayFormat = "DD MMMM YYYY" [(ngModel)]="date"></ion-datetime>
+            <ion-datetime displayFormat="DD MMMM YYYY" [(ngModel)]="date"></ion-datetime>
         </ion-item>
     </ion-list>
 </ion-content>

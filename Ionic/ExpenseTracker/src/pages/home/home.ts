@@ -3,20 +3,26 @@ import { ExpensesDetails } from './../ExpensesDetails/ExpensesDetails';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ExpenseSevice } from '../../Services/ExpenseService';
+import { NavParams } from 'ionic-angular/navigation/nav-params';
+import { Login } from '../LoginPage/LoginPage';
 
 @Component({
-  selector: 'page-home',
+  selector: 'expenses-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
 
   expenseList = [];
   FLAG = 0;
-  constructor(public navCtrl: NavController, private expenseService: ExpenseSevice) {
+  userName: string;
+  constructor(public navCtrl: NavController, private expenseService: ExpenseSevice,
+    private navParams: NavParams) {
   }
 
   ngOnInit() {
     this.expenseList = this.expenseService.listOfExpense;
+    this.userName = this.navParams.get('name');
+    console.log(this.userName);
   }
 
   OnSelect(id) {
@@ -28,8 +34,14 @@ export class HomePage {
 
   AddExpenses() {
     this.FLAG = 1;
-    this.navCtrl.push(ExpensesDetails, { 
+    this.navCtrl.push(ExpensesDetails, {
       flag: this.FLAG,
-      id : UUID.UUID() });
+      id: UUID.UUID()
+    });
+  }
+
+  Logout() {
+    this.navCtrl.popToRoot();
+    this.navCtrl.setRoot(Login);
   }
 }

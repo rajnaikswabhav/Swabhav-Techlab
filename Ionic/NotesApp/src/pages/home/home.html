@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>My Notes</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)='ReorderNotes()' *ngIf="reorderValue == false">Reorder</button>
+      <button ion-button (click)='ReorderNotes()' *ngIf="reorderValue == true">Done</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-group [reorder]='reorderValue' (ionItemReorder)="ReorderItems($event)">
+      <ion-item-sliding *ngFor="let note of notesList">
+        <button ion-item (click)='EditNote(note.id)' style="margin:5px">
+          <h1>{{note.title}}</h1>
+          <ion-note item-end>
+            <ion-icon name="arrow-dropright" color="dark"></ion-icon>
+          </ion-note>
+          <p>{{note.desc}}</p>
+        </button>
+        <ion-item-options>
+          <button ion-button (click)="RemoveNote(note.id)" color="danger" icon-only>
+            <ion-icon name="trash"></ion-icon> Delete</button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

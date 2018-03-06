@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Add Note
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary" floating stacked>Title</ion-label>
+      <ion-input type="text" [(ngModel)]='title'></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating stacked>Description</ion-label>
+      <ion-input type="text" [(ngModel)]='desc'></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button (click)='AddNote()' style="height: 30px;color: red" round full>Save</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

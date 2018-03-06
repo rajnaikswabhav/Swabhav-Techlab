@@ -11,12 +11,15 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ExpenseSevice } from '../Services/ExpenseService';
 import { ExpensesDetails } from './../pages/ExpensesDetails/ExpensesDetails';
+import { Login } from '../pages/LoginPage/LoginPage';
+import { AuthService } from '../Services/AuthService';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ExpensesDetails
+    ExpensesDetails,
+    Login
   ],
   imports: [
     BrowserModule,
@@ -27,12 +30,14 @@ import { ExpensesDetails } from './../pages/ExpensesDetails/ExpensesDetails';
   entryComponents: [
     MyApp,
     HomePage,
-    ExpensesDetails
+    ExpensesDetails,
+    Login
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ExpenseSevice,
+    AuthService,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
