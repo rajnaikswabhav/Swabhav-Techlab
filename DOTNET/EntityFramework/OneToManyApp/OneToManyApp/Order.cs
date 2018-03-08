@@ -10,9 +10,8 @@ namespace OneToManyApp
     {
         public List<LineItem> items = new List<LineItem>();
         public int OrderId { get; set; }
-        public string OrderItem  { get; set; }
-        public double OrderCost { get; set; }   
-        public int CustomerId { get; set; }
-        public List<LineItem> Items  { get; set; }
+        public string OrderItem { get; set; }
+        public double OrderCost { get; set; }
+        public int CustomerId { get; set; };
     }
 }

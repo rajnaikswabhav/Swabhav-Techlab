@@ -11,9 +11,11 @@ namespace ShoppingCartCore.Framework.Repository.EntityFramework
 {
     class ShoppingCartDbContext : DbContext
     {
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Role> Role  { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<Address> Address { get; set; }
+        public DbSet<Order> Order  { get; set; }
+        public DbSet<LineItem> LineItem  { get; set; }
+        public DbSet<Wishlist> Wishlist  { get; set; }
+        public DbSet<Product> Product { get; set; }
     }
 }

@@ -9,7 +9,12 @@ namespace ShoppingCartCore.Framework.Repository
     interface IRepository<T> where T : class
     {
         void Add(T entity);
-        T GetById(int id);
+        void Delete(Guid entityId);
+        void Update(T enity);
+
+        T GetById(Guid id);
         IList<T> Find(ISpecification<T> specification);
+        IList<T> Get();
+        
     }
 }
