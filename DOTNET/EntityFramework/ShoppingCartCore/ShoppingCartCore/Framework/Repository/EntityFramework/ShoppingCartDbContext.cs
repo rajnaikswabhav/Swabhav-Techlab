@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace ShoppingCartCore.Framework.Repository.EntityFramework
 {
-    class ShoppingCartDbContext : DbContext
+    public class ShoppingCartDbContext : DbContext
     {
-        public DbSet<User> User { get; set; }
-        public DbSet<Address> Address { get; set; }
-        public DbSet<Order> Order  { get; set; }
-        public DbSet<LineItem> LineItem  { get; set; }
-        public DbSet<Wishlist> Wishlist  { get; set; }
-        public DbSet<Product> Product { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Order> Orders  { get; set; }
+        public DbSet<LineItem> LineItems  { get; set; }
+        public DbSet<Wishlist> Wishlists  { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

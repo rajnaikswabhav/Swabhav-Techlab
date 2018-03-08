@@ -13,6 +13,5 @@ namespace ShoppingCartCore.Framework.Model
         [Key]
         [Column(Order = 1)]
         public Guid Id { get; set; }
-        public int Version { get; set; }
     }
 }

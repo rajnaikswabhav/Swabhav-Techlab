@@ -13,12 +13,6 @@ namespace ShoppingCartCore.Services
     public class RegisterService
     {
 
-        public void RegisterUser(User user)
-        {
-            EntityFrameworkRepository<User> userRepo = new EntityFrameworkRepository<User>();
-            userRepo.Add(user);
-        }
-
         public string VerifyByEmail(string emailId, string userName)
         {
             var fromAddress = new MailAddress("akashmalaviya001@gmail.com", "BookmarkApp Team");

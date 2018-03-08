@@ -1,4 +1,5 @@
 ﻿using ShoppingCartCore.Framework.Model;
+using ShoppingCartCore.Framework.Repository.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,7 @@ namespace TestShoppingCartCore
     {
         static void Main(string[] args)
         {
-            User user = new User();
-            user.
+            
         }
     }
 }
