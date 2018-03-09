@@ -8,6 +8,7 @@ using System.Web.Http;
 
 namespace ShoppingCartApp.Controllers
 {
+    [RoutePrefix("api/v1/ShoppingCart/Wishlist")]
     public class WishlistController : ApiController
     {
         private EntityFrameworkRepository<Wishlist> erf = new EntityFrameworkRepository<Wishlist>();
@@ -19,28 +20,28 @@ namespace ShoppingCartApp.Controllers
             return Ok(erf.Get());
         }
 
-        [Route("GetById/{wishlistId}")]
+        [Route("GetWishlist/{wishlistId}")]
         public IHttpActionResult GetById(Guid wishlistId)
         {
             return Ok(erf.GetById(wishlistId));
         }
 
         [Route("AddWishlist")]
-        public IHttpActionResult PostOrder(Wishlist wishlist)
+        public IHttpActionResult PostWishlist(Wishlist wishlist)
         {
             erf.Add(wishlist);
             return Ok("wishlist Added...");
         }
 
         [Route("DeleteWishlist/{wishlistId}")]
-        public IHttpActionResult DeleteOrder(Guid wishlistId)
+        public IHttpActionResult DeleteWishlist(Guid wishlistId)
         {
             erf.Delete(wishlistId);
             return Ok("Wishlist Deleted");
         }
 
         [Route("UpdateWishlist")]
-        public IHttpActionResult PutUpdateOrder(Wishlist wishlist)
+        public IHttpActionResult PutUpdateWishlist(Wishlist wishlist)
         {
             erf.Update(wishlist);
             return Ok("Data Updated");

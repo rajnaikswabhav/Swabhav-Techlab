@@ -20,28 +20,28 @@ namespace ShoppingCartApp.Controllers
             return Ok(erf.Get());
         }
 
-        [Route("GetById/{itemId}")]
+        [Route("GetItem/{itemId}")]
         public IHttpActionResult GetById(Guid itemId)
         {
             return Ok(erf.GetById(itemId));
         }
 
         [Route("AddItem")]
-        public IHttpActionResult PostOrder(LineItem item)
+        public IHttpActionResult PostItem(LineItem item)
         {
             erf.Add(item);
             return Ok("LineItem Added...");
         }
 
         [Route("DeleteItem/{itemId}")]
-        public IHttpActionResult DeleteOrder(Guid itemId)
+        public IHttpActionResult DeleteItem(Guid itemId)
         {
             erf.Delete(itemId);
             return Ok("Item Deleted");
         }
 
         [Route("UpdateItem")]
-        public IHttpActionResult PutUpdateOrder(LineItem item)
+        public IHttpActionResult PutUpdateItem(LineItem item)
         {
             erf.Update(item);
             return Ok("Data Updated");

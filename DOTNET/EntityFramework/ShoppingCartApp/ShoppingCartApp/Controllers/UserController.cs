@@ -20,7 +20,7 @@ namespace ShoppingCartApp.Controllers
             return Ok("Data Added");
         }
 
-        [Route("GetAllUser")]
+        [Route("GetAllUsers")]
         public IHttpActionResult GetAllUser()
         {
             return Ok(erf.Get());

@@ -14,13 +14,13 @@ namespace ShoppingCartApp.Controllers
         private EntityFrameworkRepository<Order> erf = new EntityFrameworkRepository<Order>();
 
 
-        [Route("GetAllOrder")]
+        [Route("GetAllOrders")]
         public IHttpActionResult Get()
         {
             return Ok(erf.Get());
         }
 
-        [Route("GetById/{orderId}")]
+        [Route("GetOrder/{orderId}")]
         public IHttpActionResult GetById(Guid orderId)
         {
             return Ok(erf.GetById(orderId));
