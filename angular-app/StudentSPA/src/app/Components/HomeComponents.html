@@ -6,23 +6,19 @@
                 <th>Roll No</th>
                 <th>Name</th>
                 <th>Age</th>
+                <th>PhoneNo</th>
                 <th>Email</th>
-                <th>Date</th>
-                <th>isMale</th>
-                <th>Event</th>
+                <th>Password</th>
             </tr>
         </thead>
         <tbody *ngFor="let i of data">
             <tr>
-                <td >{{i.rollNo}}</td>
-                <td >{{i.name}}</td>
-                <td >{{i.age}}</td>
-                <td >{{i.email}}</td>
-                <td >{{i.date}}</td>
-                <td >{{i.isMale}}</td>
-                <td>
-                    <button (click)='EditData(i.rollNo)' class="btn btn-warning btn-xs">Edit</button>
-                 <button (click)='ClearItem(i.rollNo)' class="btn btn-danger btn-xs">Delete</button> </td>
+                <td >{{i.RollNo}}</td>
+                <td >{{i.Name}}</td>
+                <td >{{i.Age}}</td>
+                <td >{{i.PhoneNo}}</td>
+                <td >{{i.Email}}</td>
+                <td >{{i.Password}}</td>
             </tr>
         </tbody>
     </table>
