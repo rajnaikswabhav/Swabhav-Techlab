@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShoppingCartCore.Framework.Repository.EntityFramework
 {
-    class EntityFrameworkRepository<T> : IRepository<T> where T : Entity
+    public class EntityFrameworkRepository<T> : IRepository<T> where T : Entity
     {
         public void Add(T entity)
         {
@@ -55,6 +55,13 @@ namespace ShoppingCartCore.Framework.Repository.EntityFramework
 
         public void Update(T enity)
         {
+            using (var unitOfWork = new UnitOfWorkScope<ShoppingCartDbContext>(UnitOfWorkScopePurpose.Writing))
+            {
+                var user = GetById(enity.Id);
+                unitOfWork.DbContext.Set<T>().Remove(user);
+                unitOfWork.DbContext.Set<T>().Add(enity);
+                unitOfWork.SaveChanges();
+            }
         }
     }
 }

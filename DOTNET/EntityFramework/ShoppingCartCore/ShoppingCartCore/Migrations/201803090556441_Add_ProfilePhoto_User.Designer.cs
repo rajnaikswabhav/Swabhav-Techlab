@@ -7,13 +7,13 @@ namespace ShoppingCartCore.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddedDatabase : IMigrationMetadata
+    public sealed partial class Add_ProfilePhoto_User : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedDatabase));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Add_ProfilePhoto_User));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803080922565_Added Database"; }
+            get { return "201803090556441_Add_ProfilePhoto_User"; }
         }
         
         string IMigrationMetadata.Source

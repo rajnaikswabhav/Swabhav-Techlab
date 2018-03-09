@@ -66,8 +66,12 @@ namespace ShoppingCartCore.Framework.Repository.EntityFramework
             {
                 ForWriting = forWriting;
                 DbContext = new TDbContext();
-                ((IObjectContextAdapter)DbContext).ObjectContext.SavingChanges
-                    += GuardAgainstDirectSaves;
+                try
+                {
+                    ((IObjectContextAdapter)DbContext).ObjectContext.SavingChanges
+                        += GuardAgainstDirectSaves;
+                }
+                catch(Exception e) { }
             }
 
             void GuardAgainstDirectSaves(object sender, EventArgs e)
@@ -187,7 +191,7 @@ namespace ShoppingCartCore.Framework.Repository.EntityFramework
             {
                 return;
             }
-
+    
             scopedDbContext.AllowSaving = true;
             scopedDbContext.DbContext.SaveChanges();
             scopedDbContext.AllowSaving = false;

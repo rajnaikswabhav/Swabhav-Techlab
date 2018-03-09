@@ -3,7 +3,7 @@ namespace ShoppingCartCore.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddedDatabase : DbMigration
+    public partial class Add_To_Database : DbMigration
     {
         public override void Up()
         {
@@ -18,7 +18,6 @@ namespace ShoppingCartCore.Migrations
                         State = c.String(),
                         Country = c.String(),
                         PinCode = c.Int(nullable: false),
-                        Version = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -29,7 +28,6 @@ namespace ShoppingCartCore.Migrations
                         Id = c.Guid(nullable: false),
                         Quantity = c.Int(nullable: false),
                         orderId = c.Guid(nullable: false),
-                        Version = c.Int(nullable: false),
                         Product_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -45,7 +43,6 @@ namespace ShoppingCartCore.Migrations
                         ProductCatagory = c.String(),
                         ProductCost = c.Double(nullable: false),
                         Discount = c.Single(nullable: false),
-                        Version = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -57,7 +54,6 @@ namespace ShoppingCartCore.Migrations
                         OrderDate = c.DateTime(nullable: false),
                         userId = c.Guid(nullable: false),
                         Status = c.Int(nullable: false),
-                        Version = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -74,7 +70,6 @@ namespace ShoppingCartCore.Migrations
                         Role = c.Int(nullable: false),
                         Email = c.String(),
                         Password = c.String(),
-                        Version = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -84,7 +79,6 @@ namespace ShoppingCartCore.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         UserId = c.Guid(nullable: false),
-                        Version = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

@@ -69,13 +69,13 @@
     <Compile Include="Framework\Repository\IRepository.cs" />
     <Compile Include="Framework\Repository\ISpecification.cs" />
     <Compile Include="Framework\Repository\EntityFramework\UnitOfWork.cs" />
-    <Compile Include="Migrations\201803080922565_Added Database.cs" />
-    <Compile Include="Migrations\201803080922565_Added Database.Designer.cs">
-      <DependentUpon>201803080922565_Added Database.cs</DependentUpon>
+    <Compile Include="Migrations\201803081211119_Add_To_Database.cs" />
+    <Compile Include="Migrations\201803081211119_Add_To_Database.Designer.cs">
+      <DependentUpon>201803081211119_Add_To_Database.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803080927116_Add To Databse.cs" />
-    <Compile Include="Migrations\201803080927116_Add To Databse.Designer.cs">
-      <DependentUpon>201803080927116_Add To Databse.cs</DependentUpon>
+    <Compile Include="Migrations\201803090556441_Add_ProfilePhoto_User.cs" />
+    <Compile Include="Migrations\201803090556441_Add_ProfilePhoto_User.Designer.cs">
+      <DependentUpon>201803090556441_Add_ProfilePhoto_User.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,11 +88,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803080922565_Added Database.resx">
-      <DependentUpon>201803080922565_Added Database.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803081211119_Add_To_Database.resx">
+      <DependentUpon>201803081211119_Add_To_Database.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803080927116_Add To Databse.resx">
-      <DependentUpon>201803080927116_Add To Databse.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803090556441_Add_ProfilePhoto_User.resx">
+      <DependentUpon>201803090556441_Add_ProfilePhoto_User.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

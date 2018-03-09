@@ -10,7 +10,7 @@ namespace ShoppingCartCore.Framework.Repository
     {
         void Add(T entity);
         void Delete(Guid entityId);
-        void Update(T enity);
+        void Update(T entity);
 
         T GetById(Guid id);
         IList<T> Find(ISpecification<T> specification);

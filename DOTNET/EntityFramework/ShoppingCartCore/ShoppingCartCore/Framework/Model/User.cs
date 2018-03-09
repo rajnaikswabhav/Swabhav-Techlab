@@ -19,7 +19,7 @@ namespace ShoppingCartCore.Framework.Model
         public UserRole Role  { get; set; }
         public string Email  { get; set; }
         public string Password  { get; set; }
-
+        public string ProfilePhoto { get; set; }
         public List<Address> addreses = new List<Address>();
         public List<Order> orders = new List<Order>();
     }
