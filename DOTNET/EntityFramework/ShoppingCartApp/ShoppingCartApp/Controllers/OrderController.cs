@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace ShoppingCartApp.Controllers
 {
-    [RoutePrefix("api/v1/ShoppingCart/Order")]
+    [RoutePrefix("api/v1/ShoppingCart/User/{userId}/Order")]
     public class OrderController : ApiController
     {
         private EntityFrameworkRepository<Order> erf = new EntityFrameworkRepository<Order>();

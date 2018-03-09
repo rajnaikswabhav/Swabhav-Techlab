@@ -8,6 +8,7 @@ namespace ShoppingCartCore.Framework.Model
 {
     public class Address : Entity
     {
+
         public Guid UserId  { get; set; }
         public string StreetAddress  { get; set; }
         public string  City { get; set; }
