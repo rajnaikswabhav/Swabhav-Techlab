@@ -14,6 +14,7 @@ namespace ShoppingCartCore.Framework.Repository.EntityFramework
         {
             using (var unitOfWork = new UnitOfWorkScope<ShoppingCartDbContext>(UnitOfWorkScopePurpose.Writing))
             {
+
                 unitOfWork.DbContext.Set<T>().Add(entity);
                 unitOfWork.SaveChanges();
             }

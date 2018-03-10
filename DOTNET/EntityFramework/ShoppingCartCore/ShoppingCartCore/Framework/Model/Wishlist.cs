@@ -10,6 +10,5 @@ namespace ShoppingCartCore.Framework.Model
     public class Wishlist : Entity
     {
         public Guid UserId { get; set; }
-        public List<LineItem> items = new List<LineItem>();
     }
 }

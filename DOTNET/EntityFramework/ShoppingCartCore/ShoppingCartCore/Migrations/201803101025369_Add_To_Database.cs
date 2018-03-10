@@ -27,12 +27,20 @@ namespace ShoppingCartCore.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         Quantity = c.Int(nullable: false),
-                        orderId = c.Guid(nullable: false),
-                        Product_Id = c.Guid(),
+                        OrderId = c.Guid(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Products", t => t.Product_Id)
-                .Index(t => t.Product_Id);
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Orders",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        OrderDate = c.DateTime(nullable: false),
+                        UserId = c.Guid(nullable: false),
+                        Status = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Products",
@@ -47,29 +55,19 @@ namespace ShoppingCartCore.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Orders",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        OrderDate = c.DateTime(nullable: false),
-                        userId = c.Guid(nullable: false),
-                        Status = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "dbo.Users",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
                         FirstName = c.String(),
                         LastName = c.String(),
-                        PhoneNo = c.Int(nullable: false),
+                        PhoneNo = c.String(),
                         Age = c.Int(nullable: false),
-                        Gender = c.Int(nullable: false),
-                        Role = c.Int(nullable: false),
+                        Gender = c.String(),
+                        Role = c.String(),
                         Email = c.String(),
                         Password = c.String(),
+                        ProfilePhoto = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -86,12 +84,10 @@ namespace ShoppingCartCore.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.LineItems", "Product_Id", "dbo.Products");
-            DropIndex("dbo.LineItems", new[] { "Product_Id" });
             DropTable("dbo.Wishlists");
             DropTable("dbo.Users");
-            DropTable("dbo.Orders");
             DropTable("dbo.Products");
+            DropTable("dbo.Orders");
             DropTable("dbo.LineItems");
             DropTable("dbo.Addresses");
         }

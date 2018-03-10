@@ -9,6 +9,9 @@ export class AppComponent {
   FLAG = 0;
   login = "active";
   register:string;
+  Role = "ADMIN";
+  male = "MALE";
+  female = "Female"
 
 
   Login(){
@@ -24,10 +27,10 @@ export class AppComponent {
   }
 
   LoginAdmin(){
-    console.log("Inside Login");
+    
   }
 
-  RegisterAdmin(){
-    console.log("Inside Register");
+  RegisterAdmin(firstName,lastName,mobileNo,age,email,password,confirmPassword,gender){
+    console.log(firstName+" "+lastName+" "+gender);
   }
 }

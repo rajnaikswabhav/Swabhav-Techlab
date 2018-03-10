@@ -12,10 +12,6 @@ namespace ShoppingCartCore.Framework.Repository.EntityFramework
     public class ShoppingCartDbContext : DbContext
     {
 
-        public ShoppingCartDbContext() : base("ShoppingCartDbContext")
-        {
-            Database.SetInitializer<ShoppingCartDbContext>(null);
-        }
         public DbSet<User> Users { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Order> Orders { get; set; }
