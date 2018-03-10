@@ -81,6 +81,10 @@
     <Compile Include="Migrations\201803091018122_Any_Change_Model.Designer.cs">
       <DependentUpon>201803091018122_Any_Change_Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803100740396_Change_In_Model.cs" />
+    <Compile Include="Migrations\201803100740396_Change_In_Model.Designer.cs">
+      <DependentUpon>201803100740396_Change_In_Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LoginCriteria.cs" />
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803091018122_Any_Change_Model.resx">
       <DependentUpon>201803091018122_Any_Change_Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803100740396_Change_In_Model.resx">
+      <DependentUpon>201803100740396_Change_In_Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

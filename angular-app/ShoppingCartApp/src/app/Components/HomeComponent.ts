@@ -10,8 +10,8 @@ export class HomeComponent {
 
     data = [];
     constructor(private userService : DataService){}
-
     ngOnInit(){
+
         this.userService.GetData()
             .then(r => this.data = r)
     }
