@@ -41,10 +41,21 @@ export class UserService {
                     console.log("Inside else");
                     for (let i of r) {
                         if (i.Email == userName && i.Password == password && i.Role == role) {
-                            this.router.navigate(['dashboard', i.Id]);
+                            console.log(i);
+                            localStorage.setItem('user', JSON.stringify(i));
+                            this.router.navigate(['home',i.Id]);
                         }
                     }
                 }
             });
+    }
+
+    UpdateAdmin()
+    {
+        
+    }
+
+    Logout() {
+        localStorage.removeItem('user');
     }
 }

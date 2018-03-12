@@ -9,4 +9,26 @@ import { UserService } from './Services/UserService';
 })
 export class AppComponent {
  
+  constructor(private router : Router,private userService : UserService){
+
+  }
+
+  ngOnInit(){
+    let user = JSON.parse(localStorage.getItem('user'));
+
+    if(user == null){
+      this.router.navigate(['login']);
+    }
+    else{
+      this.router.navigate(['home',user.Id]);
+    }
+  }
+
+  Logout() {
+    alert("Logout");
+    setTimeout(() => {
+        this.userService.Logout();
+        this.router.navigateByUrl('login');
+    }, 2000);
+}
 }

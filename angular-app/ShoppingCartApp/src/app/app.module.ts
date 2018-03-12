@@ -1,4 +1,4 @@
-import { DashboardComponent } from './Components/DashboardComponent';
+import { ProductDetailComponent } from './Components/ProductDetailComponent';
 import { LoginComponent } from './Components/LoginComponent';
 import { HomeComponent } from './Components/HomeComponent';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,6 +10,7 @@ import { RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import { ROUTS_ARRAY } from './RouteConfig';
 import { UserService } from './Services/UserService';
+import { ProductService } from './Services/ProductService';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { UserService } from './Services/UserService';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    DashboardComponent
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +26,7 @@ import { UserService } from './Services/UserService';
     FormsModule,
     RouterModule.forRoot(ROUTS_ARRAY)
   ],
-  providers: [UserService],
+  providers: [UserService,ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
