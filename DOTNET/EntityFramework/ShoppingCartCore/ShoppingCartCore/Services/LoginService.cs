@@ -4,6 +4,7 @@ using ShoppingCartCore.Framework.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,9 +45,26 @@ namespace ShoppingCartCore.Services
             }
         }
 
-        public bool AuthnticateUser()
-        { 
-            return false;
+        public  Expression AuthnticateUser(LoginCriteria criteria)
+        {
+            var builder = PredicateBuilder.True<User>();
+            if (!string.IsNullOrEmpty(_criteria.UserName) &&
+               !string.IsNullOrEmpty(_criteria.Password) &&
+               !(_criteria.Role.Equals("Empty")))
+            {
+                builder = builder.And(x => x.Password.ToString().Equals(_criteria.Password))
+                                   .And(x => x.Email.ToString().Equals(_criteria.UserName))
+                                   .And(x => x.Role.Equals(_criteria.Role));
+            }
+
+            if (!string.IsNullOrEmpty(_criteria.UserName) &&
+               !string.IsNullOrEmpty(_criteria.Password) &&
+               _criteria.Role.Equals("Empty"))
+            {
+                builder = builder.And(x => x.Password.ToUpper().Equals(_criteria.Password.ToUpper()))
+                                   .And(x => x.Email.ToUpper().Equals(_criteria.UserName.ToUpper()));
+            }
+            return builder;
         }
     }
 }

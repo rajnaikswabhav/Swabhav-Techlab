@@ -1,5 +1,7 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
-import { DataService } from '../Services/DataService';
+import { UserService } from '../Services/UserService';
+import { Session } from 'selenium-webdriver';
 
 
 @Component({
@@ -9,11 +11,16 @@ import { DataService } from '../Services/DataService';
 export class HomeComponent {
 
     data = [];
-    constructor(private userService : DataService){}
+    userName:string;
+
+    constructor(private userService : UserService,private route : ActivatedRoute){
+        this.userName = Session['user'];
+    }
     ngOnInit(){
 
         this.userService.GetData()
             .then(r => this.data = r)
+            .catch(r => alert(r))
     }
 
     GetDataById($event){
