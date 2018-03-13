@@ -13,5 +13,6 @@ export const ROUTS_ARRAY: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'home/:id', component: HomeComponent },
     { path: 'home/:id/product', component: ProductDetailComponent},
+    { path: 'product/:id', component: ProductDetailComponent},
     { path: '', component: LoginComponent, pathMatch: 'full' }
 ]

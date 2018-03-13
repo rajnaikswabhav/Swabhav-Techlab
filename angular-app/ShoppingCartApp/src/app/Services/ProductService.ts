@@ -33,11 +33,15 @@ export class ProductService {
         return this.http.post(this.PRODUCT_URL+"/AddProduct",newProduct).toPromise();
     }
 
-    UpdateProduct(id){
-        let oldProduct ;
-        this.GetByIdProduct(id)
-        .then(r => oldProduct = r)
-        .catch(r => {console.log(r)});
+    UpdateProduct(pid,pname,pcatagory,pcost,discount){
+        let editProduct = {
+            Id : pid,
+            ProductName : pname,
+            ProductCatagory : pcatagory,
+            ProductCost : pcost,
+            Discount : discount
+        }
+        return this.http.put(this.PRODUCT_URL+"/UpdateProduct",editProduct).toPromise();
     }
 
     DeleteProduct(id){

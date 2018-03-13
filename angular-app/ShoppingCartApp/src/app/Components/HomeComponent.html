@@ -1,5 +1,27 @@
 <style>
-  /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+  .btn {
+    border: none;
+
+    color: white;
+
+    cursor: pointer;
+  }
+
+  .danger {
+    background-color: #f44336;
+  }
+
+  .danger:hover {
+    background: #da190b;
+  }
+
+  .warning {
+    background-color: #ff9800;
+  }
+
+  .warning:hover {
+    background: #e68a00;
+  }
 
   .row.content {
     height: 1500px
@@ -47,8 +69,15 @@
         <li>
           <a></a>
         </li>
-          
+
       </ul>
+      <div class="dropdown">
+        <label>Filter By: </label>
+          <select name="Catagary">
+            <option>--Select</option>
+            <option *ngFor="let catagary of catagaries" [(ngModel)]='catagory'>{{catagary}}</option>
+          </select>
+        </div>
       <br>
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Search Blog..">
@@ -96,17 +125,27 @@
         </table>
       </div> -->
       <div class="container">
-          <div *ngFor="let detail of data">
+        <div *ngFor="let detail of data">
           <div class="card bg-info">
-              <div class="card-body">
-                  <img src="assets/laptopImage.jpg" alt="Laptop" class="pull-right" width="170" height="130">
-                  <h4 class="card-title">Product Name: {{detail.ProductName}}</h4>
-                  <h4>Product Catagory: <label class="label label-primary"> {{detail.ProductCatagory}}</label></h4>
-                  <h4>Product Cost: <label>{{detail.ProductCost}}</label></h4>
-                 <h4> Discount: <label> {{detail.Discount}} %</label></h4>
-              </div>
-          </div><br>
-      </div>
+            <div class="card-body">
+              <img [src]='imageUrl' alt="Product Picture" class="pull-right" width="170" height="130">
+              <h4 class="card-title">Product Name: {{detail.ProductName}}</h4>
+              <h4>Product Catagory:
+                <label class="label label-primary"> {{detail.ProductCatagory}}</label>
+              </h4>
+              <h4>Product Cost:
+                <label>{{detail.ProductCost}}</label>
+              </h4>
+              <h4> Discount:
+                <label> {{detail.Discount}} %</label>
+              </h4>
+              <button class="btn btn-danger" (click)='DeleteProduct(detail.Id)'>Delete Product</button>
+              <button class="btn btn-warning" (click)='EditProduct(detail.Id,detail.ProductName,detail.ProductCatagory
+              ,detail.ProductCost,detail.Discount)'>Edit Product</button>
+            </div>
+          </div>
+          <br>
+        </div>
       </div>
     </div>
   </div>
