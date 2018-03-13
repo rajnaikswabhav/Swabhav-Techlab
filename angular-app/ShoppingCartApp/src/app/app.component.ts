@@ -8,19 +8,17 @@ import { UserService } from './Services/UserService';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
- 
+
+  user : {};
   constructor(private router : Router,private userService : UserService){
 
   }
 
   ngOnInit(){
-    let user = JSON.parse(localStorage.getItem('user'));
+     this.user = JSON.parse(localStorage.getItem('user'));
 
-    if(user == null){
+    if(this.user == null){
       this.router.navigate(['login']);
-    }
-    else{
-      this.router.navigate(['home',user.Id]);
     }
   }
 

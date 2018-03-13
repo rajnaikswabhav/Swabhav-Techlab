@@ -40,4 +40,8 @@ export class ProductService {
         .catch(r => {console.log(r)});
     }
 
+    DeleteProduct(id){
+        return this.http.delete(this.PRODUCT_URL+"/DeleteProduct/"+id).toPromise();
+    }
+
 }

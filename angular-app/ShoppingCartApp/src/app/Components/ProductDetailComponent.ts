@@ -13,6 +13,7 @@ export class ProductDetailComponent {
     pcatagory:string;
     pcost:number;
     discount:number;
+    success : string;
 
     constructor(private productService : ProductService){
         let user =JSON.parse(localStorage.getItem('user'));
@@ -21,7 +22,16 @@ export class ProductDetailComponent {
 
     Add(){
     this.productService.AddProduct(this.pname,this.pcatagory,this.pcost,this.discount)
-    .then(r => {console.log(r.status)})
+    .then(r => {
+        console.log(r.status);
+        setTimeout(() => {
+            this.success = "Product saved successfully"
+        }, 2000);
+    })
     .catch(r => {console.log(r)});        
+    this.pname = "";
+    this.pcatagory = "" ;
+    this.pcost = null ;
+    this.discount = null;
     }
 }
